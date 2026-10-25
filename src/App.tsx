@@ -320,12 +320,16 @@ export default function App() {
       fullLabel: 'Bảng Xếp Hạng',
       icon: <Trophy className="w-4 h-4" />,
     },
-    {
-      id: 'formulas',
-      shortLabel: 'KT Công Thức',
-      fullLabel: 'Kiểm Tra Công Thức (Lí - Hóa)',
-      icon: <Sparkles className="w-4 h-4 text-amber-500" />,
-    },
+    ...(subject === 'physics' || subject === 'chemistry'
+      ? [
+          {
+            id: 'formulas',
+            shortLabel: subject === 'chemistry' ? 'KT Công Thức Hóa' : 'KT Công Thức Lí',
+            fullLabel: subject === 'chemistry' ? 'Kiểm Tra Công Thức Hóa' : 'Kiểm Tra Công Thức Lí',
+            icon: <Sparkles className="w-4 h-4 text-amber-500" />,
+          },
+        ]
+      : []),
     {
       id: 'documents',
       shortLabel: 'Tài Liệu Gốc',
@@ -523,6 +527,8 @@ export default function App() {
 
         {activeTab === 'formulas' && (
           <FormulaQuizView
+            key={subject}
+            currentSubject={subject}
             initialSubject={subject}
             userStats={stats}
             setUserStats={setStats}

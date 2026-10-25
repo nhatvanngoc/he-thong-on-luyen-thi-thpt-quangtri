@@ -3,11 +3,13 @@ import {
   CheckCircle2,
   XCircle,
   ArrowRight,
+  ArrowLeft,
   RotateCcw,
   Sparkles,
   Flame,
   Cloud,
   Trophy,
+  Eye,
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { LatexText } from '../Common/LatexText';
@@ -20,19 +22,28 @@ import { UserStats, SubjectId } from '../../types/biology';
 import { soundEffects } from '../../services/soundEffects';
 import { syncUserProfileToCloud } from '../../services/firebase';
 
+interface QuestionRecord {
+  selectedOption: 'A' | 'B' | 'C' | 'D';
+  isSubmitted: boolean;
+  isCorrect: boolean;
+}
+
 interface FormulaQuizViewProps {
-  currentSubject: SubjectId;
+  currentSubject?: SubjectId;
+  initialSubject?: SubjectId;
   userStats: UserStats;
   setUserStats: React.Dispatch<React.SetStateAction<UserStats>>;
 }
 
 export const FormulaQuizView: React.FC<FormulaQuizViewProps> = ({
   currentSubject,
+  initialSubject,
   userStats,
   setUserStats,
 }) => {
   // Purely lock to the active subject (Tách biệt hoàn toàn Lý và Hóa)
-  const isChemistry = currentSubject === 'chemistry';
+  const activeSubject = currentSubject || initialSubject || 'physics';
+  const isChemistry = activeSubject === 'chemistry';
   const subjectName = isChemistry ? 'Hóa Học 11' : 'Vật Lí 11';
 
   const fullQuestionList = useMemo(() => {
@@ -40,25 +51,23 @@ export const FormulaQuizView: React.FC<FormulaQuizViewProps> = ({
   }, [isChemistry]);
 
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [selectedOption, setSelectedOption] = useState<'A' | 'B' | 'C' | 'D' | null>(null);
-  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const [answers, setAnswers] = useState<Record<number, QuestionRecord>>({});
   const [streak, setStreak] = useState<number>(0);
   const [wrongQuestionIds, setWrongQuestionIds] = useState<number[]>([]);
   const [isReviewingMistakes, setIsReviewingMistakes] = useState<boolean>(false);
   const [isTestFinished, setIsTestFinished] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
 
-  // Reset when currentSubject changes
+  // Reset when activeSubject changes
   useEffect(() => {
     setCurrentIndex(0);
-    setSelectedOption(null);
-    setIsSubmitted(false);
+    setAnswers({});
     setIsTestFinished(false);
     setIsReviewingMistakes(false);
     setWrongQuestionIds([]);
     setScore(0);
     setStreak(0);
-  }, [currentSubject]);
+  }, [activeSubject]);
 
   // Active question list (all or only mistakes)
   const activeQuestions = useMemo(() => {
@@ -71,18 +80,35 @@ export const FormulaQuizView: React.FC<FormulaQuizViewProps> = ({
   }, [fullQuestionList, isReviewingMistakes, wrongQuestionIds]);
 
   const currentQ: FormulaQuizQuestion | undefined = activeQuestions[currentIndex];
+  const currentAnswer = currentQ ? answers[currentQ.id] : undefined;
+  const selectedOption = currentAnswer?.selectedOption || null;
+  const isSubmitted = currentAnswer?.isSubmitted || false;
 
   const handleSelectOption = (opt: 'A' | 'B' | 'C' | 'D') => {
-    if (isSubmitted) return;
+    if (!currentQ || isSubmitted) return;
     soundEffects.playClick();
-    setSelectedOption(opt);
+    setAnswers((prev) => ({
+      ...prev,
+      [currentQ.id]: {
+        selectedOption: opt,
+        isSubmitted: false,
+        isCorrect: false,
+      },
+    }));
   };
 
   const handleSubmitAnswer = () => {
     if (!currentQ || !selectedOption || isSubmitted) return;
-    setIsSubmitted(true);
-
     const isCorrect = selectedOption === currentQ.correctAnswer;
+
+    setAnswers((prev) => ({
+      ...prev,
+      [currentQ.id]: {
+        selectedOption,
+        isSubmitted: true,
+        isCorrect,
+      },
+    }));
 
     if (isCorrect) {
       soundEffects.playCorrect();
@@ -132,15 +158,27 @@ export const FormulaQuizView: React.FC<FormulaQuizViewProps> = ({
     }
   };
 
+  const handlePrevQuestion = () => {
+    if (currentIndex > 0) {
+      soundEffects.playClick();
+      setCurrentIndex((prev) => prev - 1);
+    }
+  };
+
   const handleNextQuestion = () => {
     soundEffects.playClick();
     if (currentIndex + 1 < activeQuestions.length) {
       setCurrentIndex((prev) => prev + 1);
-      setSelectedOption(null);
-      setIsSubmitted(false);
     } else {
       setIsTestFinished(true);
       confetti({ particleCount: 50, spread: 70 });
+    }
+  };
+
+  const handleJumpToQuestion = (index: number) => {
+    if (index >= 0 && index < activeQuestions.length) {
+      soundEffects.playClick();
+      setCurrentIndex(index);
     }
   };
 
@@ -148,13 +186,22 @@ export const FormulaQuizView: React.FC<FormulaQuizViewProps> = ({
     soundEffects.playClick();
     setIsReviewingMistakes(reviewOnlyMistakes);
     setCurrentIndex(0);
-    setSelectedOption(null);
-    setIsSubmitted(false);
     setIsTestFinished(false);
+
     if (!reviewOnlyMistakes) {
+      setAnswers({});
       setWrongQuestionIds([]);
       setScore(0);
       setStreak(0);
+    } else {
+      // Clear answers for the wrong questions so they can re-try them fresh!
+      setAnswers((prev) => {
+        const next = { ...prev };
+        wrongQuestionIds.forEach((id) => {
+          delete next[id];
+        });
+        return next;
+      });
     }
   };
 
@@ -221,6 +268,17 @@ export const FormulaQuizView: React.FC<FormulaQuizViewProps> = ({
 
           {/* Các nút hành động */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5 pt-2">
+            <button
+              onClick={() => {
+                soundEffects.playClick();
+                setIsTestFinished(false);
+                setCurrentIndex(0);
+              }}
+              className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs flex items-center justify-center gap-2 cursor-pointer shadow-sm"
+            >
+              <Eye className="w-4 h-4" />
+              Xem Lại Toàn Bộ Câu
+            </button>
             {wrongQuestionIds.length > 0 && (
               <button
                 onClick={() => handleRestart(true)}
@@ -267,6 +325,36 @@ export const FormulaQuizView: React.FC<FormulaQuizViewProps> = ({
                 Điểm: {score}
               </span>
             </div>
+          </div>
+
+          {/* Dải số câu hỏi hỗ trợ chuyển qua lại và xem lại câu trước */}
+          <div className="flex items-center gap-1.5 overflow-x-auto py-1 px-0.5">
+            {activeQuestions.map((q, idx) => {
+              const ans = answers[q.id];
+              const isCurrent = idx === currentIndex;
+              let badgeColor = 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700';
+
+              if (ans?.isSubmitted) {
+                badgeColor = ans.isCorrect
+                  ? 'bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 border-emerald-300 dark:border-emerald-800 font-bold'
+                  : 'bg-rose-100 dark:bg-rose-950/80 text-rose-700 dark:text-rose-300 border-rose-300 dark:border-rose-800 font-bold';
+              } else if (ans?.selectedOption) {
+                badgeColor = 'bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border-amber-300 font-medium';
+              }
+
+              return (
+                <button
+                  key={q.id}
+                  onClick={() => handleJumpToQuestion(idx)}
+                  className={`w-7 h-7 shrink-0 rounded-lg text-xs flex items-center justify-center transition-all cursor-pointer border ${badgeColor} ${
+                    isCurrent ? 'ring-2 ring-indigo-500 font-black scale-105 shadow-sm' : 'hover:opacity-80'
+                  }`}
+                  title={`Câu ${idx + 1}: ${ans?.isSubmitted ? (ans.isCorrect ? 'Đúng' : 'Sai') : 'Chưa nộp'}`}
+                >
+                  {idx + 1}
+                </button>
+              );
+            })}
           </div>
 
           {/* Nội dung câu hỏi */}
@@ -322,13 +410,26 @@ export const FormulaQuizView: React.FC<FormulaQuizViewProps> = ({
             })}
           </div>
 
-          {/* Nút bấm kiểm tra / Tiếp theo */}
-          {!isSubmitted ? (
-            <div className="pt-2">
+          {/* Nút bấm điều hướng: Xem câu trước & Kiểm tra / Tiếp theo */}
+          <div className="flex items-center gap-2 pt-2">
+            <button
+              onClick={handlePrevQuestion}
+              disabled={currentIndex === 0}
+              className={`px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm flex items-center gap-1.5 transition-all ${
+                currentIndex === 0
+                  ? 'opacity-40 cursor-not-allowed bg-slate-100 dark:bg-slate-800 text-slate-400'
+                  : 'bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 cursor-pointer'
+              }`}
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>Câu Trước</span>
+            </button>
+
+            {!isSubmitted ? (
               <button
                 onClick={handleSubmitAnswer}
                 disabled={!selectedOption}
-                className={`w-full py-2.5 px-4 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm ${
+                className={`flex-1 py-2.5 px-4 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm ${
                   selectedOption
                     ? 'bg-emerald-600 hover:bg-emerald-700 text-white'
                     : 'bg-slate-200 dark:bg-slate-800 text-slate-400 cursor-not-allowed'
@@ -336,20 +437,18 @@ export const FormulaQuizView: React.FC<FormulaQuizViewProps> = ({
               >
                 Kiểm Tra Đáp Án
               </button>
-            </div>
-          ) : (
-            <div className="pt-2">
+            ) : (
               <button
                 onClick={handleNextQuestion}
-                className="w-full py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm"
+                className="flex-1 py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm"
               >
-                <span>Câu Tiếp Theo</span>
+                <span>{currentIndex + 1 < activeQuestions.length ? 'Câu Tiếp Theo' : 'Xem Kết Quả'}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
-            </div>
-          )}
+            )}
+          </div>
 
-          {/* 4. Khối SỬA SAI & KHẮC SÂU CÔNG THỨC (Không có cảnh báo rườm rà) */}
+          {/* 4. Khối SỬA SAI & KHẮC SÂU CÔNG THỨC */}
           {isSubmitted && (
             <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 space-y-3 animate-fadeIn">
               {/* Thông báo Đúng / Sai */}
