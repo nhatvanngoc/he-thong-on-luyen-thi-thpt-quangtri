@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 280" width="100%" height="100%">
+  <rect width="520" height="280" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <!-- Axes -->
+  <line x1="40" y1="140" x2="490" y2="140" stroke="#334155" stroke-width="2"/>
+  <polygon points="495,140 485,135 485,145" fill="#334155"/>
+  <text x="485" y="160" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#1e293b">t (s)</text>
+
+  <line x1="60" y1="260" x2="60" y2="20" stroke="#334155" stroke-width="2"/>
+  <polygon points="60,15 55,25 65,25" fill="#334155"/>
+  <text x="20" y="25" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#1e293b">x (cm)</text>
+
+  <text x="40" y="155" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">O</text>
+  <text x="45" y="55" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#334155">9</text>
+  <text x="38" y="235" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#334155">-9</text>
+
+  <line x1="120" y1="30" x2="120" y2="250" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="110" y="158" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0284c7">0,1</text>
+  <line x1="300" y1="30" x2="300" y2="250" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="290" y="158" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0284c7">0,4</text>
+
+  <!-- Curve: A=9, T=0.6s (360px). At t=0.1 (x=120) x=0 đi xuống; at t=0.4 (x=300) x=0 đi lên. T/2 = 0.3s -->
+  <path d="M 60,65 Q 90,65 120,140 Q 165,225 210,225 Q 255,225 300,140 Q 345,55 390,55 Q 435,55 480,140" 
+        fill="none" stroke="#0ea5e9" stroke-width="2.5"/>
+  <circle cx="120" cy="140" r="4" fill="#0284c7"/>
+  <circle cx="300" cy="140" r="4" fill="#0284c7"/>
+  <text x="170" y="260" font-family="system-ui, sans-serif" font-size="11" fill="#475569">T/2 = 0,4 - 0,1 = 0,3 s ⇒ Chu kì T = 0,6 s</text>
+</svg>

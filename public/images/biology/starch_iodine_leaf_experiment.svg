@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="expBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fafaf9"/>
+      <stop offset="100%" stop-color="#f5f5f4"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="700" height="360" rx="16" fill="url(#expBg)" stroke="#d6d3d1" stroke-width="1.5"/>
+
+  <!-- Title -->
+  <text x="350" y="32" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#292524">
+    THÍ NGHIỆM CHỨNG MINH QUANG HỢP TẠO TINH BỘT Ở LÁ
+  </text>
+  <text x="350" y="52" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#57534e">
+    (Thử nghiệm nhuộm màu bằng thuốc thử Iodine - Lugol)
+  </text>
+
+  <!-- 3 Steps Panels -->
+  <!-- Step 1: Che lá -->
+  <g transform="translate(30, 75)">
+    <rect width="195" height="260" rx="12" fill="#ffffff" stroke="#e7e5e4" stroke-width="1.5"/>
+    <rect x="0" y="0" width="195" height="32" rx="12" fill="#e0e7ff"/>
+    <text x="97" y="21" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#3730a3">
+      BƯỚC 1: BỊT KÍN BĂNG ĐEN
+    </text>
+
+    <!-- Leaf shape -->
+    <path d="M 97 50 C 45 80, 45 160, 97 190 C 149 160, 149 80, 97 50 Z" fill="#86efac" stroke="#15803d" stroke-width="2"/>
+    <line x1="97" y1="50" x2="97" y2="190" stroke="#15803d" stroke-width="1.5"/>
+
+    <!-- Black paper band in middle -->
+    <rect x="52" y="105" width="90" height="35" rx="3" fill="#18181b" stroke="#09090b" stroke-width="1.5"/>
+    <text x="97" y="127" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#f4f4f5">
+      BĂNG GIẤY ĐEN
+    </text>
+
+    <text x="15" y="215" font-family="system-ui, sans-serif" font-size="10.5" fill="#44403c">• Để cây trong tối 2 ngày</text>
+    <text x="15" y="230" font-family="system-ui, sans-serif" font-size="10.5" fill="#44403c">• Bịt kín 1 phần cả 2 mặt lá</text>
+    <text x="15" y="245" font-family="system-ui, sans-serif" font-size="10.5" fill="#44403c">• Đem chiếu sáng 4 - 6 giờ</text>
+  </g>
+
+  <!-- Step 2: Tẩy diệp lục -->
+  <g transform="translate(250, 75)">
+    <rect width="195" height="260" rx="12" fill="#ffffff" stroke="#e7e5e4" stroke-width="1.5"/>
+    <rect x="0" y="0" width="195" height="32" rx="12" fill="#fef3c7"/>
+    <text x="97" y="21" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#92400e">
+      BƯỚC 2: TẨY DIỆP LỤC
+    </text>
+
+    <!-- Beaker and boiling water -->
+    <rect x="40" y="65" width="115" height="110" rx="8" fill="#f0f9ff" stroke="#0284c7" stroke-width="2"/>
+    <rect x="60" y="80" width="75" height="85" rx="5" fill="#fef08a" stroke="#ca8a04" stroke-width="1.5"/>
+    <text x="97" y="115" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#854d0e">Cồn 90°</text>
+    <text x="97" y="130" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#854d0e">(Đun cách thủy)</text>
+
+    <text x="15" y="215" font-family="system-ui, sans-serif" font-size="10.5" fill="#44403c">• Bỏ băng giấy đen</text>
+    <text x="15" y="230" font-family="system-ui, sans-serif" font-size="10.5" fill="#44403c">• Đun trong cồn sôi cách thủy</text>
+    <text x="15" y="245" font-family="system-ui, sans-serif" font-size="10.5" fill="#44403c">• Lá mất màu xanh diệp lục</text>
+  </g>
+
+  <!-- Step 3: Thử Iodine và Kết quả -->
+  <g transform="translate(470, 75)">
+    <rect width="200" height="260" rx="12" fill="#ffffff" stroke="#e7e5e4" stroke-width="1.5"/>
+    <rect x="0" y="0" width="200" height="32" rx="12" fill="#dcfce7"/>
+    <text x="100" y="21" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#14532d">
+      BƯỚC 3: THỬ IODINE
+    </text>
+
+    <!-- Result Leaf -->
+    <!-- Top & bottom of leaf: exposed to light -> turns BLUE-PURPLE -->
+    <path d="M 100 48 C 50 75, 50 165, 100 195 C 150 165, 150 75, 100 48 Z" fill="#312e81" stroke="#1e1b4b" stroke-width="2"/>
+    
+    <!-- Middle band: covered by black paper -> NO STARCH -> STAYS PALE YELLOW / BROWN -->
+    <rect x="55" y="105" width="90" height="35" rx="2" fill="#fef08a" stroke="#ca8a04" stroke-width="1.5"/>
+    <text x="100" y="127" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" font-weight="800" fill="#713f12">
+      VÀNG NHẠT (Không tinh bột)
+    </text>
+
+    <!-- Callout Labels -->
+    <text x="100" y="85" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="800" fill="#c7d2fe">
+      XANH TÍM (+ tinh bột)
+    </text>
+    <text x="100" y="165" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="800" fill="#c7d2fe">
+      XANH TÍM (+ tinh bột)
+    </text>
+
+    <text x="15" y="215" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#14532d">• Phần chiếu sáng: Hóa xanh tím</text>
+    <text x="15" y="230" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#7c2d12">• Phần che kín: Không đổi màu</text>
+    <text x="15" y="247" font-family="system-ui, sans-serif" font-size="9.5" fill="#047857">→ Kết luận: Ánh sáng cần cho tạo tinh bột</text>
+  </g>
+</svg>

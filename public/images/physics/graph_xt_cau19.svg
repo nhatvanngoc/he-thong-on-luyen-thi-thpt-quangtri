@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 280" width="100%" height="100%">
+  <rect width="520" height="280" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <g stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3">
+    <line x1="50" y1="50" x2="480" y2="50"/>
+    <line x1="50" y1="230" x2="480" y2="230"/>
+    <line x1="160" y1="30" x2="160" y2="250"/>
+    <line x1="260" y1="30" x2="260" y2="250"/>
+    <line x1="360" y1="30" x2="360" y2="250"/>
+    <line x1="460" y1="30" x2="460" y2="250"/>
+  </g>
+  <!-- Axes -->
+  <line x1="40" y1="140" x2="490" y2="140" stroke="#334155" stroke-width="2"/>
+  <polygon points="495,140 485,135 485,145" fill="#334155"/>
+  <text x="485" y="160" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e293b">t (s)</text>
+  
+  <line x1="60" y1="260" x2="60" y2="20" stroke="#334155" stroke-width="2"/>
+  <polygon points="60,15 55,25 65,25" fill="#334155"/>
+  <text x="25" y="25" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e293b">x (m)</text>
+
+  <text x="45" y="155" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">0</text>
+  <text x="40" y="55" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#334155">A</text>
+  <text x="35" y="235" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#334155">-A</text>
+  <text x="255" y="158" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#334155">T</text>
+
+  <!-- Curve 1 (Red/Pink): Cosine peak at t=0 -->
+  <!-- t=0: y=50. t=T/4 (x=160): y=140. t=T/2 (x=260): y=230. t=3T/4 (x=360): y=140. t=T (x=460): y=50. -->
+  <path d="M 60,50 Q 110,50 160,140 Q 210,230 260,230 Q 310,230 360,140 Q 410,50 460,50" 
+        fill="none" stroke="#ef4444" stroke-width="2.5"/>
+  <text x="75" y="42" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#ef4444">(1)</text>
+
+  <!-- Curve 2 (Blue): Sine starting at t=0, y=140, peak at t=T/4 (x=160), y=50 -->
+  <path d="M 60,140 Q 110,50 160,50 Q 210,50 260,140 Q 310,230 360,230 Q 410,230 460,140" 
+        fill="none" stroke="#0ea5e9" stroke-width="2.5"/>
+  <text x="175" y="42" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0ea5e9">(2)</text>
+
+  <!-- Legend -->
+  <rect x="330" y="245" width="160" height="28" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+  <line x1="340" y1="259" x2="360" y2="259" stroke="#ef4444" stroke-width="2.5"/>
+  <text x="365" y="263" font-family="system-ui, sans-serif" font-size="11" fill="#475569">Vật 1</text>
+  <line x1="410" y1="259" x2="430" y2="259" stroke="#0ea5e9" stroke-width="2.5"/>
+  <text x="435" y="263" font-family="system-ui, sans-serif" font-size="11" fill="#475569">Vật 2 (Δφ = π/2)</text>
+</svg>

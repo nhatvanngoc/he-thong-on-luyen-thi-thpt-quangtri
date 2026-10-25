@@ -1,0 +1,490 @@
+ĐỀ CƯƠNG VẬT LÝ 11
+Mức độ: Nhận biết - Thông hiểu
+Tổng số câu: 44 câu trắc nghiệm nhiều lựa chọn.
+I. TỪ BÀI 1 ĐẾN BÀI 4 (16 CÂU NHẬN BIẾT, 6 CÂU THÔNG HIỂU)
+Câu 1 (NB). Chuyển động qua lại quanh một vị trí cân bằng được gọi là
+A. chuyển động thẳng đều. B. dao động cơ.
+C. chuyển động tròn đều. D. chuyển động biến đổi đều.
+Câu 2 (NB). Trong phương trình dao động điều hoà x = Acos(ωt + φ), đại lượng x được gọi là
+A. biên độ dao động. B. pha ban đầu. C. li độ dao động. D. tần số góc.
+Câu 3 (NB). Trong phương trình dao động điều hoà, đại lượng A đại diện cho
+A. độ dịch chuyển cực đại của vật tính từ vị trí cân bằng. B. vị trí của vật tại thời điểm t = 0.
+C. số dao động vật thực hiện trong một giây. D. thời gian vật thực hiện một dao
+động.
+Câu 4 (NB). Đơn vị của chu kì dao động T trong hệ SI là
+A. héc (Hz). B. giây (s). C. rađian (rad). D. mét (m).
+Câu 5 (NB). Mối liên hệ giữa chu kì T và tần số f của dao động điều hoà là
+A. f = 2πT. B. f = T / (2π). C. f = 1/T. D. f = T.
+Câu 6 (NB). Tần số góc ω của dao động điều hoà có liên hệ với chu kì T qua biểu thức nào sau
+đây?
+A. ω = 2π / T. B. ω = 2πT. C. ω = T / (2π). D. ω = 1/T.
+Câu 7 (NB). Đại lượng nào sau đây cho biết tại thời điểm bắt đầu quan sát, vật dao động điều hoà ở
+đâu và sẽ đi về phía nào?
+A. Li độ x. B. Tần số góc ω. C. Chu kì T. D. Pha ban đầu φ.
+Câu 8 (NB). Hai dao động điều hoà cùng chu kì có độ lệch pha Δφ = 0. Hai dao động này là hai dao
+động
+A. vuông pha. B. ngược pha. C. cùng (đồng) pha. D. lệch pha nhau π/2.
+Câu 9 (NB). Phương trình vận tốc của vật dao động điều hoà là
+A. v = ωAcos(ωt + φ). B. v = -ωAsin(ωt + φ).
+C. v = -ω²Acos(ωt + φ). D. v = ωAsin(ωt + φ).
+Câu 10 (NB). Vận tốc của vật dao động điều hoà có độ lớn cực đại khi vật ở
+A. vị trí biên dương. B. vị trí biên âm. C. vị trí cân bằng. D. vị trí có li độ x = A/2.
+Câu 11 (NB). Biểu thức liên hệ giữa gia tốc a và li độ x của vật dao động điều hoà là
+A. a = ω²x. B. a = -ωx. C. a = ωx². D. a = -ω²x.
+Câu 12 (NB). Gia tốc của vật dao động điều hoà bằng 0 khi vật ở
+A. vị trí biên dương. B. vị trí cân bằng. C. vị trí biên âm. D. vị trí bất kì.
+Câu 13 (NB). Vận tốc của vật dao động điều hoà biến thiên
+A. sớm pha π/2 so với li độ. B. trễ pha π/2 so với li độ.
+C. cùng pha với li độ. D. ngược pha với li độ.
+Câu 14 (NB). Gia tốc của vật dao động điều hoà biến thiên
+A. cùng pha so với li độ. B. sớm pha π/2 so với li độ.
+C. trễ pha π/2 so với li độ. D. ngược pha so với li độ.
+Câu 15 (NB). Đồ thị li độ - thời gian (x-t) của một vật dao động điều hoà có dạng là
+A. một đường thẳng. B. một đường parabol.
+C. một đường hypebol. D. một đường hình sin.
+Câu 16 (NB). Vectơ gia tốc của vật dao động điều hoà luôn có chiều
+A. cùng chiều chuyển động. B. ngược chiều chuyển động.
+C. hướng về vị trí cân bằng. D. hướng ra xa vị trí cân bằng.
+Câu 17 (TH). Dựa vào đồ thị li độ - thời gian. Chu kì T và biên độ A của dao động là
+
+-- 1 of 10 --
+
+A. A = 0,2 m; T = 0,4 s. B. A = 0,2 m; T = 0,2 s.
+C. A = 0,4 m; T = 0,4 s. D. A = 0,1 m; T = 0,2 s.
+Câu 18 (TH). Một vật dao động điều hoà với phương trình x = 2cos(4πt + π/2) (cm). Pha của dao
+động tại thời điểm t = 2 s là
+A. π/2 rad. B. 4π rad. C. 8,5π rad. D. 8π rad.
+Câu 19 (TH). Quan sát đồ thị li độ - thời gian của hai vật 1 và 2 cùng chu kì. Độ lệch pha giữa dao
+động 1 và dao động 2 có độ lớn là
+A. π rad. B. π/2 rad. C. π/4 rad. D. 0 rad.
+Câu 20 (TH). Một vật dao động điều hoà có phương trình li độ x = 5cos(10πt) (cm). Tốc độ cực đại
+của vật là
+A. 50π cm/s. B. 5π cm/s. C. 10π cm/s. D. 50 cm/s.
+Câu 21 (TH). Một vật dao động điều hoà với tần số góc ω = 2 rad/s. Khi vật có li độ x = -3 cm thì
+gia tốc của vật là
+A. 12 cm/s². B. -12 cm/s². C. 6 cm/s². D. -6 cm/s².
+Câu 22 (TH). Từ đồ thị vận tốc - thời gian của một vật đã cho như hình vẽ, tại thời điểm nào thì độ
+dốc của đồ thị (gia tốc) bằng không?
+A. 0. B. T/4. C. T/.2. D. Tất cả.
+II. BÀI 5 VÀ BÀI 7 (6 CÂU NHẬN BIẾT 3 CÂU THÔNG HIỂU)
+Câu 23 (NB). Công thức tính động năng Wđ của vật dao động điều hoà khối lượng m, vận tốc v là
+A. Wđ = 1/2 mv². B. Wđ = mv². C. Wđ = 1/2 mω²x². D. Wđ = 1/2 kx².
+Câu 24 (NB). Công thức tính thế năng Wt của con lắc lò xo có độ cứng k tại li độ x là
+A. Wt = 1/2 mv². B. Wt = 1/2 kx². C. Wt = kx². D. Wt = 1/2 kA².
+Câu 25 (NB). Trong quá trình vật dao động điều hoà (bỏ qua ma sát), cơ năng của vật bằng
+A. tổng động năng và thế năng tại một thời điểm bất kì và được bảo toàn.
+B. hiệu động năng và thế năng tại một thời điểm bất kì.
+C. tổng động năng và thế năng nhưng biến thiên theo thời gian.
+D. động năng cực đại cộng thế năng cực đại.
+Câu 26 (NB). Tần số góc ω của con lắc lò xo (độ cứng k, khối lượng m) dao động điều hoà được
+tính bằng công thức
+A. ω =m
+k . B. ω = 2πk
+m . C. ω =k
+m . D. ω = 2πm
+k .
+Câu 27 (NB). Chu kì T của con lắc đơn dao động với góc lệch nhỏ là
+A. T = 2πg
+l B. T =1
+2
+l
+g	
+ C. T = 2πl
+g D. T =l
+g
+Câu 28 (NB). Trong dao động điều hoà, động năng của vật đạt giá trị cực đại khi vật đi qua
+A. vị trí biên dương. B. vị trí biên âm. C. vị trí có li độ x = A/2. D. vị trí cân bằng.
+Câu 29 (TH). Quan sát đồ thị sự biến thiên của động năng và thế năng theo li độ x. Đồ thị của thế
+năng Wt là
+
+-- 2 of 10 --
+
+A. một đường parabol có bề lõm hướng xuống. B. một đường parabol có bề lõm
+hướng lên.
+C. một đường thẳng đi qua gốc toạ độ. D. một đường elip.
+Câu 30 (TH). Một con lắc lò xo có độ cứng k = 100 N/m dao động điều hoà với biên độ A = 0,05
+m. Cơ năng của con lắc bằng
+A. 0,125 J. B. 0,25 J. C. 2,5 J. D. 5 J.
+Câu 31 (TH). Dựa vào việc vận dụng định luật bảo toàn cơ năng, đối với con lắc đơn, ở vị trí động
+năng bằng thế năng (Wđ = Wt) thì li độ góc α của con lắc liên hệ với biên độ góc α0 theo biểu thức
+nào sau đây?
+A. α = ± α0 / 2. B. α = ± α0. C. α = ± α0 /	2	 . D. α = ± α0 / 4.
+III. BÀI 6 (10 CÂU NHẬN BIẾT, 3 CÂU THÔNG HIỂU)
+Câu 32 (NB). Dao động có biên độ giảm dần theo thời gian được gọi là
+A. dao động tự do. B. dao động cưỡng bức. C. dao động tắt dần. D. dao động duy trì.
+Câu 33 (NB). Nguyên nhân chủ yếu làm cho dao động của con lắc tắt dần là do
+A. chu kì của dao động không đổi. B. con lắc chịu lực ma sát và lực cản của môi
+trường.
+C. biên độ dao động quá lớn. D. kích thước vật nặng nhỏ.
+Câu 34 (NB). Trong các trường hợp sau đây, trường hợp nào là ứng dụng có lợi của dao động tắt
+dần?
+A. Con lắc đồng hồ dao động. B. Khung xe máy đung đưa sau khi đi qua chỗ mấp
+mô.
+C. Bộ phận giảm xóc của xe máy, ô tô. D. Em bé chơi xích đu đang dao động chậm dần.
+Câu 35 (NB). Dao động xảy ra dưới tác dụng của ngoại lực tuần hoàn có tần số bất kì được gọi là
+A. dao động tắt dần. B. dao động cưỡng bức. C. dao động tự do. D. hiện tượng cộng
+hưởng.
+Câu 36 (NB). Khi dao động cưỡng bức đã ổn định, tần số của dao động cưỡng bức
+A. luôn bằng tần số riêng của hệ dao động. B. luôn lớn hơn tần số của ngoại lực.
+C. bằng tần số của ngoại lực cưỡng bức. D. luôn nhỏ hơn tần số của ngoại lực.
+Câu 37 (NB). Biên độ của dao động cưỡng bức không phụ thuộc vào yếu tố nào sau đây?
+A. Biên độ của ngoại lực cưỡng bức. B. Lực cản của môi trường (ma sát).
+C. Độ chênh lệch giữa tần số ngoại lực và tần số riêng. D. Pha ban đầu của ngoại lực.
+Câu 38 (NB). Điều kiện để xảy ra hiện tượng cộng hưởng cơ là
+A. tần số của lực cưỡng bức bằng tần số riêng của hệ dao động (f = f0).
+B. biên độ của lực cưỡng bức đạt cực đại.
+C. lực cản của môi trường hoàn toàn bằng không.
+D. hệ dao động không chịu tác dụng của ngoại lực.
+Câu 39 (NB). Khi xảy ra hiện tượng cộng hưởng cơ, đại lượng nào sau đây của dao động tăng đến
+giá trị cực đại?
+A. Chu kì dao động. B. Tần số dao động. C. Biên độ dao động. D. Tần số
+góc.
+Câu 40 (NB). Sự kiện nào sau đây là một ví dụ về tác hại của hiện tượng cộng hưởng cơ?
+A. Lò vi sóng làm nóng thức ăn.
+B. Hộp đàn ghita làm âm thanh to hơn.
+C. Cầu treo Tacoma (Mỹ) bị sập dưới tác dụng của gió thổi.
+D. Pit-tông chuyển động trong xi-lanh động cơ.
+Câu 41 (NB). Ứng dụng nào sau đây trong đời sống hoạt động dựa trên hiện tượng cộng hưởng?
+A. Giảm xóc xe ô tô. B. Lò vi sóng. C. Đồng hồ quả lắc. D. Sóng nước
+nhấp nhô.
+
+-- 3 of 10 --
+
+Câu 42 (TH). Quan sát đồ thị cộng hưởng gồm hai đường cong A và B của cùng một hệ dao động
+chịu tác dụng của lực cưỡng bức trong hai môi trường khác nhau. Nhận xét nào sau đây là đúng về
+lực cản môi trường tác dụng lên hệ?
+A. Lực cản ở trường hợp A lớn hơn trường hợp B.
+B. Lực cản ở trường hợp A nhỏ hơn trường hợp B.
+C. Lực cản ở hai trường hợp là bằng nhau.
+D. Không thể so sánh lực cản dựa vào đồ thị này.
+Câu 43 (TH). Một con lắc được treo trên trần toa tàu lửa. Tàu chạy thẳng đều. Con lắc bị kích động
+mỗi khi bánh xe qua khe hở giữa hai thanh ray. Để biên độ dao động của con lắc lớn nhất (cộng
+hưởng) thì thời gian tàu đi hết một thanh ray phải bằng
+A. hai lần chu kì dao động riêng của con lắc.
+B. chu kì dao động riêng của con lắc.
+C. một nửa chu kì dao động riêng của con lắc.
+D. tần số dao động riêng của con lắc.
+Câu 44 (TH). Một hệ dao động có tần số riêng f0 = 5 Hz. Người ta tác dụng vào hệ một ngoại lực
+cưỡng bức tuần hoàn có tần số thay đổi được. Khi tần số của ngoại lực tăng từ 2 Hz đến 4 Hz thì
+biên độ dao động cưỡng bức của hệ sẽ
+A. giảm dần. B. không thay đổi. C. tăng dần. D. tăng rồi giảm.
+Phần II. Trắc nghiệm đúng, sai
+Câu 1: Đồ thị li độ - thời gian của hai vật dao
+động điều hòa A và B có cùng tần số nhưng lệch
+pha nhau như hình bên.
+a) Khi vật A có li độ cực đại thì vật B ở vị trí cân
+bằng.
+b) Khi vật B có li độ cực đại thì vật A ở vị trí cân
+bằng.
+c) Vật A đạt li độ cực đại sau vật B.
+d) Độ lệch pha giữa dao động của vật A so với
+dao động của vật B là 𝜋 (𝑟𝑎𝑑).
+Câu 2: Đồ thị li độ - thời gian của vật dao động
+điều hòa như hình bên.
+a) Chu kì dao động của vật là 0,4 s.
+b) Tốc độ cực đại của vật		
+30	 cm/s.
+c) Tại thời điểm t=0, pha dao động của vật bằng -
+4,5 rad.
+d) Phương trình dao động của vật là
+)	(	),	(	,	)
+3
+2
+3
+10
+(	cos	9 s	t	cm	x	t	x
+
+	
+−	=
+
+-- 4 of 10 --
+
+Câu 3. Một con lắc lò xo có độ cứng k=100 N/m dao động điều hoà. Gọi Wt , Wđ lần lượt là thế
+năng của lò xo và động năng của vật, W0 là cơ năng
+của con lắc lò xo. Đồ thị biểu thị sự phụ thuộc của thế
+năng Wt và động năng Wđ của con lắc vào li độ x như
+hình bên.
+a) Tại x=A thì thế năng Wt bằng 0.
+b) Từ x=0 đến x=A động năng tăng.
+c) Khi x=8 cm thì Wđ=2 Wt
+d) Cơ năng của con lắc lò xo là 64 J
+Câu 4: Một con lắc lò xo nằm ngang gồm vật nhỏ
+khối lượng 100g, độ cứng k. Kích thích cho con lắc
+dao động điều hòa với chu kì 0,2 s, biên độ 10 cm. Lấy π2 = 10. Chọn gốc tọa độ, mốc thế năng tại
+vị trí cân bằng.
+a) Độ cứng của lò xo k = 100 N/m .
+b) Cơ năng của vật bằng 5000 J.
+c) Vật cách vị trí cân bằng 5 cm thì động năng của vật có độ lớn 0,375 J.
+d) Động năng cực đại của vật bằng 0,5 J .
+Câu 5: Cho đồ thị cộng hưởng của một con lắc đơn như hình vẽ. Lấy g= 102
+/ s	m
+a) Biên độ dao động của một con lắc đơn lớn nhất khi tần
+số của lực cưỡng bức là 10 Hz.
+b) Tất cả các tần số của lực cưỡng bức 5 Hz, 10 Hz và 15
+Hz đều xảy ra cộng hưởng nhưng tại 15 Hz có biên độ dao
+động lớn nhất.
+c) Chu kì dao động riêng của con lắc đơn là 15 Hz.
+d). Chiều dài của con lắc đơn là	
+3
+1 cm
+Câu 6: Một con lắc đơn gồm sợi dây dàil	 , vật nhỏ X có
+khối lượngm	 . Bạn An kéo con lắc đơn ra ở vị trí A sao
+cho góc lệch của dây so với phương thẳng đứng là	o	
+	 (Hình vẽ),
+thả nhẹ cho dao động. Biết rằng cứ sau mỗi chu kì, biên độ của
+con lăc giảm 3 %. Bỏ qua khối lượng của dây, lấy g= 102
+/ s	m	 .
+a) Dao động của con lắc đơn là dao động tắt dần.
+b) Dao động của con lắc đơn là dao động cưỡng bức.
+c) Độ cao của X ở A lớn nhất trong các vị trí khác A so với vị trí
+cân bằng.
+d) Tỉ số phần trăm năng lượng của con lắc bị mất đi trong một dao
+động là 9 %.
+Câu 7: Cho đồ thị cộng hưởng của một vật dao động như hình vẽ.
+a) Tại điểm cao nhất B của đồ thị (1), khi đó có hiện
+tượng cộng hưởng xảy ra.
+b) Tại điểm cao nhất C của đồ thị (2), khi đó có hiện
+tượng cộng hưởng xảy ra.
+c) Trong hai đồ thị trên, đồ thị (1) tương ứng với vật
+dao động trong môi trường có lực cản lớn hơn ở đồ thị
+(2).
+d) Biết A1 lớn gấp 3 lần A3 và đồ thị (1) khi cộng
+hưởng vật dao động có tần số 6 Hz. Đồ thị (2) khi cộng
+hưởng vật dao động có chu kỳ là 0,1 s.
+Câu 8: Một con lắc dài 39 cm được treo vào trần của
+một toa xe lửa. Con lắc bị kích động mỗi khi bánh của toa xe gặp chỗ nối nhau giữa các thanh ray.
+Khi xe lửa chạy thẳng đều với tốc độ v thì con lắc dao động với biên độ lớn nhất. Biết chiều dài của
+mỗi thanh ray là 13 m. Lấy g=9,8 m/s2 và 𝜋=3,14.
+
+-- 5 of 10 --
+
+a) Khi xe lửa chạy thẳng đều với tốc độ v thì dao dộng của con lắc không phải là dao động cưỡng
+bức.
+b) Khi xe lửa chạy thẳng đều với tốc độ v thì con lắc dao động tắt dần.
+c) Khi con lắc dao động với biên độ lớn nhất thì chu kỳ dao động của con lắc gấp 2 lần khoảng thời
+gian một bánh tàu đi qua hai chỗ nối liên tiếp nhau giữa các thanh ray.
+d). Tốc độ v của tàu là 6,39 m/s. (Làm tròn đến chữ số hàng phần trăm)
+III. Tự luận
+Câu 1: Một vật có khối lượng m = 200 g dao động điều hòa với phương trình
+( 	)	
+x 5cos 10 t cm, s .
+6
+	 
+=  −	 
+ 
+a) Tính biên độ, chu kì, tần số và pha ban đầu dao động.
+b) Tính cơ năng dao động và tốc độ cực đại của vật.
+c) Tính vận tốc và gia tốc của vật tại thời điểm	0,15 .	t s	=
+d) Kể từ thời điểm t = 0, xác định thời điểm vật qua li độ	2,5 2	x = −	 cm lần thứ 2026.
+Câu 2: Một vật dao động điều hoà trên một đoạn thẳng với tần số góc là 4 rad /s. Biết rằng khi vật đi
+qua điểm có li độ -8 cm thì nó có tốc độ là 8 cm / s. Tính chu kì và chiều dài quỹ đạo của dao động.
+Câu 3: Một vật nhỏ dao động điều hòa dọc theo trục Ox với biên độ 5 cm, chu kỳ 2s. Tại thời điểm t
+= 0, vật đi qua vị trí cân bằng theo chiều dương. Viết phương trình dao động của vật.
+Câu 4: Hình vẽ bên biểu diễn sự thay đổi li độ theo thời gian của một vật dao động điều hòa. Chọn
+gốc tọa độ tại vị trí cân bằng của vật. Viết phương trình dao động của vật.
+a) b)
+Câu 5: Hai vật A và và B dao động điều hòa cùng tần số. Hình bên là đồ thị biểu diễn sự phụ thuộc
+của li độ x1 của A và li độ x2 của B theo thời gian t. Tính độ lệch pha của dao động của A và B.
+a) b)
+Câu 6: Một con lắc lò xo dao động điều hoà trên một đoạn thẳng với biên độ là 4 cm. Lò xo có độ
+cứng	80 /	=	k N m	 . Chọn gốc thế năng tại vị trí cân bằng. Tính động năng và thế năng của con lắc khi
+vật m của con lắc lò xo đang qua vị trí có li độ	2	= −	x cm	 .
+Câu 7: Một chất điểm dao động điều hòa có đồ thị biểu diễn sự phụ thuộc của li độ x vào thời gian t
+như hình vẽ. Tại thời điểm t = 0,2 s, chất điểm có li độ 2 cm. Ở thời điểm t = 0,9 s, gia tốc của chất
+điểm có giá trị bằng bao nhiêu?
+Câu 8: Một vật dao động điều hòa với phương trình x = Acos(2.f.t + ) (A > 0, − <  < ). Hình
+bên là đồ thị biểu diễn sự phụ thuộc của vận tốc v theo thời gian t của một vật dao động điều hòa.
+Tính các giá trị A, f và .
+Câu 9: Một chất điểm dao động điều hòa. Tốc độ cực đại và gia tốc cực đại của chất điểm lần lượt là
+8 cm/s và 322 cm/s2.
+a) Tính tần số dao động và biên độ dao động.
+t(s)
+x(cm)
+O
+5
+10
+-5
+-10
+
+10
+t(s)
+x(cm)
+O 9
+4
+8
+-4
+-8
+t
+x
+O
+x2
+x1
+0,2
+x
+t(s)
+O 	0,9
+
+-- 6 of 10 --
+
+b) Tính li độ dao động của chất điểm khi nó chuyển động nhanh dần theo chiều âm qua vị trí có thế
+năng gấp 3 lần động năng.
+Câu 10: Một vật khối lượng 400 g thực hiện dao động điều hòa. Đồ thị bên mô tả thế năng Wt vật
+theo thời gian t. Lấy2 10	 =	 .Biết tại thời điểm ban đầu vật chuyển động
+theo chiều âm. Viết phương trình dao động của vật.
+Câu 11: Một con lắc lò xo dao động tắt dần trên mặt phẳng nằm ngang.
+Sau mỗi chu kì dao động, biên độ của vật giảm 3%. Tính tỉ lệ phần trăm cơ
+năng còn lại sau 3 chu kì.
+Câu 12: Khảo sát thực nghiệm một con lắc lò xo gồm vật nhỏ có khối
+lượng 150 g và lò xo có độ cứng k, dao động dưới tác dụng của ngoại lực
+0	F F cos( t)	= 	
+với F0 không đổi và	 thay đổi được. Kết
+quả khảo sát ta được đường biểu diễn biên độ A của con lắc
+theo tần số góc	 có đồ thị như hình vẽ.
+a) Tính tần số dao động riêng của con lắc lò xo.
+b) Tính giá trị gần đúng của k.
+
+-- 7 of 10 --
+
+ĐỀ MINH HỌA
+TRƯỜNG THPT QUẢNG TRỊ
+TỔ: VẬT LÝ
+--------------------
+(Đề thi có 3 trang)
+KIỂM TRA GIỮA HỌC KỲ I
+NĂM HỌC 2026 - 2027
+Môn: VẬT LÍ - Khối: 11
+Thời gian làm bài: 45 phút
+(không kể thời gian phát đề
+Họ và tên: ............................................................................ Số báo danh: ....... Mã đề 1101
+PHẦN I. Câu trắc nghiệm nhiều phương án lựa chọn. Thí sinh trả lời từ câu 1 đến câu 16. Mỗi
+câu hỏi thí sinh chỉ chọn một phương án. (4 điểm)
+Câu 1. Một vật dao động tắt dần có các đại lượng giảm liên tục theo thời gian là
+A. biên độ và gia tốc. B. biên độ và tốc độ.
+C. li độ và tốc độ. D. biên độ và năng lượng.
+Câu 2. Động năng của vật được xác định theo biểu thức nào sau đây?
+A. Wđ =2	1
+2 m
+	 . B. Wđ =2	1
+2 m v	 . C. Wđ =2	1
+2 mv	 . D. Wđ =2	1
+2 mx
+.
+Câu 3. Trong dao động điều hòa, gia tốc biến đổi
+A. ngược pha với li độ. B. cùng pha với li độ.
+C. trễ pha2 so với li độ. D. sớm pha2 so với li độ.
+Câu 4. Đối với dao động tuần hoàn, khoảng thời gian ngắn nhất sau đó trạng thái dao động lặp lại
+như cũ gọi là
+A. Pha ban đầu. B. Tần số dao động. C. Chu kì dao động. D. Tần số góc.
+Câu 5. Trong thí nghiệm tạo dao động của con lắc lò xo, để vật dao động tự do ta cần thực hiện
+bước nào sau đây?
+A. Đặt vật dao động trong chất lỏng để giảm dao động.
+B. Giữ vật ở vị trí cân bằng một lúc rồi buông ra.
+C. Kéo vật ra khỏi vị trí cân bằng rồi thả nhẹ.
+D. Tác dụng lực liên tục để vật dao động lâu dài.
+Câu 6. Một hệ dao động chịu tác dụng của một ngoại lực tuần hoàn Fn = F0sin10t thì xảy ra hiện
+tượng cộng hưởng. Tần số dao động riêng của hệ phải là
+A. 5 Hz. B. 5 Hz. C. 10 Hz. D. 10 Hz.
+Câu 7. Một vật dao động điều hòa với phương trình x = Acosωt, phương trình vận tốc của vật là
+A. v = - ω2Acosωt. B. v = - ωAcosωt. C. v = - Asinωt. D. v = -
+ωAsinωt.
+Câu 8. Biên độ của hệ dao động điều hòa phụ thuộc yếu tố nào?
+A. Cách chọn gốc thời gian. B. Cách kích thích cho vật dao động.
+C. Cấu tạo của hệ. D. Cách chọn trục tọa độ.
+Câu 9. Dao động điều hòa là
+A. dao động được lặp đi lặp lại như cũ sau những khoảng thời gian xác định.
+B. chuyển động tuần hoàn trong không gian, lặp đi lặp lại xung quanh một vị trí cố định.
+C. dao động được mô tả bằng định luật hàm sin hay hàm cos theo thời gian.
+D. dao động có năng lượng không đổi theo thời gian.
+Câu 10. Một con lắc lò xo nằm ngang, một đầu cố định, một đầu gắn với vật khối lượng 100 g dao
+động theo phương trình	( 	)	
+x 8 cos 10t	=	 (x	 tính bằng cm,t	 tính bằngs	 ). Thế năng cực đại của vật
+là
+A.32 mJ	 . B.320 mJ	 . C.128 mJ	 . D.16 mJ	 .
+Câu 11. Một chất điểm dao động điều hòa có quĩ đạo là một đoạn thẳng có chiều dài20 cm	 . Biên
+độ dao động của chất điểm là
+A.10 cm	 . B.	10 cm	 . C.20 cm	 . D.5 cm	 .
+
+-- 8 of 10 --
+
+Câu 12. Một con lắc lò xo có khối lượng vật nhỏ là m dao động điều hoà theo phương nằm ngang
+với phương trình	ω	=	x Acos t	 . Mốc thế năng ở vị trí cân bằng. Cơ năng con lắc là
+A.	ω 2
+m A	 . B.	ω2 2	1
+2 m A	 . C.	ω 2	1
+2 m A	 . D.	ω2 2
+m A	 .
+Câu 13. Hiện tượng nào sau đây là ví dụ về dao động tự do?
+A. Con lắc đồng hồ treo tường đang hoạt động.
+B. Mặt đất rung lên khi có xe tải đi qua.
+C. Âm thanh của loa phát nhạc.
+D. Dây đàn guitar rung lên sau khi gảy.
+Câu 14. Hiện tượng cộng hưởng xảy ra khi
+A. Không có lực cản trong hệ dao động.
+B. Tần số của lực cưỡng bức bằng tần số riêng của hệ dao động .
+C. Tần số của lực cưỡng bức nhỏ hơn tần số riêng của hệ.
+D. Tần số của lực cưỡng bức lớn hơn tần số riêng của hệ.
+Câu 15. Trong dao động điều hòa, gia tốc của vật có liên hệ với li độ theo phương trình nào?
+A. a = ωx. B. a = ω2x. C. a = - ωx. D. a = -ω2x.
+Câu 16. Cho đồ thị ly độ thời gian của một dao động điều hòa như hình bên. Chu kỳ của dao động
+là
+A. T = 40 s. B. T = 0,01 s. C. T = 0,02 s. D. T = 0,04 s.
+PHẦN II. Câu trắc nghiệm đúng sai. Thí sinh trả lời từ câu 1 đến câu 2. Trong mỗi ý a), b), c), d)
+ở mỗi câu, thí sinh chọn đúng hoặc sai. (2 điểm)
+Câu 1. Phát biểu nào là đúng hoặc sai?
+a) Đại lượng cho biết vật dao động đang ở đâu và chuyển động theo chiều nào là pha dao động.
+b) Khoảng thời gian để vật thực hiện được 1 dao động toàn phần là chu kỳ.
+c) Số dao động mà vật thực hiện được trong 1 giây là tần số.
+d) Biên độ trong dao động điều hòa thay đổi theo thời gian.
+Câu 2. Đồ thị dao động điều hòa của một vật được mô tả như
+hình bên.
+a) Biên độ dao động là 20cm.
+b) Li độ của vật tại thời điểmt 1 s	=	 là0 cm	 .
+c) Chu kỳ dao động của vật khi dao động là 4s.
+d) Tần số trong dao động là 0,5Hz.
+PHẦN III. Câu trắc nghiệm trả lời ngắn. Thí sinh trả lời
+từ câu 1 đến câu 4 (1 điểm)
+Câu 1. Một vật có khối lượng m dao động điều hòa với biên độA	 . Khi chu kì tăng 3 lần thì năng
+lượng của vật giảm bao nhiêu lần so với ban đầu? (làm tròn kết quả đến chữ số hàng đơn vị).
+Câu 2. Một chiếc xe chuyển động đều trên một đoạn đường mà cứ 20 m trên đường lại có một rãnh
+nhỏ. Biết chu kì dao động riêng của khung xe trên lò xo giảm xóc là 2 s. Chiếc xe bị xóc mạnh nhất
+khi tốc độ của xe là bao nhiêu m/s? (làm tròn kết quả đến chữ số hàng đơn vị).
+Câu 3. Một vật dao động điều hòa phương trìnhx 10 cos(2t 0, 2),x	 tính bằngcm	 ,t	 tính bằng
+s
+. Tính gia tốc cực đại trong quá trình dao động của vật. (làm tròn kết quả đến chữ số hàng đơn vị).
+Câu 4. Vật thực hiện được 50 dao động toàn phần trong 2s. Tần số của dao động bằng bao nhiêu?
+(làm tròn kết quả đến chữ số hàng đơn vị).
+PHẦN IV. Tự luận. Thí sinh trình bày từ bài 1 đến bài 3 (3 điểm)
+20
+2
+4
+4
+2
+t(ms)
+x(cm)
+0
+3
+10
+0
+–10
+
+-- 9 of 10 --
+
+Bài 1. Một vật dao động điều hòa có phương trình
+𝑥 = 10cos (2𝜋𝑡 + 𝜋
+3) (𝑐𝑚).
+a) Xác định biên độ, chu kỳ, tần số góc và pha ban đầu của dao động.
+b) Tính vận tốc, gia tốc của vật tại thời điểm t = 0.5 s.
+Bài 2. Cho đồ thị li độ theo thời gian của một vật dao động điều hoà như hình vẽ.
+a. Xác định chu kì dao động của vật theo đơn vị giây?
+b. Xác định khoảng thời gian ngắn nhất vật đi từ vị trí có li độ -2cm đến vị trí có li độ 4cm
+Bài 3. Một con lắc lò xo có khối lượng m = 400g và độ cứng k = 40N/m. Người ta kéo vật nặng ra
+khỏi vị trí cân bằng một đoạn 4cm và thả tự do.
+a. Tính cơ năng của con lắc lò xo
+b. Xác định li độ khi động năng bằng 3 lần thế năng.
+-----------------HẾT---------------------
+Học sinh không được sử dụng tài liệu. CBCT không giải thích gì thêm.
+Tổ phó chuyên môn
+Nguyễn Thanh Thiện
+
+-- 10 of 10 --
+

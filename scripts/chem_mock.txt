@@ -1,0 +1,138 @@
+SỞ GD&ĐT QUẢNG TRỊ ĐỀ MINH HỌA KIỂM TRA GIỮA KỲ I NĂM HỌC 2026-2027
+TRƯỜNG THPT QUẢNG TRỊ Môn: HOÁ HỌC. Lớp: 11
+Thời gian làm bài: 45 phút, không kể thời gian giao đề.
+Họ và tên học sinh:………………..………Số báo danh…..… Lớp:………………………………
+PHẦN I. (4,0 điểm) Học sinh trả lời từ câu 1 đến câu 16. Mỗi câu hỏi thí sinh chỉ chọn một phương án.
+Câu 1. Phản ứng thuận nghịch là phản ứng
+A. xảy ra theo hai chiều ngược nhau trong cùng điều kiện. B. xảy ra hoàn toàn.
+C. xảy ra chậm.
+D. luôn có nồng độ chất phản ứng bằng nồng độ sản phẩm.
+Câu 2. Giá trị hằng số cân bằng KC của phản ứng thay đổi khi
+A. thay đổi nồng độ các chất. B. thay đổi nhiệt độ. C. thay đổi áp suất. D. thêm chất xúc tác.
+Câu 3. Phương trình nào sau đây là phương trình của phản ứng thuận nghịch?
+A. NaOH + HCl → NaCl + H2O. B. Cl2 + H2O ⇌ HCl + HClO.
+C. AgNO3 + KCl → AgCl + KNO3. D. S + Fe0
+t
+⎯⎯→	 FeS.
+Câu 4. Biểu thức tính hằng số cân bằng (KC) của phản ứng tổng quát: aA + bB ⇌ cC + dD là
+A.	C
+[A].[B]
+K [C].[D]
+=	 . B.
+a b
+C c d
+[A] .[B]
+K [C] .[D]
+=	 .
+C.
+c d
+C a b
+[C] .[D]
+K [A] .[B]
+=	 . D.	C
+[C].[D]
+K [A].[B]
+=	 .
+Câu 5. Trong các chất sau, chất nào là chất điện li yếu?
+A. HCl. B. NaCl. C. NaOH. D. HClO.
+Câu 6. Theo thuyết acid – base của Bronsted – Lowry, base là
+A. chất cho electron. B. chất nhận electron. C. chất cho proton. D. chất nhận proton
+Câu 7. Dung dịch nào sau đây có pH < 7?
+A. BaCl2. B. KOH. C. HNO3. D. Na2SO4.
+Câu 8. Dung dịch chất nào sau đây làm phenolphtalein chuyển sang màu hồng?
+A. NaCl. B. HCl. C. KOH. D. HNO3.
+Câu 9. Giá trị pH của dung dịch H2SO4 0,005 M là
+A. 2. B. 12. C. 10. D. 4.
+Câu 10. Trong tự nhiên, đơn chất nitrogen có nhiều trong
+A. nước biển. B. không khí. C. cơ thể người. D. mỏ khoáng.
+Câu 11. Ở nhiệt độ cao, nitrogen thể hiện tính khử khi phản ứng với đơn chất nào sau đây?
+A. Mg. B. O2. C. Ca. D. H2.
+Câu 12. Trong ammonia, nitrogen có số oxi hóa là
+A. +3. B. -3. C. +4. D. +5.
+Câu 13. Dạng hình học của phân tử ammonia là
+A. hình tam giác đều. B. hình tứ diện. C. đường thẳng. D. hình chóp tam giác.
+Câu 14. Muối nào sau đây tan nhiều trong nước?
+A. AgCl. B. (NH4)2SO4. C. CaCO3. D. BaSO4.
+Câu 15. Tính base của ammonia được thể hiện qua phản ứng nào sau đây?
+A. NH3 + HCl → NH4Cl. B. 4NH3 + 3O2o
+t
+⎯⎯→	 2N2 + 6H2O.
+C. 4NH3 + 5O2o
+t
+Pt	
+⎯⎯→	 4NO + 6H2O. D. 2NH3 + 3CuOo
+t
+⎯⎯→	 3Cu + 2N2↑ + 3H2O.
+Câu 16: Oxide của nitrogen tạo thành khi nitrogen trong không khí tác dụng với các gốc tự do được gọi là
+A. NOx nhiệt. B. NOx tức thời C. NOx tự nhiên. D. NOx nhiên liệu.
+PHẦN II. (2,0 điểm) Học sinh trả lời từ câu 1 đến câu 2. Trong mỗi ý a), b), c), d) của mỗi câu, thí sinh chọn đúng hoặc sai.
+Câu 1. Nitrogen chủ yếu được dùng để tổng hợp ammonia theo phương trình phản ứng sau:
+o
+2 2 3 298
+o
+r
+t ,p, xt
+N (g) 3H (g) 2NH (g) H 91,8 kJ	+  = −
+a) Phản ứng trên là phản ứng thu nhiệt.
+b) Chất khử là N2 và chất oxi hóa là H2.
+Mã đề: 1101
+
+-- 1 of 3 --
+
+c) Biểu thức hằng số cân bằng của phản ứng trên là KC =
+2
+3
+3
+2 2
+[NH ] ,
+[N ].[H ] khi tăng áp suất (giữ nguyên các yếu tố khác) thì
+cân bằng trên dịch chuyển theo chiều thuận làm [NH3] tăng nên giá trị KC tăng.
+d) Để thu được 10,2 tấn ammonia với hiệu suất của phản ứng là 25% (tính theo N2) thì khối lượng nitrogen đã tham gia
+phản ứng là 8,4 tấn.
+Câu 2: Trong công nghiệp, người ta sản xuất nitric acid theo sơ đồ sau (mỗi mủi tên là 1 phản ứng):
+3 2 3
+(1) (2) (3)
+NH NO NO HNO	⎯⎯→ ⎯⎯⎯	→ ⎯⎯→
+a) Tên gọi của NO và NO2 tương ứng là nitrogen monoxide và dinitrogen oxide.
+b) Cả 3 phản ứng trong sơ đồ trên đều là phản ứng oxi hoá - khử.
+c) Ở giai đoạn sản xuất NO, ta có thể thay ammonia bằng N2 vì hiệu suất của phản ứng giữa N2 và O2 tương đối cao.
+d) Để điều chế 200000 tấn nitric acid có nồng độ 60% (Hiệu suất của phản ứng sản xuất nitric acid theo sơ đồ trên là
+96,2%) thì cần dùng 33660 tấn NH3. (kết quả được làm tròn đến phần nguyên)
+PHẦN III. (1,0 điểm) Học sinh trả lời từ câu 1 đến câu 4
+Câu 1: Một mẫu khí X cho vào bình kín và có cân bằng sau: 3X(g) ⇌ 2Y(g). Nồng độ các chất X, Y theo thời gian được
+biểu diễn như đồ thị sau:
+Giá trị hằng số cân bằng KC là bao nhiêu?
+Câu 2: Bốn dung dịch HCl (1), Na2SO4 (2), CH3COOH (3), NaOH (4) có cùng nồng độ mol. Hãy sắp xếp các dung dịch trên
+theo thứ tự tăng dần độ pH
+Câu 3: Một lượng lớn ammonia được dùng để sản xuất nitric acid (thông qua quy trình Ostwald). Xét phản ứng trong giai
+đoạn đầu của quá trình Ostwald:
+NH3 + O2
+𝑃𝑡
+→ NO + H2O. Trong công nghiệp, cần trộn 1 m3 ammonia với bao nhiêu m3 không khí để vừa đủ thực hiện phản
+ứng trên ? Biết không khí chứa 20% thể tích oxygen và các thể tích đo ở cùng điều kiện về nhiệt độ và áp suất.
+Câu 4: Trong ion NH4+, nguyên tử N có số oxi hóa là bao nhiêu?
+PHẦN IV. (3,0 điểm) Học sinh trình bày tự luận từ câu 1 đến câu 3.
+Câu 1:
+1. Xét cân bằng hoá học xảy ra trong quá trình nung vôi: CaCO3(s) ⇌ CaO(s) + CO2(g) ;	r	Δ H 178,5 kJ	=	 . Để cân bằng chuyển
+dịch theo chiều thuận cần tác động yếu tố nhiệt độ và áp suất của hệ như thế nào?
+2. Tính pH của dung dịch thu được khi hoà tan hoàn toàn 0,8 gam NaOH rắn, khan vào 200 ml nước. Giả sử thể tích dung
+dịch không thay đổi.
+Câu 2: Hoàn thành các phương trình phản ứng sau:
+1. NH4NO3
+𝑡𝑜
+→
+2. (NH4)2SO4 + NaOH 
+3. (NH4)2CO3 + CaCl2 
+4. NH4HCO3 + HCl 
+Câu 3: Sau mỗi trận mưa dông, một lượng nitrogen trong không khí được chuyển hóa thành ion nitrate và hòa tan vào nước
+mưa. Nguyên tố nitrogen có trong ion nitrate có vai trò thúc đẩy quá trình sinh trưởng và phát triển của cây trồng, làm cho
+cây trồng ra nhiều lá, cho nhiều củ, quả và hạt hơn. Hàm lượng ion nitrate trong một mẫu nước mưa là 62 mg/L nước mưa.
+Biết rằng, trong 1 giờ sẽ có 5m3 nước mưa rơi xuống một thửa ruộng. Tính khối lượng nguyên tố nitrogen mà thửa ruộng đó
+nhận được khi cơn mưa kéo dài 2,5 giờ ?
+
+-- 2 of 3 --
+
+
+
+-- 3 of 3 --
+

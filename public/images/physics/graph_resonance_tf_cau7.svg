@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 280" width="100%" height="100%">
+  <rect width="520" height="280" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <!-- Axes -->
+  <line x1="50" y1="230" x2="480" y2="230" stroke="#334155" stroke-width="2"/>
+  <polygon points="485,230 475,225 475,235" fill="#334155"/>
+  <text x="400" y="250" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#1e293b">Tần số lực (Hz)</text>
+
+  <line x1="70" y1="240" x2="70" y2="25" stroke="#334155" stroke-width="2"/>
+  <polygon points="70,20 65,30 75,30" fill="#334155"/>
+  <text x="15" y="25" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#1e293b">Biên độ (A)</text>
+
+  <text x="60" y="245" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">0</text>
+  <text x="175" y="245" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">f₁</text>
+  <text x="250" y="245" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#0284c7">f₂</text>
+  <text x="325" y="245" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">f₃</text>
+
+  <!-- Curve 1 (Sharp peak B) -->
+  <path d="M 90,225 C 170,220 215,130 255,45 C 295,130 340,220 440,225" 
+        fill="none" stroke="#2563eb" stroke-width="3"/>
+  <circle cx="255" cy="45" r="5" fill="#2563eb"/>
+  <text x="255" y="35" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#2563eb">B (Đồ thị 1)</text>
+
+  <!-- Curve 2 (Flatter peak C) -->
+  <path d="M 90,228 C 170,225 215,190 255,145 C 295,190 340,225 440,228" 
+        fill="none" stroke="#0ea5e9" stroke-width="2.5" stroke-dasharray="4,3"/>
+  <circle cx="255" cy="145" r="5" fill="#0ea5e9"/>
+  <text x="255" y="135" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#0ea5e9">C (Đồ thị 2)</text>
+
+  <line x1="255" y1="230" x2="255" y2="45" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="70" y1="45" x2="255" y2="45" stroke="#2563eb" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="45" y="49" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#2563eb">A₁</text>
+  <line x1="70" y1="145" x2="255" y2="145" stroke="#0ea5e9" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="45" y="149" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#0ea5e9">A₃</text>
+</svg>

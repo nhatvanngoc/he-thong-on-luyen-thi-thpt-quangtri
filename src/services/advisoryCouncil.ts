@@ -1,0 +1,240 @@
+import { CouncilConsensus, MultipleChoiceQuestion, TrueFalseQuestion, ShortAnswerQuestion, EssayFlashcard } from '../types/biology';
+
+export function getCouncilAnalysisForMCQ(question: MultipleChoiceQuestion): CouncilConsensus {
+  const isHard = question.difficulty === 'VanDung';
+  const topicNames: Record<string, string> = {
+    topic1: 'Chủ đề 1.1: Khái quát trao đổi chất & năng lượng (10% điểm)',
+    topic2: 'Chủ đề 1.2: Trao đổi nước & khoáng ở thực vật (42.5% điểm)',
+    topic3: 'Chủ đề 1.3: Quang hợp ở thực vật (47.5% điểm)',
+  };
+
+  return {
+    questionTitle: `Câu ${question.id}: ${question.question.slice(0, 80)}...`,
+    coreDecision: `Chọn phương án **[${question.correctAnswer}]**: ${question.options[question.correctAnswer]}`,
+    opinions: [
+      {
+        advisorId: 'executor',
+        advisorName: 'Người Điều Hành',
+        roleTitle: 'Chuyên Gia Tối Ưu Hóa Điểm Số & Thực Thi',
+        avatarIcon: 'Zap',
+        colorScheme: {
+          bg: 'bg-amber-950/20',
+          border: 'border-amber-500/30',
+          text: 'text-amber-400',
+          badge: 'bg-amber-500/20 text-amber-300',
+        },
+        keyTakeaway: 'Dùng quy tắc loại trừ từ khóa tuyệt đối trong 20 giây.',
+        detailedArgument: `Chiến thuật thực thi: Đọc lướt 4 phương án, ngay lập tức gạch bỏ các phương án chứa từ ngữ phi logic hoặc đảo ngược quá trình. Với câu này, phương án ${question.correctAnswer} trực tiếp trúng từ khóa cốt lõi "${question.explanation.slice(0, 90)}". Không dừng lại quá 45 giây cho câu hỏi này.`,
+        actionableTip: `Ghi nhớ cụm từ then chốt: **"${question.options[question.correctAnswer].slice(0, 45)}"** để khoanh ngay khi gặp dạng tương tự.`,
+      },
+      {
+        advisorId: 'skeptic',
+        advisorName: 'Người Hoài Nghi',
+        roleTitle: 'Chuyên Gia Bẫy Đề Thi & Quản Trị Rủi Ro',
+        avatarIcon: 'ShieldAlert',
+        colorScheme: {
+          bg: 'bg-rose-950/20',
+          border: 'border-rose-500/30',
+          text: 'text-rose-400',
+          badge: 'bg-rose-500/20 text-rose-300',
+        },
+        keyTakeaway: `Cảnh giác bẫy: ${question.trapWarning}`,
+        detailedArgument: `Rủi ro lớn nhất ở câu này là học sinh thường đọc vội và nhầm lẫn các khái niệm đối ngẫu. ${question.trapWarning} Hãy kiểm tra kỹ xem đề có chứa chữ phủ định ngầm hay các từ tuyệt đối ("luôn luôn", "duy nhất", "không bao giờ") hay không.`,
+        actionableTip: `Quy tắc phòng thủ: Luôn đối chiếu phương án nghi ngờ với nguyên lý bảo toàn vật chất và hướng di chuyển thẩm thấu/dòng mạch.`,
+      },
+      {
+        advisorId: 'visionary',
+        advisorName: 'Người Có Tầm Nhìn',
+        roleTitle: 'Nhà Sinh Học Tiến Hóa & Công Nghệ Sinh Học',
+        avatarIcon: 'Compass',
+        colorScheme: {
+          bg: 'bg-emerald-950/20',
+          border: 'border-emerald-500/30',
+          text: 'text-emerald-400',
+          badge: 'bg-emerald-500/20 text-emerald-300',
+        },
+        keyTakeaway: `Bản chất tiến hóa: ${question.corePrinciple}`,
+        detailedArgument: `Nguyên lý nền tảng: ${question.corePrinciple} Mọi cơ chế trong câu hỏi này là kết quả của hàng trăm triệu năm chọn lọc tự nhiên nhằm tối ưu hóa hiệu suất năng lượng và thích nghi của thực vật với môi trường cạn.`,
+        actionableTip: `Liên hệ thực tiễn: Hiểu nguyên lý này giúp giải thích tại sao công nghệ nhà kính thông minh và nông nghiệp chính xác có thể kiểm soát vi khí hậu để tăng 30-50% năng suất.`,
+      },
+      {
+        advisorId: 'advocate',
+        advisorName: 'Người Bênh Vực Học Sinh',
+        roleTitle: 'Cố Vấn Tâm Lý Học Tập & Ghi Nhớ Trực Quan',
+        avatarIcon: 'HeartHandshake',
+        colorScheme: {
+          bg: 'bg-sky-950/20',
+          border: 'border-sky-500/30',
+          text: 'text-sky-400',
+          badge: 'bg-sky-500/20 text-sky-300',
+        },
+        keyTakeaway: 'Hình tượng hóa kiến thức thành sơ đồ tư duy trực quan.',
+        detailedArgument: `Để không phải học vẹt: Hãy liên tưởng câu hỏi này như một hệ thống đời sống quen thuộc. Ví dụ: Dòng mạch rây như xe tải giao hàng từ kho (nguồn) đến siêu thị (đích); Khí khổng như chiếc cửa van hơi tự động dãn nở theo áp suất nước.`,
+        actionableTip: `Mẹo ghi nhớ nhanh: Đọc to 3 lần nguyên lý cốt lõi, liên kết từ khóa "${question.correctAnswer}" với sơ đồ màu trong tâm trí.`,
+      },
+      {
+        advisorId: 'analyst',
+        advisorName: 'Chuyên Gia Số Liệu',
+        roleTitle: 'Chuyên Gia Ma Trận & Thống Kê Điểm Số',
+        avatarIcon: 'BarChart3',
+        colorScheme: {
+          bg: 'bg-purple-950/20',
+          border: 'border-purple-500/30',
+          text: 'text-purple-400',
+          badge: 'bg-purple-500/20 text-purple-300',
+        },
+        keyTakeaway: `Trọng số đề thi: Thuộc ${topicNames[question.topic] || 'Chủ đề trọng tâm'}, mức độ ${question.difficulty}.`,
+        detailedArgument: `Phân tích dữ liệu ma trận THPT Quảng Trị: Câu hỏi này đóng góp 0.25 điểm trực tiếp trong thang điểm 10.0. Nhóm câu hỏi mức độ ${question.difficulty} chiếm ${isHard ? '30%' : '40-70%'} tổng số điểm toàn bài. Tỷ lệ câu hỏi chủ đề này xuất hiện trong đề chính thức là 100%.`,
+        actionableTip: `Tối ưu hóa thời gian: Phân bổ tối đa 40 giây cho câu này để dành 20 phút cho phần Tự luận và Đúng/Sai.`,
+      },
+    ],
+    matrixTable: [
+      {
+        criteria: 'Mục Tiêu Trọng Tâm',
+        executor: 'Loại trừ nhanh, chọn chuẩn đáp án',
+        skeptic: 'Né bẫy ngữ nghĩa và ngộ nhận',
+        visionary: 'Thấu hiểu bản chất sinh học',
+        advocate: 'Ghi nhớ dễ hiểu không áp lực',
+        analyst: 'Tối ưu 0.25đ trên ma trận 45 phút',
+      },
+      {
+        criteria: 'Quy Trình Hành Động',
+        executor: 'Gạch 3 phương án nhiễu → Khoanh đáp án',
+        skeptic: 'Soi kỹ từ khóa "duy nhất / trực tiếp"',
+        visionary: 'Liên hệ chu trình trao đổi chất',
+        advocate: 'Vẽ sơ đồ tư duy 10 giây',
+        analyst: 'Bấm giờ giới hạn 40 giây/câu',
+      },
+      {
+        criteria: 'Khuyến Nghị Tối Hậu',
+        executor: `Phương án ${question.correctAnswer}`,
+        skeptic: 'Kiểm tra lại trước khi tick',
+        visionary: 'Khắc sâu quy luật sinh học',
+        advocate: 'Tự tin và bình tĩnh chuyển câu',
+        analyst: 'Chốt điểm sang câu kế tiếp',
+      },
+    ],
+    finalConsensusRecommendation: `**Hội đồng đồng thuận nhất trí:** Chọn dứt khoát đáp án **${question.correctAnswer}**. Phương án này chuẩn 100% theo bản đặc tả THPT Quảng Trị và SGK Sinh học 11, giải thích đúng cơ chế: ${question.explanation}`,
+    advancedRisks: [
+      'Nguy cơ nhầm lẫn do đọc lướt bỏ qua từ phủ định hoặc điều kiện ngoại cảnh giới hạn.',
+      'Rủi ro mất quá nhiều thời gian tranh cãi nội tâm ở câu trắc nghiệm đơn, làm thâm hụt thời gian phần tự luận (3 điểm).',
+      'Cần lưu ý các biến thể đề bài khi thay đổi cơ thể thực vật (ví dụ đổi giữa thực vật C3, C4 và CAM hoặc đổi cơ quan nguồn/đích).',
+    ],
+  };
+}
+
+export function getCouncilAnalysisForGeneralDilemma(topicTitle: string, questionText: string, coreExplanation: string): CouncilConsensus {
+  return {
+    questionTitle: topicTitle,
+    coreDecision: `Chiến lược xử lý: **Nắm vững bản chất cơ chế sinh học phân tử & đối chiếu dữ liệu ma trận**`,
+    opinions: [
+      {
+        advisorId: 'executor',
+        advisorName: 'Người Điều Hành',
+        roleTitle: 'Chuyên Gia Tối Ưu Hóa Điểm Số & Thực Thi',
+        avatarIcon: 'Zap',
+        colorScheme: {
+          bg: 'bg-amber-950/20',
+          border: 'border-amber-500/30',
+          text: 'text-amber-400',
+          badge: 'bg-amber-500/20 text-amber-300',
+        },
+        keyTakeaway: 'Lập dàn ý trả lời theo cấu trúc 3 bước: Hiện tượng → Cơ chế → Biện pháp.',
+        detailedArgument: `Kỹ thuật trình bày điểm 10: Chia câu trả lời thành từng ý gạch đầu dòng rõ ràng, in đậm các từ khóa kỹ thuật (như "thế nước", "ATP", "ngập úng kị khí", "PEP carboxylase"). Giám khảo chấm thi THPT Quảng Trị chấm theo ba-dem barem từ khóa, không viết đoạn văn dài dòng không phân tách ý.`,
+        actionableTip: 'Luôn viết câu trả lời trực diện ngay dòng đầu tiên, sau đó mới giải thích nguyên nhân và hệ quả.',
+      },
+      {
+        advisorId: 'skeptic',
+        advisorName: 'Người Hoài Nghi',
+        roleTitle: 'Chuyên Gia Bẫy Đề Thi & Quản Trị Rủi Ro',
+        avatarIcon: 'ShieldAlert',
+        colorScheme: {
+          bg: 'bg-rose-950/20',
+          border: 'border-rose-500/30',
+          text: 'text-rose-400',
+          badge: 'bg-rose-500/20 text-rose-300',
+        },
+        keyTakeaway: 'Phòng ngừa lỗi ngụy biện phổ biến: Ngập nước không đồng nghĩa với cây hút được nhiều nước!',
+        detailedArgument: `Bẫy tư duy kinh điển: Học sinh thường suy luận theo cảm tính đời sống (ví dụ "đất nhiều nước thì cây phải tươi tốt", "bón nhiều phân là cây khỏe"). Cần nhớ rằng rễ cây thở bằng oxy; mất oxy thì mọi quá trình hấp thụ chủ động đều tê liệt. Bón phân đậm đặc vào đất khô sẽ hút ngược nước của cây gây "hạn sinh lý".`,
+        actionableTip: 'Trước khi kết luận, hãy tự hỏi: "Điều kiện biên (nhiệt độ, nồng độ, áp suất thẩm thấu) có làm biến tính protein hoặc đảo ngược dòng nước không?"',
+      },
+      {
+        advisorId: 'visionary',
+        advisorName: 'Người Có Tầm Nhìn',
+        roleTitle: 'Nhà Sinh Học Tiến Hóa & Công Nghệ Sinh Học',
+        avatarIcon: 'Compass',
+        colorScheme: {
+          bg: 'bg-emerald-950/20',
+          border: 'border-emerald-500/30',
+          text: 'text-emerald-400',
+          badge: 'bg-emerald-500/20 text-emerald-300',
+        },
+        keyTakeaway: 'Nhìn nhận vấn đề dưới lăng kính tiến hóa thích nghi và bảo toàn tài nguyên.',
+        detailedArgument: `Mọi quá trình sinh lý thực vật (đóng mở khí khổng, quang hợp C4/CAM, mạch dẫn xylem/phloem) đều tuân theo nguyên lý tối ưu hóa năng lượng sống. Việc hiểu sâu cơ chế tế bào giúp chúng ta làm chủ công nghệ nông nghiệp thông minh: tưới nhỏ giọt tiết kiệm 60% nước, chiếu đèn LED phổ hẹp quang hợp kích hoạt ban đêm.`,
+        actionableTip: 'Khắc sâu sợi dây liên hệ hữu cơ: Phân tử → Tế bào → Mô cơ quan → Toàn bộ cơ thể cây.',
+      },
+      {
+        advisorId: 'advocate',
+        advisorName: 'Người Bênh Vực Học Sinh',
+        roleTitle: 'Cố Vấn Tâm Lý Học Tập & Ghi Nhớ Trực Quan',
+        avatarIcon: 'HeartHandshake',
+        colorScheme: {
+          bg: 'bg-sky-950/20',
+          border: 'border-sky-500/30',
+          text: 'text-sky-400',
+          badge: 'bg-sky-500/20 text-sky-300',
+        },
+        keyTakeaway: 'Sử dụng kỹ thuật lật thẻ Flashcard 3D và sơ đồ dòng chảy để khắc sâu trí nhớ dài hạn.',
+        detailedArgument: `Đừng cố gắng nhồi nhét văn bản! Bộ não con người ghi nhớ hình ảnh và mối quan hệ nhân quả tốt hơn 60,000 lần so với văn bản thô. Hãy dùng các mô hình 3D tương tác (lục lạp xoay tròn, tế bào khí khổng phồng lên khi no nước) để kiến thức trở thành trải nghiệm trực giác tự nhiên.`,
+        actionableTip: 'Áp dụng nguyên tắc lặp lại ngắt quãng (Spaced Repetition): Ôn lại thẻ sau 1 ngày, 3 ngày và 7 ngày trước kì thi.',
+      },
+      {
+        advisorId: 'analyst',
+        advisorName: 'Chuyên Gia Số Liệu',
+        roleTitle: 'Chuyên Gia Ma Trận & Thống Kê Điểm Số',
+        avatarIcon: 'BarChart3',
+        colorScheme: {
+          bg: 'bg-purple-950/20',
+          border: 'border-purple-500/30',
+          text: 'text-purple-400',
+          badge: 'bg-purple-500/20 text-purple-300',
+        },
+        keyTakeaway: 'Phần Tự Luận chiếm trọn vẹn 3.0 điểm (30% tổng điểm) bài thi Giữa Kì 1!',
+        detailedArgument: `Theo bảng ma trận đặc tả THPT Quảng Trị 2026-2027: Phần Tự luận gồm 1 câu Thông hiểu (1 điểm) và 2 câu Vận dụng (2 điểm), phân bổ vào Chuyên đề 1.2 (Trao đổi nước & khoáng) hoặc 1.3 (Quang hợp). Đây là phần thi phân hóa học sinh giỏi để đạt điểm 9-10.`,
+        actionableTip: 'Dành tối thiểu 18-20 phút cho phần tự luận, mỗi câu phân bổ 6 phút viết chỉn chu đầy đủ từ khóa.',
+      },
+    ],
+    matrixTable: [
+      {
+        criteria: 'Trọng Tâm Chuyên Gia',
+        executor: 'Quy trình giải quyết & Barem điểm',
+        skeptic: 'Rủi ro bẫy & Ngoại lệ sinh học',
+        visionary: 'Bản chất cơ chế & Công nghệ cao',
+        advocate: 'Ghi nhớ trực quan & Tâm lý thi',
+        analyst: 'Trọng số ma trận (3.0/10 điểm)',
+      },
+      {
+        criteria: 'Phương Pháp Đề Xuất',
+        executor: 'Dàn ý 3 bước: Hiện tượng - Cơ chế - Giải pháp',
+        skeptic: 'Phản biện điều kiện biên và nồng độ ưu trương',
+        visionary: 'Mô phỏng chu trình năng lượng tế bào',
+        advocate: 'Thực hành lật Flashcard và quan sát 3D',
+        analyst: 'Phân bổ 18 phút làm tự luận',
+      },
+      {
+        criteria: 'Kết Quả Kỳ Vọng',
+        executor: 'Đạt điểm tối đa theo barem chấm',
+        skeptic: 'Triệt tiêu 100% lỗi sai ngớ ngẩn',
+        visionary: 'Hiểu bản chất không cần học vẹt',
+        advocate: 'Tâm lý tự tin, vững vàng bước vào phòng thi',
+        analyst: 'Tối ưu hóa tổng điểm thi đạt 9.5 - 10.0',
+      },
+    ],
+    finalConsensusRecommendation: `**Hội Đồng Đưa Ra Khuyến Nghị Đồng Thuận:** Kết hợp hài hòa giữa việc học bản chất cơ chế tế bào (${coreExplanation}) với kỹ năng trình bày theo barem từ khóa. Hãy luyện tập lật toàn bộ 9 thẻ Flashcard tự luận và làm bài thi thử bấm giờ 45 phút để rèn luyện tốc độ phản xạ.`,
+    advancedRisks: [
+      'Nguy cơ mất điểm do trình bày cẩu thả hoặc thiếu từ khóa chuyên ngành (ví dụ: viết "cây hút nước" thay vì "rễ hấp thụ nước theo cơ chế thẩm thấu").',
+      'Rủi ro ngộ nhận nguyên nhân: Khi cây bị ngập úng, nguyên nhân gốc rễ là thiếu O2 làm tế bào lông hút chết ngạt, chứ không phải do nước làm thối thân.',
+      'Lưu ý các trường hợp ngoại lệ: Thực vật CAM đóng khí khổng ban ngày nhưng vẫn quang hợp bình thường nhờ CO2 tích trữ từ axit malic ban đêm.',
+    ],
+  };
+}

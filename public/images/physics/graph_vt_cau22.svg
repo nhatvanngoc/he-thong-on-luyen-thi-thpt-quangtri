@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 280" width="100%" height="100%">
+  <rect width="520" height="280" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <g stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3">
+    <line x1="50" y1="60" x2="480" y2="60"/>
+    <line x1="50" y1="220" x2="480" y2="220"/>
+    <line x1="140" y1="30" x2="140" y2="250"/>
+    <line x1="220" y1="30" x2="220" y2="250"/>
+    <line x1="300" y1="30" x2="300" y2="250"/>
+    <line x1="380" y1="30" x2="380" y2="250"/>
+    <line x1="460" y1="30" x2="460" y2="250"/>
+  </g>
+  <!-- Axes -->
+  <line x1="40" y1="140" x2="490" y2="140" stroke="#334155" stroke-width="2"/>
+  <polygon points="495,140 485,135 485,145" fill="#334155"/>
+  <text x="485" y="160" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e293b">t (s)</text>
+  
+  <line x1="60" y1="260" x2="60" y2="20" stroke="#334155" stroke-width="2"/>
+  <polygon points="60,15 55,25 65,25" fill="#334155"/>
+  <text x="15" y="25" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e293b">v (cm/s)</text>
+
+  <text x="45" y="155" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">0</text>
+  <text x="25" y="65" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#334155">ωA</text>
+  <text x="20" y="225" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#334155">-ωA</text>
+
+  <text x="130" y="158" font-family="system-ui, sans-serif" font-size="12" fill="#334155">T/4</text>
+  <text x="210" y="158" font-family="system-ui, sans-serif" font-size="12" fill="#334155">T/2</text>
+  <text x="290" y="158" font-family="system-ui, sans-serif" font-size="12" fill="#334155">3T/4</text>
+  <text x="375" y="158" font-family="system-ui, sans-serif" font-size="12" fill="#334155">T</text>
+  <text x="450" y="158" font-family="system-ui, sans-serif" font-size="12" fill="#334155">5T/4</text>
+
+  <!-- Curve: -sin curve or sin curve. At t=0 v=0, at T/4 v=max ωA (or -ωA) -->
+  <path d="M 60,140 Q 100,220 140,220 Q 180,220 220,140 Q 260,60 300,60 Q 340,60 380,140 Q 420,220 460,220" 
+        fill="none" stroke="#2563eb" stroke-width="2.5"/>
+
+  <!-- Horizontal tangents indicating zero slope -->
+  <circle cx="140" cy="220" r="5" fill="#f59e0b"/>
+  <line x1="110" y1="220" x2="170" y2="220" stroke="#f59e0b" stroke-width="2" stroke-dasharray="2,2"/>
+  <circle cx="300" cy="60" r="5" fill="#f59e0b"/>
+  <line x1="270" y1="60" x2="330" y2="60" stroke="#f59e0b" stroke-width="2" stroke-dasharray="2,2"/>
+  <text x="180" y="45" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#d97706">Tại t = T/4, 3T/4: Tiếp tuyến ngang → Độ dốc a = dv/dt = 0</text>
+</svg>

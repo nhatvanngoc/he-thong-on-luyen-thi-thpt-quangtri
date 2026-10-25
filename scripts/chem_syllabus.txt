@@ -1,0 +1,690 @@
+TRƯỜNG THPT QUẢNG TRỊ
+TỔ HÓA HỌC
+ĐỀ CƯƠNG ÔN TẬP GIỮA KÌ I LỚP 11 – NĂM HỌC 2026 & 2027
+I. TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN
+1. Khái niệm cân bằng hóa học.
+Câu 1. Phản ứng thuận nghịch là phản ứng
+A. xảy ra theo hai chiều ngược nhau trong cùng điều kiện. B. xảy ra hoàn toàn.
+C. xảy ra chậm.
+D. luôn có nồng độ chất phản ứng bằng nồng độ sản phẩm.
+Câu 2. Một cân bằng hóa học đạt được khi
+A. nhiệt độ phản ứng không đổi.
+B. tốc độ phản ứng thuận bằng tốc độ phản ứng nghịch.
+C. nồng độ chất phản ứng bằng nồng độ sản phẩm.
+D. không có phản ứng xảy ra nữa dù có thêm tác động của các yếu tố bên ngoài như: nhiệt độ, nồng độ, áp suất.
+Câu 3. Giá trị hằng số cân bằng KC của phản ứng thay đổi khi
+A. thay đổi nồng độ các chất. B. thay đổi nhiệt độ. C. thay đổi áp suất. D. thêm chất xúc tác.
+Câu 4. Cho cân bằng hoá học sau: CO2 (g) + H2 (g) ⇌ CO (g) + H2O (g) ∆H >0. Yếu tố không làm cân bằng trên
+chuyển dịch là
+A. áp suất chung của hệ. B. nồng độ khí CO. C. nồng độ khí H2. D. nhiệt độ.
+Câu 5. Phương trình nào sau đây là phương trình của phản ứng thuận nghịch?
+A. NaOH + HCl → NaCl + H2O. B. Cl2 + H2O ⇌ HCl + HClO.
+C. AgNO3 + KCl → AgCl + KNO3. D. S + Fe0
+t
+⎯⎯→	 FeS.
+Câu 6. Biểu thức tính hằng số cân bằng (KC) của phản ứng tổng quát: aA + bB ⇌ cC + dD là
+A.	C
+[A].[B]
+K [C].[D]
+=	 . B.
+a b
+C c d
+[A] .[B]
+K [C] .[D]
+=	 . C.
+c d
+C a b
+[C] .[D]
+K [A] .[B]
+=	 . D.	C
+[C].[D]
+K [A].[B]
+=	 .
+Câu 7. Yếu tố nào sau đây luôn luôn không làm dịch chuyển cân bằng của hệ phản ứng?
+A. Nhiệt độ. B. Áp suất. C. Nồng độ. D. Chất xúc tác.
+Câu 8. Sự phá vỡ cân bằng cũ để chuyển sang một cân bằng mới do các yếu tố bên ngoài tác động được gọi là
+A. sự biến đổi chất. B. sự dịch chuyển cân bằng.
+C. sự chuyển đổi vận tốc phản ứng. D. sự biến đổi hằng số cân bằng.
+Câu 9. Các yếu tố có thể ảnh hưởng đến cân bằng hoá học là
+A. nồng độ, nhiệt độ và chất xúc tác. B. nồng độ, áp suất và chất xúc tác.
+C. nồng độ, nhiệt độ và áp suất. D. áp suất, nhiệt độ và chất xúc tác.
+Câu 10. Cho phản ứng sau: 2C(s) + O2(g) ⇌ 2CO(g). Biểu thức hằng số cân bằng KC của phản ứng là
+A. KC =2
+2
+2
+[CO]
+[C] .[O ] . B. KC =2
+2
+[CO]
+[O ] . C. KC =
+2
+2
+2
+[C] .[O ]
+[CO] . D. KC =2
+2
+[O ]
+[CO] .
+Câu 11. Cho cân bằng hóa học: N2(g) + 3H2(g) ⇌ 2NH3 (g)0
+r 298	
+H		 < 0. Cân bằng trên chuyển dịch theo chiều
+thuận khi
+A. tăng nhiệt độ của hệ phản ứng. B. giảm nhiệt độ của hệ phản ứng.
+C. giảm áp suất của hệ phản ứng. D. thêm chất xúc tác vào hệ phản ứng.
+Câu 12. Cho các cân bằng hoá học: (1) N2 (g) + 3H2 (g) ⇌ 2NH3 (g) ; (2) H2 (g) + I2 (g) ⇌ 2HI (g)
+(3) 2SO2 (g) + O2 (g) ⇌ 2SO3 (g) ; (4) 2NO2 (g) ⇌ N2O4 (g)
+Khi thay đổi áp suất những cân bằng hóa học bị chuyển dịch là
+A. (1), (2), (3). B. (2), (3), (4). C. (1), (3), (4). D. (1), (2), (4).
+Câu 13. Cân bằng hoá học nào sau đây không bị chuyển dịch khi thay đổi áp suất?
+A. 2SO2(g) + O2(g) ⇌ 2SO3(g) B. C(s) + H2O(g) ⇌ CO(g) + H2(g)
+C. PCl2(g) + Cl2(g) ⇌ PCl5(g) D. 3Fe(s) + 4H2O(g) ⇌ Fe3O4(g) + 4H2(g)
+Câu 14. Cho cân bằng hoá học: 2SO2(g) + O2 (g) ⇌ 2SO3(g); phản ứng thuận là toả nhiệt. Phát biểu đúng là
+A. Cân bằng chuyển dịch theo chiều thuận khi tăng nhiệt độ.
+B. Cân bằng chuyển dịch theo chiều nghịch khi giảm nồng độ O2.
+C. Cân bằng chuyển dịch theo chiều thuận khi giảm áp suất hệ phản ứng.
+D. Cân bằng chuyển dịch theo chiều nghịch khi giảm nồng độ SO3.
+
+-- 1 of 11 --
+
+Câu 15. Biểu thức tính hằng số cân bằng của phản ứng: CaO(s) + CO2(g) ⇌ CaCO3(s) là
+A.	3
+C
+2
+[CaCO ]
+K [CaO].[CO ]
+=	 . B.	2
+C
+3
+[CaO].[CO ]
+K [CaCO ]
+=	 . C.	C 2	
+K [CO ]	=	 . D.	C
+2
+1
+K [CO ]
+=
+.
+Câu 16. Cho cân bằng hóa học: CaCO3 (s) ⇌ CaO (s) + CO2 (g). Biết phản ứng thuận là phản ứng thu nhiệt. Tác
+động nào sau đây vào hệ cân bằng để cân bằng đã cho chuyển dịch theo chiều thuận?
+A. Tăng nồng độ khí CO2. B. Tăng áp suất. C. Giảm nhiệt độ. D. Tăng nhiệt độ.
+Câu 17. Biểu thức tính hằng số cân bằng của phản ứng? CH3COOH(l) + C2H5OH(l) ⇌ CH3COOC2H5(l) + H2O(l)
+A.	3 2 5 2
+C
+3 2 5
+[CH COOC H ].[H O]
+K [CH COOH].[C H OH]
+=	 . B.	3 2 5
+C
+3 2 5
+[CH COOC H ]
+K [CH COOH].[C H OH]
+=	 .
+C.	3 2 5
+C
+3 2 5 2
+[CH COOH].[C H OH]
+K [CH COOC H ].[H O]
+=	 . D.	3 2 5
+C
+3 2 5
+[CH COOH].[C H OH]
+K [CH COOC H ]
+=	 .
+Câu 18. Hệ cân bằng sau được thực hiện trong bình kín: CO (g) + H2O (g) ⇌ CO2 (g) + H2 (g);o
+r 298	
+H		 < 0. Cân
+bằng trên chuyển dịch theo chiều thuận khi
+A. tăng áp suất chung của hệ. B. cho chất xúc tác vào hệ.
+C. thêm khí H2 vào hệ. D. giảm nhiệt độ của hệ.
+Câu 19. Cho cân bằng hoá học: H2 (g) + I2 (g) ⇌ 2HI (g);o
+r 298	
+H		 > 0. Cân bằng không bị chuyển dịch khi
+A. tăng nhiệt độ của hệ. B. giảm nồng độ HI.
+C. tăng nồng độ H2. D. giảm áp suất chung của hệ.
+Câu 20: Phát biểu nào sau đây về một phản ứng thuận nghịch tại trạng thái cân bằng là không đúng?
+A. Tốc độ của phản ứng thuận bằng tốc độ của phản ứng nghịch.
+B. Nồng độ của tất cả các chất trong hỗn hợp phản ứng là không đổi.
+C. Nồng độ mol của chất phản ứng luôn bằng nồng độ mol của chất sản phẩm phản ứng.
+D. Phản ứng thuận và phản ứng nghịch vẫn diễn ra.
+2. Cân bằng trong dung dịch nước
+Câu 21. Các dung dịch acid, base, muối dẫn điện được là do trong dung dịch của chúng có các
+A. ion mang điện tích trái dấu. B. anion (ion âm). C. cation (ion dương). D. chất.
+Câu 22. Chất nào sau đây thuộc loại chất điện li mạnh?
+A. NaHCO3. B. C2H5OH. C. H2O. D. NH3.
+Câu 23. Chất nào sau đây thuộc loại chất không điện li ?
+A. NaHCO3. B. C2H5OH. C. H2S. D. NH4Cl.
+Câu 24. Dung dịch nào sau đây có pH < 7?
+A. BaCl2. B. KOH. C. HNO3. D. Na2SO4.
+Câu 25. Theo thuyết acid – base của Bronsted – Lowry, base là
+A. chất cho electron. B. chất nhận electron. C. chất cho proton. D. chất nhận proton.
+Câu 26. Trường hợp nào sau đây không dẫn điện được?
+A. Dung dịch NaCl. B. NaOH nóng chảy. C. Dung dịch HCl. D. NaCl rắn khan.
+Câu 27. Sự điện li là quá trình
+A. phân li các chất khi tan trong nước thành các phân tử nhỏ hơn.
+B. hòa tan các chất trong nước.
+C. phân li các chất khi tan trong nước thành các ion.
+D. phân li các chất khi tan trong nước thành các chất đơn giản.
+Câu 28. Trong các chất sau, chất nào là chất điện li yếu?
+A. HCl. B. NaCl. C. NaOH. D. HClO.
+Câu 29. Theo thuyết Bronsted – Lowry, acid có thể là
+A. phân tử. B. ion. C. nguyên tử. D. phân tử hoặc ion.
+Câu 30. Dung dịch nào sau đây có pH = 7?
+A. NaCl. B. NaOH. C. HNO3. D. H2SO4.
+Câu 31. Chất nào dưới đây không phân li ra ion khi hòa tan trong nước?
+A. MgCl2. B. HClO3. C. Ba(OH)2. D. C6H12O6.
+Câu 32. Chất nào sau đây thuộc loại chất điện li yếu?
+A. KCl. B. HF. C. HNO3. D. NH4Cl.
+Câu 33. Theo thuyết của Bronsted – Lowry thì acid là chất
+A. cho proton. B. tan trong nước phân li ra H+.
+C. nhận proton. D. tan trong nước phân li ra OH-.
+
+-- 2 of 11 --
+
+Câu 34. Môi trường base là môi trường có
+A. [H+] < [OH–]. B. [H+] > [OH–]. C. [H+] = [OH–]. D. [H+] > 1,0.10-7.
+Câu 35. Chất nào sau đây là chất điện li?
+A. Cl2. B. HNO3. C. MgO. D. CH4.
+Câu 36. Ở cùng nồng độ và điều kiện, chất nào sau đây tạo ra nhiều ion H+ (H3O+) nhất trong dung dịch nước?
+A. Acid mạnh. B. Base yếu. C. Acid yếu. D. Muối.
+Câu 37. Dung dịch chất nào sau đây có pH > 7?
+A. NaNO3. B. KCl. C. H2SO4. D. KOH.
+Câu 38. Trong dung dịch Na2CO3, ion nào bị thuỷ phân để tạo môi trường base?
+A. Na+. B. CO2
+3
+− . C. OH–. D. H+.
+Câu 39. Các ion Al3+ và Fe3+ bị thuỷ phân trong nước tạo ra ion nào sau đây?
+A. Cl-. B. OH–. C. CO2
+3
+− . D. H+.
+Câu 40. Muối nào sau đây được sử dụng làm chất keo tụ trong xử lý nước?
+A. Na2CO3. B. AlCl3. C. FeCl3. D. (NH4)2SO4.Al2(SO4)3.24H2O.
+Câu 41. Ion nào trong dung dịch AlCl3 bị thuỷ phân tạo ra môi trường acid?
+A. Cl–. B. Al3+. C. OH–. D. H+.
+Câu 42. Trong dung dịch FeCl3, ion nào bị thuỷ phân để tạo môi trường acid?
+A. Cl–. B. Fe3+. C. OH–. D. H+.
+Câu 43. Để điều chỉnh đất chua có giá trị pH thấp, người ta thường bón chất gì?
+A. Phèn nhôm. B. Phèn sắt. C. Vôi. D. Phân lân.
+Câu 44. Chất nào sau đây thủy phân trong nước tạo ra môi trường base?
+A. Na2CO3. B. H2O. C. AlCl3. D. FeCl3.
+Câu 45. Đo pH của một cốc nước chanh được giá trị pH bằng 2,4. Nhận định nào sau đây không đúng?
+A. Nước chanh có môi trường acid.
+B. Nồng độ ion H+ của cốc nước chanh là 10-2,4 mol/L.
+C. Nồng độ ion H+ của cốc nước chanh là 0,24 mol/L.
+D. Nồng độ của ion OH– của cốc nước chanh nhỏ hơn 10-7 mol/L.
+Câu 46. Dung dịch chất nào sau đây làm phenolphtalein chuyển sang màu hồng?
+A. NaCl. B. HCl. C. KOH. D. HNO3.
+Câu 47. Phương trình điện li viết đúng là
+A. H2SO4 → 2H+ + SO4-. B. NaOH ⇌ Na+ + OH-.
+C. HF ⇌ H+ + F-. D. AlCl3 → Al3+ + Cl3-.
+Câu 48. Trong phản ứng sau đây: H2S(aq) + H2O ⇌ HS–(aq) + H3O+(aq). Những chất nào đóng vai trò là acid theo
+thuyết Bronsted – Lowry?
+A. H2S và H2O. B. H2S và H3O+. C. H2S và HS−. D. H2O và H3O+.
+Câu 49. Giá trị pH của dung dịch NaOH 0,1 M là
+A. 1. B. 13. C. 11. D. 3.
+Câu 50. Dung dịch chất nào sau đây (có cùng nồng độ) dẫn điện tốt nhất?
+A. K2SO4. B. KOH. C. NaCl. D. KNO3.
+Câu 51. Nồng độ mol của ion Na+ trong dung dịch Na2SO4 0,2 M là
+A. 0,2 M. B. 0,1 M. C. 0,4 M. D. 0,5 M.
+Câu 52. Giá trị pH của dung dịch H2SO4 0,005 M là
+A. 2. B. 12. C. 10. D. 4.
+Câu 53. Theo thuyết Bronsted – Lowry chất nào sau đây lưỡng tính?
+A. Mg2+. B. NH3. C. HCO3
+− . D.2
+3	
+SO .−
+Câu 54. Một dung dịch có pH = 11,7. Nồng độ ion hydrogen (H+) của dung dịch là
+A. 2,3M. B. 11,7M. C. 5,0.10–3M. D. 2,0.10–12M.
+Câu 55. Chất X tan vào nước phân li ra các ion K+ và Cr2O2
+7
+− , công thức hóa học của X là
+A. KCrO2. B. KCr2O7. C. K2Cr2O7. D. Cr2(SO4)3.
+Câu 56. Trường hợp nào sau đây có pH < 7?
+A. Nước Javel (chứa NaCl, NaClO). B. Nước chanh.
+C. Nước muối sinh lí (chứa NaCl 0,9%). D. Nước cất.
+Câu 57. Theo Bronsted- Lowry, trong phản ứng nào sau đây H2O đóng vai trò là base?
+A. 2Na + 2H2O → 2NaOH + H2. B. NH3 + H2O ⇌ NH4+ + OH-.
+C. CH3COO– + H2O ⇌ CH3COOH + OH-. D. HCO3
+− + H2O ⇌ CO2
+3
+− + H3O+.
+
+-- 3 of 11 --
+
+3. Nitrogen
+Câu 58. Ở dạng hợp chất, nitrogen tồn tại nhiều trong các mỏ khoáng dưới dạng
+A. NaNO3. B. KNO3. C. HNO3. D. Ba(NO3)2.
+Câu 59. Ở nhiệt độ thường, nitrogen khá trơ về mặt hoạt động hóa học là do
+A. nitrogen có bán kính nguyên tử nhỏ. B. nitrogen có độ âm điện lớn.
+C. phân tử nitrogen có liên kết ba bền vững. D. phân tử nitrogen không phân cực.
+Câu 60. Ứng dụng nào sau đây không phải ứng dụng của nitrogen?
+A. bảo quản mẫu vật phẩm trong y học. B. tạo khí quyển trơ.
+C. bảo quản thực phẩm. D. sản xuất phân lân.
+Câu 61. Trong tự nhiên, nguyên tố nitrogen tồn tại
+A. chỉ ở dạng đơn chất. B. chỉ ở dạng hợp chất.
+C. chỉ ở dạng ion. D. ở dạng đơn chất và hợp chất.
+Câu 62. Diêu tiêu Chile (hay diêm tiêu natri) là tên gọi khác của hợp chất nào sau đây?
+A. Sodium chloride. B. Potassium sulfate.
+C. Sodium nitrate. D. Potassium nitrate.
+Câu 63. Trong tự nhiên, đơn chất nitrogen có nhiều trong
+A. nước biển. B. không khí. C. cơ thể người. D. mỏ khoáng.
+Câu 64. Tính chất nào sau đây không phải tính chất vật lí của N2?
+A. Chất khí. B. Không màu. C. Nặng hơn không khí. D. Tan ít trong nước.
+Câu 65. Ở nhiệt độ cao, nitrogen thể hiện tính khử khi phản ứng với đơn chất nào sau đây?
+A. Mg. B. O2. C. Ca. D. H2.
+Câu 66. Ở điều kiện thường khí X không màu, kết hợp ngay với O2 trong không khí tạo ra khí NO2 có màu nâu
+đỏ. Công thức của khí X là
+A. N2O. B. NO. C. N2. D. N2O5.
+Câu 67. Trong phản ứng: N2(g) + 3H2(g) ⇌ 2NH3(g). N2 thể hiện
+A. tính khử. B. tính oxi hóa. C. tính base. D. tính acid.
+Câu 68. Trong bảng tuần hoàn, nitrogen thuộc nhóm nào sau đây?
+A. Nhóm VA. B. Nhóm VIA. C. Nhóm VIIA. D. Nhóm IA.
+Câu 69. Trong các phản ứng, N2 vừa thể hiện tính oxi hóa, vừa thể hiện tính khử là do trong N2 nguyên tử N có
+A. số oxi hóa trung gian. B. số oxi hóa cao nhất. C. số oxi hóa thấp nhất. D. hóa trị trung gian.
+Câu 70. Trong phòng thí nghiệm, người ta thu khí nitrogen bằng phương pháp dời nước vì
+A. N2 nhẹ hơn không khí. B. N2 ít tan trong nước.
+C. N2 không duy trì sự sống, sự cháy. D. N2 hoá lỏng, hóa rắn ở nhiệt độ rất thấp.
+Câu 71. Quá trình tạo đạm nitrate từ nitrogen trong tự nhiên được mô tả theo sơ đồ sau:
+2	X H O	X X
+2 2 3 3	(1) (2) (3)	
+N NO NO HNO H NO+ +	+ + + −
+⎯⎯→ ⎯⎯→ ⎯⎯⎯⎯	→ ⎯⎯→ +
+Công thức của X là
+A. Cl2. B. O2. C. H2. D. CO2.
+Câu 72. Trong phản ứng: N2(g) + O2(g) ⇌ 2NO(g). N2 thể hiện
+A. tính khử. B. tính oxi hóa. C. tính base. D. tính acid.
+Câu 73. Khí nitrogen ít tan trong nước là do
+A. nitrogen có bán kính nguyên tử nhỏ. B. nitrogen có độ âm điện lớn.
+C. phân tử nitrogen có liên kết ba bền vững. D. phân tử nitrogen không phân cực.
+Câu 74. Tìm các tính chất không thuộc về khí nitrogen?
+(a) Hóa lỏng ở nhiệt độ rất thấp (-196oC). (b) Cấu tạo phân tử nitrogen làN N		 .
+(c) Tan nhiều trong nước. (d) Nặng hơn oxygen.
+(e) Kém bền, dễ bị phân hủy thành nitrogen nguyên tử.
+A. (a), (c), (d). B. (a), (b). C. (c), (d), (e). D. (b), (c), (e).
+4. Ammonia và muối ammonium
+Câu 75. Phương trình hóa học nào sau đây sai?
+A. NH4NO3o
+t
+⎯⎯→	 NH3 + HNO3 B. NH4Clo
+t
+⎯⎯→	 NH3 + HCl
+C. (NH4)2CO3o
+t
+⎯⎯→	 2NH3 + CO2 + H2O D. NH4HCO3o
+t
+⎯⎯→	 NH3 + CO2 + H2O
+Câu 76. Liên kết hoá học trong phần tử NH3 là liên kết
+A. cộng hoá trị có cực. B. ion. C. cộng hoá trị không cực. D. kim loại.
+Câu 77. Tính chất hóa học của NH3 là
+A. tính base, tính khử. B. tính base, tính oxi hóa.C. tính acid, tính base. D. tính acid, tính khử.
+
+-- 4 of 11 --
+
+Câu 78. Có thể nhận biết muối ammonium bằng cách cho muối tác dụng với dung dịch kiềm thấy thoát ra một
+chất khí. Chất khí đó là
+A. NH3. B. H2. C. NO2. D. NO.
+Câu 79. Đâu không phải là ứng dụng của muối ammonium?
+A. Sản xuất giấy. B. Thuốc bổ sung chất điện giải.
+C. Phân bón hoá học. D. Chất phụ gia thực phẩm.
+Câu 80. Trong ammonia, nitrogen có số oxi hóa là
+A. +3. B. -3. C. +4. D. +5.
+Câu 81. Cho vài giọt quỳ tím vào dung dịch NH3 thì dung dịch chuyển thành
+A. màu hồng. B. màu vàng. C. màu đỏ. D. màu xanh.
+Câu 82. Để tạo độ xốp cho một số loại bánh, có thể dùng muối nào sau đây làm bột nở?
+A. (NH4)2SO4. B. NH4HCO3. C. CaCO3. D. NH4NO2.
+Câu 83. Dạng hình học của phân tử ammonia là
+A. hình tam giác đều. B. hình tứ diện. C. đường thẳng. D. hình chóp tam giác.
+Câu 84. Dung dịch NH3 phản ứng được với dung dịch nào sau đây?
+A. NaOH. B. KCl. C. HCl. D. KOH.
+Câu 85. Phát biểu nào sau đây không đúng?
+A. Hầu hết muối ammonium dễ tan trong nước. B. Muối NH4Cl là chất điện li mạnh.
+C. Muối NH4NO3 kém bền với nhiệt.
+D. Dung dịch muối ammonium có tính chất base.
+Câu 86. Muối nào sau đây tan nhiều trong nước?
+A. AgCl. B. (NH4)2SO4. C. CaCO3. D. BaSO4.
+Câu 87. Tính base của ammonia được thể hiện qua phản ứng nào sau đây?
+A. NH3 + HCl → NH4Cl. B. 4NH3 + 3O2o
+t
+⎯⎯→	 2N2 + 6H2O.
+C. 4NH3 + 5O2o
+t
+Pt	
+⎯⎯→	 4NO + 6H2O. D. 2NH3 + 3CuOo
+t
+⎯⎯→	 3Cu + 2N2↑ + 3H2O.
+Câu 88. Phát biểu nào sau đây không đúng?
+A. Hầu hết các muối ammonium đều dễ tan trong nước.
+B. Dung dịch muối ammonium phân ly hoàn toàn thành ion.
+C. Các muối ammonium đều kém bền với nhiệt, khi đun nóng bị phân huỷ thành ammonia và acid tương ứng.
+D. Muối ammonium tác dụng với dung dịch kiềm giải phóng ammonia.
+Câu 89. Phát biểu không đúng là
+A. Trong điều kiện thường, NH3 là khí không màu, mùi khai. B. Khí NH3 nặng hơn không khí.
+C. Khí NH3 dễ hoá lỏng, tan nhiều trong nước.
+D. Liên kết giữa N và 3 nguyên tử H là liên kết cộng hoá trị có cực.
+Câu 90. Cho từ từ dung dịch NH3 đến dư vào dung dịch chứa chất nào sau đây thì thu được kết tủa?
+A. AlCl3. B. H2SO4. C. HCl. D. NaCl.
+Câu 91. Cho các phát biểu sau:
+(a) Muối NH4NO3 dễ tan trong nước. (b) Muối NH4Cl bền với nhiệt
+(c) Muối (NH4)2CO3 kém bền với nhiệt. (d) Dung dịch muối ammonium có tính chất base.
+Số phát biểu không đúng là
+A. 4. B. 3. C. 1. D. 2.
+Câu 92. Cho thí nghiệm như hình vẽ, bên trong bình có chứa khí NH3, trong chậu thủy tinh chứa nước có nhỏ vài
+giọt phenolphthalein. Hiện tượng xảy ra trong thí nghiệm là
+A. Nước phun vào bình và chuyển thành màu hồng.
+B. Nước phun vào bình và chuyển thành màu tím.
+C. Nước phun vào bình và không có màu.
+D. Nước phun vào bình và chuyển thành màu xanh.
+5. Một số hợp chất của nitrogen với oxygen
+Câu 93. Nitrogen dioxide là tên gọi của oxide nào sau đây?
+A. NO. B. NO2. C. N2O. D. N2O4.
+Câu 94. Mưa acid là hiện tượng tượng nước mưa có pH như thế nào?
+A. > 5,6. B. < 7. C. > 7. D. < 5,6.
+Câu 95. Số oxi hóa của nguyên tử nitrogen trong hợp chất HNO3?
+A. +5. B. +2. C. +4. D. -2.
+Câu 96. Phú dưỡng là hiện tượng dư thừa quá nhiều các nguyên tố dinh dưỡng nào trong các nguồn nước?
+A. N,C. B. N, K. C. N, P. D. P, K.
+
+-- 5 of 11 --
+
+Câu 97. Mưa acid là hiện tượng nước mưa có lẫn các hạt acid làm cho nước mưa có độ pH nhỏ hơn 5. Nguyên
+nhân chủ yếu gây ra hiện tượng mưa acid là do khí	2	
+SO	 và khí X đã gây ô nhiễm không khí. Khí X có thể là
+A. N2. B. NH3. C. CO2. D. NO2.
+Câu 98: Oxide của nitrogen được tạo thành ở nhiệt độ rất cao, khi nitrogen có trong không khí bị oxi hoá được
+gọi là
+A. NOx tức thời. B. NOx nhiệt. C. NOx nhiên liệu. D. NOx tự nhiên.
+Câu 99: Oxide của nitrogen được tạo thành khi nguyên tố nitrogen trong nhiên liệu hoặc sinh khối kết hợp với
+oxygen dư thừa trong không khí được gọi là
+A. NOx nhiên liệu. B. NOx tự nhiên. C. NOx tức thời. D. NOx nhiệt.
+Câu 100: Oxide của nitrogen tạo thành khi nitrogen trong không khí tác dụng với các gốc tự do được gọi là
+A. NOx nhiệt. B. NOx tức thời C. NOx tự nhiên. D. NOx nhiên liệu.
+II. TRẮC NGHIỆM ĐÚNG SAI Thí sinh trả lời các câu hỏi sau. Trong mỗi ý a), b), c), d) ở mỗi câu, thí sinh
+chọn đúng hoặc sai.
+Câu 1. Cho cân bằng hoá học: PCl5(g) ⇌ PCl3(g) + Cl2(g);o
+298	rH		 > 0.
+a) Tăng áp suất thì cân bằng của phản ứng sẽ dịch chuyển theo chiều thuận.
+b) Thêm PCl3 vào hệ thì cân bằng dịch chuyển theo chiều nghịch.
+c) Tăng nhiệt độ thì cân bằng của phản ứng không dịch chuyển.
+d) Thêm Cl2 vào hệ thì cân bằng dịch chuyển theo chiều nghịch.
+Câu 2. Cho cân bằng hóa học: H2 (g) + I2 (g) ⇌ 2HI (g);o
+298	rH		 > 0.
+a) Tăng nhiệt độ của hệ thì cân bằng dịch chuyển theo chiều thuận.
+b) Áp suất tăng hay giảm đều không làm cân bằng dịch chuyển.
+c) Lấy HI ra khỏi hệ thì cân bằng dịch chuyển theo chiều nghịch.
+d) Thêm I2 vào hệ thì cân bằng dịch chuyển theo chiều nghịch.
+Câu 3: Cho phản ứng thuận nghịch sau: 2SO2 (g) + O2 (g) ⇌ 2SO3 (g) (*). Cho biết thành phần ban đầu chỉ có SO2
+và O2. Sự thay đổi nồng độ các chất theo thời gian phản ứng được biểu diễn bởi đồ thị trong Hình 1.2.
+Hình 1.2. Sự thay đổi nồng độ các chất theo thời gian
+a) Đường (1) biểu diễn nồng độ SO2, đường (2) biểu diễn nồng độ	2	O	 và đường (3) biểu diễn nồng độ SO3.
+b) Hằng số cân bằng nồng độ của phản ứng (*) là	C	K 7, 2	=	 .
+c) Phản ứng đạt đến trạng thái cân bằng tại thời điểm	1t	 .
+d) Tỉ lệ nồng độ của SO2 và	2	O	 không thay đổi trong quá trình phản ứng.
+Câu 4: Nghiên cứu phản ứng thuận nghịch giữa NO2 và N2O4 , một nhóm học sinh tiến hành thí nghiệm theo các
+bước sau:
+Bước 1: Cho khoảng 2 gam Cu vào bình đựng dung dịch HNO3 đặc, đun nóng, khí NO2 được dẫn vào bình tam
+giác cho đến khi toàn bộ bình tam giác có màu nâu đỏ thì dừng thu khí. Bình khí sau đó được đậy kín lại.
+Buớc 2: Ngâm bình đựng khí NO2 trong chậu nước đá, thấy màu nâu của khí trong bình nhạt dần và mất hẳn. Lấy
+bình ra khỏi chậu nước đá và để ở nhiệt độ thường, màu nâu dần xuất hiện trong bình.
+a) Phản ứng chuyển hoá 2NO2 (g) ⇌ N2O4 (g) là phản ứng toả nhiệt.
+b) Trong bước l xảy ra phản ứng	( ) 	( ) 	( 	) ( ) 	( ) 	( )	
+3 3 2 2	2
+Cu 4HNO Cu NO 2NO 2H O	+ → + +	s aq aq g l	 . Trong phản ứng
+này, HNO3 là chất oxi hoá và N+5 bị oxi hoá thành N+4.
+c) Do khí	2	NO	 nặng hơn không khí nên khí	2	NO	 được thu bằng phương pháp đẩy khí ngửa bình.
+d) Tăng thể tích của bình khí NO2 và giữ nguyên các điều kiện khác thì màu nâu của bình khí đậm dần.
+Câu 5: Nếu dòng điện chạy qua được dung dịch nước của một chất X, cho biết mỗi phát biểu sau là Đ hay S?
+a) Chất X là chất điện li. b) Trong dung dịch chất X có các ion dương và ion âm.
+c) Chất X ở dạng rắn khan cũng dẫn điện. d) Trong dung dịch chất X có electron tự do.
+
+-- 6 of 11 --
+
+Câu 6: Độ pH là một trong những yếu tố quan trọng để đánh giá các tiêu chí liên quan đến sức khỏe của con
+người. Cho hình vẽ minh họa pH trong hệ tiêu hóa của con
+người:
+a) Cơ quan có độ acid cao nhất trong hệ tiêu hóa của con người là
+khoang dạ dày.
+b) Nồng độ ion H+ trong tá tràng nằm trong khoảng5,6 8
+10 10 M.− −
+−
+c) Nabica là một loại thuốc có thành phần chính là NaHCO3, có
+thể dùng để chữa bệnh đau dạ dày do thừa acid HCl.
+d) Giả thiết nồng độ dung dịch HCl trong dạ dày tương ứng với
+pH = 1,45. Thể tích dung dịch HCl được trung hoà khi bệnh nhân
+uống 0,588 gam bột NaHCO3 là 200 ml (Kết quả làm tròn đến
+hàng phần nguyên).
+Câu 7. Phèn chua có công thức KAl(SO4)2.12H2O, trong nước bị phân li hoàn toàn theo phương trình:
+KAl(SO4)2.12H2O⎯⎯	→	 K+ + Al3+ + SO−	2
+4 + 12H2O.
+a) Phèn chua là một chất điện li mạnh.
+b) Dung dịch phèn nhôm làm phenolphthalein chuyển thành màu hồng.
+c) Trong thực tế phèn chua được dùng để làm trong nước do ion Al3+ bị thủy phân tạo ra Al(OH)3 có khả năng hấp
+phụ.
+d) Nhỏ lượng dư dung dịch barium chloride vào dung dịch phèn chua thấy xuất hiện kết tủa trắng.
+Câu 8. Cho cấu tạo dạng hình học phân tử ammonia và ion ammonium
+a) Số oxi hóa của N trong NH3 và	4	
+NH+ đều là -3.
+b) Cộng hóa trị của N trong NH3 và	4	
+NH+ đều là 3.
+c) Phân tử ammonia có dạng hình chóp tam giác, ion ammonium có dạng tứ diện đều.
+d) Dung dịch ammonia có tính acid, ion ammonium có tính base.
+Câu 9: Cho công thức cấu tạo và năng lượng liên kết của phân tử nitrogen (N2) như
+sau: Eb (N N		 ) = 945 kJ/mol
+a) Liên kết trong phân tử nitrogen là liên kết cộng hóa trị không phân cực.
+b) Nitrogen hoạt động hóa học mạnh ở điều kiện thường do năng lượng liên kết lớn.
+c) Do nitrogen khá trơ về mặt hóa học ở điều kiện thường nên nitrogen được sử dụng
+để làm khí quyển trơ.
+d) Phân tử nitrogen gồm hai nguyên tử, liên kết với nhau bằng liên kết ba (1 liên kết  và 1 liên kết ).
+Câu 10: Kết quả nghiên cứu sự phụ thuộc của hiệu suất tổng hợp ammoni vào áp suất và nhiệt độ của phản ứng
+được thể hiện ở giản đồ trong Hình 5 dưới đây:
+Áp suất (atm), 1 atm = 1,013 bar
+Hình 5. Sự phụ thuộc của hiệu suất tổng hợp ammonia vào áp suất và nhiệt độ phản ứng (Nguồn: Cowbridge
+Chemistry Department: Making ammonia − The Haber process
+
+-- 7 of 11 --
+
+a) Trong khoảng từ 350oC đến 550oC, hiệu suất thu ammonia biến đổi theo xu hướng tăng dần.
+b) Nhiệt độ phản ứng càng cao thì hiệu suất thu ammonia càng thấp.
+c) Ở cùng một nhiệt độ, khi áp suất tăng cao thì hiệu suất thu ammonia tăng.
+d) Hiệu suất phản ứng đạt khoảng 44% ở nhiệt độ khoảng 450oC, áp suất 300 atm.
+Câu 11: Cố định đạm là quá trình biến đổi nitrogen trong khí quyển thành các hợp chất có chứa nitrogen (	3	NH	 ,
+muối ammonium,...). Quá trình cố định đạm sinh học do các vi sinh vật tạo nên. Quá trình "cố định đạm nhân tạo"
+đang được nghiên cứu theo phương trình nhiệt hoá học tương ứng như sau:
+( ) 	( ) 	( ) 	( )
+2	TiO
+2 2 3 2
+3
+N 3H O 2NH g O
+2
++ +	g l go
+r	Δ H 765, 2 kJ	=	
+(*)
+a) Phản ứng (*) là phản ứng thu nhiệt.
+b) Trong phản ứng (*),	2	H O	 là chất bị khử,	2	N	 là chất bị oxi hoá.
+c) Chất xúc tác TiO2 làm tăng tốc độ phản ứng.
+d) Khi có sấm sét, nitrogen trong không khí có thể chuyển thành hợp chất nitrate.
+Câu 12. Các phát biểu sau đây đúng hay sai?
+a) Ammonia lỏng được dùng làm chất làm lạnh trong thiết bị lạnh.
+b) Để làm khô khí NH3 có lẫn hơi nước, có thể dẫn khí NH3 đi qua bình đựng dung dịch H2SO4 đặc.
+c) Khi cho quỳ tím ẩm vào lọ đựng khí NH3, quỳ tím chuyển thành màu xanh.
+d Khi có xúc tác Pt, NH3 bị oxi hoá bởi oxygen tạo NO. Đây là giai đoạn đầu tiên trong sản xuất HNO3 theo
+phương pháp Oswald
+Câu 13: Mỗi phát biểu sau là đúng hay sai?
+a) Phản ứng giữa nitric acid với dung dịch NaOH, Fe2O3, dung dịch Na2CO3 thể hiện tính acid của HNO3.
+b) Nguyên nhân gây hiện tượng mưa acid do có sự phát thải quá nhiều khí SO2 và NOx từ công nghiệp, giao
+thông vận tải, …
+c) Do HNO3 có tính oxy hoá mạnh, nitric acid thường được sử dụng để phá các mẫu quặng trong việc nghiên
+cứu.
+d) Nitric acid không phản ứng với kim loại Cu, Ag.
+Câu 14: Cho các phát biểu sau về hiện tượng phú dưỡng:
+a) Hiện tượng phú dưỡng gây cản trở sự hấp thụ ánh sáng mặt trời vào nước, giảm sự quang hợp của thực vật
+thủy sinh.
+b) Nguyên nhân của hiện tượng phú dưỡng là do sự tích tụ lớn chất dinh dưỡng chứa nitrogen và phosphorus.
+c) Để hạn chế hiện tượng phú dưỡng trong ao, hồ cần sử dụng phân bón hoá học hợp lí, xử lí nước thải trước khi
+chảy vào ao hồ…
+d) Dấu hiệu nhận biết ao hồ có hiện tượng phú dưỡng là sự phát triển dày đặc của tảo xanh trong nước.
+III. TRĂC NGHIỆM TRẢ LỜI NGẮN
+Câu 1: Một mẫu khí X cho vào bình kín và có cân bằng sau: 3X(g) ⇌ 4Y(g). Nồng độ các chất X, Y theo thời
+gian được biểu diễn như đồ thị sau:
+Giá trị hằng số cân bằng KC là bao nhiêu?
+Câu 2: Cho phản ứng thuận nghịch sau ở nhiệt độ T(K): H2(g) + I2(g) ⇌ 2HI(g) ; KC = 4,0. Tại thời điểm cân bằng,
+[H2] = 0,5M; [I2] = 0,50M. Nồng độ cân bằng của HI là aM. Giá trị của a là bao nhiêu ?
+Câu 3: Cho vào bình kín (dung tích 2 L) 1 mol H2 và 1 mol I2, sau đó thực hiện phản ứng ở 350°C–500°C theo
+phương trình hóa học sau: H2(g) + I2(g) ⇌ 2HI(g). Ở trạng thái cân bằng, có 1,56 mol HI tạo thành. Hằng số cân bằng
+của phản ứng trên là bao nhiêu? (Làm tròn kết quả đến hàng phần mười).
+Câu 4: Khi nung đá vôi (thành phần chính là CaCO3) ở nhiệt độ cao trong lò nung, xảy гa phản ứng có phương
+trình hoá học sau: CaO(s) + CO2(g) ⇌ CaCO3(s) ;	r	Δ H 178,5 kJ	=
+Cho các tác động sau: (1) Thêm lượng chất rắn CaCO3; (2) Tăng nhiệt độ lò nung; (3) Thêm lượng khí CO2; (4)
+Giảm áp suất khí trong lò nung. Có bao nhiêu tác động làm cân bằng chuyển dịch theo chiều thuận? 2
+
+-- 8 of 11 --
+
+Câu 5: Cho cân bằng hóa học: N2 (g) + 3H2(g) ⇌ 2NH3(g) ;	r 298	Δ H 91,8 kJ	= −
+Thực hiện các biến đổi sau: (1) Tăng nhiệt độ, (2) Tách ammonia ra khỏi hỗn hợp phản ứng, (3) Giảm thể tích của
+hệ phản ứng, (4) Thêm hydrogen, (5) Tăng áp suất của hệ, (6) Thêm xúc tác.
+Liệt kê theo thứ tự tăng dần các biến đổi làm cân bằng chuyển dịch theo chiều thuận.
+Câu 6: Cho các chất sau đây: HCl, HNO3, HF, HNO2, KNO3, H2CO3, CH3COOH, H2S, Ba(OH)2. Có bao nhiêu
+chất điện li yếu trong dãy các chất trên?
+Câu 7: Cho các chất dưới đây: HClO4, HF, HNO3, H2S, H2SO3, NaOH, NaCl, CuSO4, CH3COOH. Có bao nhiêu
+chất thuộc loại chất điện li mạnh?
+Câu 8: Cho các dung dịch (nước) sau: NaOH, HCl, NaCl, Na2CO3, Fe(NO3)3, CuSO4. Có bao nhiêu dung dịch có
+giá trịpH 7		 ?
+Câu 9: Để xác định nồng độ của một dung dịch HCl, người ta đã tiến hành chuẩn độ bằng dung dịch NaOH 0,1
+M. Để chuẩn độ 10 mL dung dịch HCl này cần 15 mL dung dịch NaOH. Nồng độ của dung dịch HCl là bao nhiêu
+mol/L?
+Câu 10: Học sinh X thực hiện thí nghiệm chuẩn độ dung dịch NaOH chưa biết nồng độ bằng dung dịch chuẩn HCl
+0,1M, thuốc thử phenolphthalein. Lấy 10,00 mL dung dịch HCl 0,1M cho vào bình tam giác cùng với 1-2 giọt
+thuốc thử. Kết quả 3 lần chuẩn độ như sau:
+Thí nghiệm 1 2 3
+Thể tích NaOH (mL) 19,85 19,95 19,96
+Xác định nồng độ (mol/L) của dung dịch NaOH (kết quả làm tròn đến hàng phần trăm)
+Câu 11: Trong công thức Lewis của phân tử NH3, số cặp electron tự do trên nguyên tử N là bao nhiêu?
+Câu 12: Trong những cơn mưa giông kèm sấm sét, sự chuyển hoá của nitrogen đơn chất xay гa theo sơ đồ sau:2	2 2	2
+(1) (2) (3) (4)
+O O O H O
+2 2 3 3	N NO NO HNO H NO+ + + + + −
+⎯⎯⎯	→ ⎯⎯⎯	→ ⎯⎯⎯⎯→ ⎯ +	⎯→	
+. Ion nitrate 𝑁𝑂3
+− là một dạng đạm cây trồng có
+thể hấp thụ được để sinh trưởng, phát triển. Trong các giai đoạn trên, giai đoạn nào không xảy ra phản ứng oxi hoá
+- khử ?
+Câu 13: Cho các phản ứng sau đây: (1) NH3 + HCl	⎯⎯	→	 NH4Cl. (2) 4NH3 + 3O2o
+t
+⎯⎯→	 2N2 + 6H2O.
+(3) 4NH3 + 5O2o
+t , xt
+⎯⎯⎯	→	 4NO + 6H2O. (4) 2NH3 + 3CuOo
+t
+⎯⎯→	 3Cu + 2N2↑ + 3H2O.
+Có bao nhiêu phản ứng mà trong đó NH3 đóng vai trò là chất khử ?
+Câu 14: Cho dung dịch (NH4)2SO4 tác dụng lần lượt với các dung dịch NaOH, Ba(OH)2, KCl, Ba(NO3)2 và NaNO3.
+Sau khi các phản ứng xảy trên ra hoàn toàn, có bao nhiêu phản ứng thu được kết tủa?
+Câu 15: Một khu vực nông nghiệp gần hồ có diện tích 10 km², hằng năm lượng nước chảy tràn từ mưa cuốn theo
+phân bón vào hồ chứa khoảng 5 mg/L nitrate (𝑁𝑂3
+−). Nếu lượng nước chảy tràn chiếm 2% lượng mưa và lượng
+mưa trung bình hàng năm là 800 mm, tính khối lượng nitrate (kg) bị thải vào hồ mỗi năm.
+Câu 16: Trong công nghiệp thực phẩm, nitrogen lỏng được bơm vào vỏ bao bì trước khi đóng nắp, nitrogen lỏng
+biến thành khí N₂ làm căng vỏ bao bì, giúp bảo quản hương vị thực phẩm. Biết khối lượng riêng của nitrogen lỏng
+là 0,808 g/mL. Tính thể tích khí N2 (đkc, theo đơn vị lít) tạo ra từ 2 lít nitrogen lỏng (lấy kết quả đến hàng phần
+nguyên).
+Câu 17: Trong tự nhiên, quá trình tạo và cung cấp đạm nitrate cho đất từ nước mưa biểu diễn theo sơ đồ sau:
+N2
++ O2, tia lửa điện
+→ NO + O2
+→ NO2
++ O2+ H2O
+→ HNO3.
+Trong thực tế, phản ứng hoá hợp giữa nitrogen và oxygen thường xảy ra trong hoạt động sản xuất công nghiệp,
+giao thông vận tải,… phát thải oxide của nitrogen nguyên nhân chính gây mưa acid. Người ta đo pH một loại nước
+mưa gần khu công nghiệp thu được kết quả pH = 4,2. Số mol NO2 hòa tan trong 1 m3 nước mưa trên bằng bao
+nhiêu? Giả sử mưa acid chỉ sinh ra theo sơ đồ trên. (Làm tròn kết quả đến hàng phần trăm)
+Câu 18: Trong những cơn mưa dông kèm theo sấm sét; giả thiết có 17,353 m3 khí N2 (đkc) trong khí quyển được
+chuyển hóa thành phân đạm theo sơ đồ sau:	2 2 2 2	O O O H O
+2 2 3 3	N NO NO HNO H NO+ + + + + −
+⎯⎯⎯	→ ⎯⎯⎯	→ ⎯⎯⎯⎯	→ ⎯⎯	→ +
+Tính số mol gốc NO3– tạo thành trong cơn mưa là bao nhiêu?
+IV. BÀI TẬP TỰ LUẬN
+1. Phương trình hóa học, hằng số cân bằng, sự chuyển dịch cân bằng
+Câu 1: Viết phương trình hóa học chứng minh:
+a. Nitrogen vừa có tính oxi hóa, vừa có tính khử. b. NH3 có tính base.
+c. NH3 có tính khử. d. HNO3 có tính acid mạnh.
+e. HNO3 có tính oxi hóa mạnh. g. Muối amonium tác dụng với dung dịch kiềm.
+h. Muối amonium bị phân hủy nhiệt.
+i. Nitric acid có thể được tạo thành trong nước mưa khi trời có dông, sấm sét.
+
+-- 9 of 11 --
+
+Câu 2. Cho các cân bằng sau: (1) 2NH3(g) ⇌ N2(g) + 3H2(g)0
+r 298	
+H		 > 0 ; (2) 2SO2(g) + O2(g) ⇌ 2SO3(g)0
+r 298	
+H		 < 0
+(3) CaCO3(r) ⇌ CaO(r) + CO2(g)0
+r 298	
+H		 > 0 ; (4) H2(g) + I2(g) ⇌ 2HI(g)0
+r 298	
+H		 < 0
+Trong các cân bằng trên cân bằng nào sẽ chuyển dịch theo chiều nào khi: a) Tăng nhiệt độ; b) Giảm áp suất.
+Câu 3. Cho phản ứng: H2 (g) + I2 (g) ⇌ 2HI (g). Ở nhiệt độ 430°C, hằng số cân bằng KC của phản ứng trên bằng
+53,96. Đun nóng một bình kín dung tích không đổi 10 lít chứa 4,0 gam H2 và 406,4 gam I2. Khi hệ phản ứng đạt
+trạng thái cân bằng ở 430°C, tính nồng độ của HI.
+2. Bài toán pH
+Câu 4: 1. Hòa tan 247,9 ml khí hydrogen chloride (đkc) vào nước thành 200 ml dung dịch A. Tính pH của A.
+2. Pha 500 mL dung dịch HCl 0,2 M vào 500 mL nước. Tính pH của dung dịch thu được.
+Câu 5: Ở 25°C, pH của dung dịch Ba(OH)2 là 10,66. Để thu được 125 mL dung dịch Ba(OH)2 trên thì khối lượng
+Ba(OH)2 cần phải hoà tan là bao nhiêu? Bỏ qua sự thay đổi thể tích nếu có.
+Câu 6: Trộn 300 mL dung dịch H2SO4 0,025 mol/L với 200 mL dung dịch Ba(OH)2 a mol/L thu được 500 mL
+dung dịch có pH= 12.
+a. Viết phương trình hoá học của phản ứng xảy ra. b. Tính giá trị của a.
+3. Bài toán tổng hợp NH3
+Câu 7. Thực hiện phản ứng tổng hợp ammonia: N2(g) + 3H2(g) ⇌ 2NH3(g). Nồng độ mol ban đầu của các chất
+như sau: [N2] = 1 mol/l ; [H2] = 1,2 mol/l. Khi phản ứng đạt cân bằng nồng độ mol của [NH3 ] = 0,2 mol/l. Tính
+hiệu suất phản ứng tổng hợp NH3.
+Câu 8. Hỗn hợpX	 gồm N2 và H2 có tỉ lệ mol tương ứng là 1: 4. Nung nóng X trong bình kín ở nhiệt độ khoảng
+450oC có bột Fe xúc tác, thu được hỗn hợp khí Y có tỉ khối so với H2 bằng 4. Tính hiệu suất của phản ứng.
+4. Bài toán thực tế
+Câu 8: Theo TCVN 5945:2005 quy định về giá trị pH của nước khi thải ra môi trường phải nằm trong khoảng từ
+6,0 đến 9,0. Một mẫu nước thải của nhà máy sản xuất có pH = 3,0. Để thải ra ngoài môi trường thì cần phải tăng
+pH theo tiêu chuẩn. Nhà máy này dùng vôi sống (CaO) hoà tan vào nước thải để nâng pH của 1,5 m3 nước thải từ
+pH = 3,0 lên pH = 7,0 cần dùng hết m gam vôi sống. Tính m (bỏ qua sự thủy phân của các muối nếu có).
+Câu 9: Quy trình sản xuất nitric acid của Ostwald như sau:
+2 2 2 2
+(1) (2)
+O ,t ,xt O O H O
+3 2 3	(3)	
+NH NO NO HNO+ + + +
+⎯⎯⎯⎯	→ ⎯⎯⎯	→ ⎯⎯⎯⎯→
+o
+Tính khối lượng dd	3	HNO 60%	 điều chế từ 340 kg ammonia, biết rằng hiệu suất toàn bộ quá trình là 90%.
+Câu 10: Vỏ trứng có chứa calcium ở dạng CaCO3. Để xác định hàm lượng CaCO3 trong vỏ trứng, trong phòng thí
+nghiệm người ta có thể làm như sau: Lấy 1,0 g vỏ trứng khô, đã được làm sạch, hòa tan hoàn toàn trong 50 mL
+dung dịch HCl 0,4 M. Lọc dung dịch sau phản ứng thu được 50 mL dung dịch A. Lấy 10 mL dung dịch A chuẩn
+độ với dung dịch NaOH 0,1 M thấy hết 5,6 mL. Xác định hàm lượng cacium trong vỏ trứng (giả thiết các tạp chất
+khác trong vỏ trứng không phản ứng với HCl).
+Câu 11: Acid trong dịch dạ dày có thành phần chủ yếu là HCl. Khi nồng độ acid trong dịch dạ dày quá cao sẽ dẫn
+đến tình trạng dư thừa acid, gây ra nhiều bệnh lí. Sữa magiê có dạng huyền phù, chứa thành phần chính là Mg(OH)2
+được sử dụng như một loại thuốc kháng acid trong dạ dày. Nếu dạ dày chứa 200 mL dung dịch HCl có pH = 1,5
+thì khối lượng tối thiểu Mg(OH)2 trong sữa magiê cần dùng để trung hòa toàn bộ lượng HCl này là bao nhiêu mg?
+Câu 12: Tại một nhà máy phân bón, ammophos được sản xuất từ ammonia và phosphoric acid, thu được
+NH4H2PO4 và (NH4)2HPO4 tỉ lệ mol là 1:1. Tính thể tích khí ammonia (đkkc) cần dùng để tác dụng vừa đủ với
+dung dịch chứa 5,88 tấn phosphoric acid. Tính khối lượng ammophos thu được.
+Câu 13: Ammonia là một hoá chất phổ biến trong công nghiệp, được sử dụng để sản xuất nitric acid và các loại
+phân đạm. Ammonia cũng được sử dụng để kiểm soát pH, xử lí nước ô nhiễm. 10 ml dung dịch ammonia đặc được
+pha loãng thành 100 ml với nước trong bình định mức. Cho 20 ml dung dịch đã pha loãng này vào bình tam giác
+khô và chuẩn độ bằng HCl 0,1M, sử dụng methyl da cam làm chất chỉ thị. Giá trị trung bình thể tích dung dịch
+HCl đã dùng là17,4 ml. Tính nồng độ mol của dung dịch ammonia ban đầu.
+Câu 14: Sau mỗi trận mưa dông, một lượng nitrogen trong không khí được chuyển hóa thành ion nitrate và hòa
+tan vào nước mưa. Nguyên tố nitrogen có trong ion nitrate có vai trò thúc đẩy quá trình sinh trưởng và phát triển
+của cây trồng, làm cho cây trồng ra nhiều lá, cho nhiều củ, quả và hạt hơn. Hàm lượng ion nitrate trong một mẫu
+nước mưa là 62 mg/L nước mưa. Biết rằng, trong 1 giờ sẽ có 5m3 nước mưa rơi xuống một thửa ruộng. Tính khối
+lượng nguyên tố nitrogen mà thửa ruộng đó nhận được khi cơn mưa kéo dài 2,5 giờ ?
+Câu 15: Khi hàm lượng ion phosphate trong nước tăng cao sẽ dẫn đến hiện tượng phú dưỡng. Để tránh hiện tượng
+phú dưỡng có thể làm giảm hàm lượng ion phosphate bằng cách thêm Fe3+ hoặc Al3+ để tạo thành các hợp chất
+phosphate không tan. Một nguồn nước thải có hàm lượng ion phosphate là 16 mg.L-1 . Trong một hệ thống xử lý
+nguồn nước thải trên với lưu lượng 25000 m3/ngày thì cần x kg FeCl3. Biết thực tế người ta sử dụng tỉ lệ mol Fe :
+P = 1,25 : 1. (Làm tròn kết quả đến hàng đơn vị).
+
+-- 10 of 11 --
+
+
+
+-- 11 of 11 --
+

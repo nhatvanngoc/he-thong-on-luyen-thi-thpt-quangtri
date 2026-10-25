@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 280" width="100%" height="100%">
+  <rect width="500" height="280" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <!-- Axes -->
+  <line x1="40" y1="230" x2="460" y2="230" stroke="#334155" stroke-width="2"/>
+  <polygon points="465,230 455,225 455,235" fill="#334155"/>
+  <text x="465" y="235" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e293b">x</text>
+
+  <line x1="250" y1="250" x2="250" y2="25" stroke="#334155" stroke-width="2"/>
+  <polygon points="250,20 245,30 255,30" fill="#334155"/>
+  <text x="260" y="25" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e293b">W</text>
+
+  <!-- Labels -->
+  <text x="242" y="246" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">0</text>
+  <text x="90" y="246" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#334155">-A</text>
+  <text x="390" y="246" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#334155">A</text>
+  <line x1="100" y1="70" x2="400" y2="70" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <text x="215" y="65" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#475569">Cơ năng W</text>
+
+  <!-- Parabola 1: The nang Wt (be lom huong len) - Red -->
+  <path d="M 100,70 Q 250,230 400,70" fill="none" stroke="#ef4444" stroke-width="3"/>
+  <text x="330" y="110" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#ef4444">Wt (bề lõm hướng lên)</text>
+
+  <!-- Parabola 2: Dong nang Wd (be lom huong xuong) - Blue -->
+  <path d="M 100,230 Q 250,70 400,230" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-dasharray="4,3"/>
+  <text x="330" y="170" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#3b82f6">Wđ (bề lõm hướng xuống)</text>
+</svg>

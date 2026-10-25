@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 270" width="100%" height="100%">
+  <rect width="500" height="270" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <!-- Axes -->
+  <line x1="40" y1="135" x2="470" y2="135" stroke="#334155" stroke-width="2"/>
+  <polygon points="475,135 465,130 465,140" fill="#334155"/>
+  <text x="465" y="155" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#1e293b">t (ms)</text>
+
+  <line x1="60" y1="250" x2="60" y2="20" stroke="#334155" stroke-width="2"/>
+  <polygon points="60,15 55,25 65,25" fill="#334155"/>
+  <text x="20" y="25" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#1e293b">x (cm)</text>
+
+  <text x="45" y="150" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">0</text>
+  <text x="45" y="45" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#334155">4</text>
+  <text x="45" y="90" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">2</text>
+  <text x="40" y="180" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">-2</text>
+  <text x="40" y="225" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#334155">-4</text>
+
+  <!-- 20 ms mark -->
+  <line x1="240" y1="25" x2="240" y2="240" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="230" y="152" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0284c7">20</text>
+
+  <!-- 40 ms mark -->
+  <line x1="420" y1="25" x2="420" y2="240" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="410" y="152" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#0284c7">40</text>
+
+  <!-- Sine curve: T = 360px (40ms). t=0 (x=60, y=135). Peak t=10ms (x=150, y=45). 20ms (x=240, y=135). Trough t=30ms (x=330, y=225). End 40ms (x=420, y=135) -->
+  <path d="M 60,135 Q 105,45 150,45 Q 195,45 240,135 Q 285,225 330,225 Q 375,225 420,135" 
+        fill="none" stroke="#2563eb" stroke-width="3"/>
+  <circle cx="420" cy="135" r="5" fill="#2563eb"/>
+  <text x="250" y="255" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#475569">1 chu kì đầy đủ hoàn thành tại t = 40 ms = 0,04 s</text>
+</svg>

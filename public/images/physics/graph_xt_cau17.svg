@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 280" width="100%" height="100%">
+  <defs>
+    <linearGradient id="gridBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#f1f5f9"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="500" height="280" rx="12" fill="url(#gridBg)" stroke="#cbd5e1" stroke-width="1.5"/>
+  
+  <!-- Grid Lines -->
+  <g stroke="#e2e8f0" stroke-width="1">
+    <line x1="50" y1="40" x2="460" y2="40" stroke-dasharray="3,3"/>
+    <line x1="50" y1="90" x2="460" y2="90" stroke-dasharray="3,3"/>
+    <line x1="50" y1="190" x2="460" y2="190" stroke-dasharray="3,3"/>
+    <line x1="50" y1="240" x2="460" y2="240" stroke-dasharray="3,3"/>
+    
+    <line x1="140" y1="30" x2="140" y2="250" stroke-dasharray="3,3"/>
+    <line x1="220" y1="30" x2="220" y2="250" stroke-dasharray="3,3"/>
+    <line x1="300" y1="30" x2="300" y2="250" stroke-dasharray="3,3"/>
+    <line x1="380" y1="30" x2="380" y2="250" stroke-dasharray="3,3"/>
+  </g>
+
+  <!-- Axes -->
+  <!-- t axis -->
+  <line x1="40" y1="140" x2="470" y2="140" stroke="#334155" stroke-width="2"/>
+  <polygon points="475,140 465,135 465,145" fill="#334155"/>
+  <text x="475" y="160" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e293b">t (s)</text>
+
+  <!-- x axis -->
+  <line x1="60" y1="260" x2="60" y2="20" stroke="#334155" stroke-width="2"/>
+  <polygon points="60,15 55,25 65,25" fill="#334155"/>
+  <text x="25" y="25" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#1e293b">x (m)</text>
+
+  <!-- Axis labels -->
+  <text x="45" y="155" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">0</text>
+  <text x="30" y="45" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#0284c7">0,2</text>
+  <text x="30" y="95" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">0,1</text>
+  <text x="24" y="195" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">-0,1</text>
+  <text x="20" y="245" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#0284c7">-0,2</text>
+
+  <text x="130" y="160" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">0,1</text>
+  <text x="210" y="160" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">0,2</text>
+  <text x="290" y="160" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">0,3</text>
+  <text x="370" y="160" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0284c7">0,4</text>
+  <text x="440" y="160" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">0,5</text>
+
+  <!-- Sine Curve: A = 100px (0.2m), T = 320px (0.4s, 80px per 0.1s) -->
+  <!-- t=0: x=0 (y=140). t=0.1 (x=140): y=40. t=0.2 (x=220): y=140. t=0.3 (x=300): y=240. t=0.4 (x=380): y=140. t=0.5 (x=460): y=40. -->
+  <path d="M 60,140 Q 100,40 140,40 Q 180,40 220,140 Q 260,240 300,240 Q 340,240 380,140 Q 420,40 460,40"
+        fill="none" stroke="#0284c7" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Peak highlights -->
+  <circle cx="140" cy="40" r="4" fill="#0284c7"/>
+  <circle cx="380" cy="140" r="4" fill="#0284c7"/>
+  <line x1="380" y1="140" x2="380" y2="165" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="2,2"/>
+</svg>

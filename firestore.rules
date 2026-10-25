@@ -1,0 +1,91 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default deny all unknown paths
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // Validation for UserProfile
+    function isValidUserProfile(data) {
+      return data.id is string && data.id == request.auth.uid &&
+             data.userName is string && data.userName.size() <= 80 &&
+             data.xp is number && data.xp >= 0 &&
+             data.level is number && data.level >= 1 &&
+             data.totalAnswered is number && data.totalAnswered >= 0 &&
+             data.totalCorrect is number && data.totalCorrect >= 0 &&
+             data.updatedAt is string && data.updatedAt.size() <= 64;
+    }
+
+    // Validation for QuizSession
+    function isValidQuizSession(data) {
+      return data.id is string && data.id.size() <= 128 &&
+             data.userId is string && data.userId == request.auth.uid &&
+             data.subject is string && data.subject.size() <= 32 &&
+             data.currentIndex is number && data.currentIndex >= 0 &&
+             data.streak is number && data.streak >= 0 &&
+             data.score is number && data.score >= 0 &&
+             data.isFinished is bool &&
+             data.updatedAt is string && data.updatedAt.size() <= 64;
+    }
+
+    // Validation for LeaderboardEntry
+    function isValidLeaderboardEntry(data) {
+      return data.id is string && isValidId(data.id) &&
+             data.userId is string && isValidId(data.userId) &&
+             data.userName is string && data.userName.size() <= 80 &&
+             data.xp is number && data.xp >= 0 &&
+             data.level is number && data.level >= 1 &&
+             data.totalAnswered is number && data.totalAnswered >= 0 &&
+             data.totalCorrect is number && data.totalCorrect >= 0 &&
+             data.updatedAt is string && data.updatedAt.size() <= 64;
+    }
+
+    // User Profile: private to the authenticated owner
+    match /users/{userId} {
+      allow get: if isValidId(userId) && isOwner(userId);
+      allow list: if false;
+      allow create: if isValidId(userId) && isOwner(userId) && isValidUserProfile(incoming());
+      allow update: if isValidId(userId) && isOwner(userId) && isValidUserProfile(incoming());
+      allow delete: if false;
+    }
+
+    // Quiz Session: private to the authenticated user for real-time progress resume
+    match /sessions/{sessionId} {
+      allow get: if isValidId(sessionId) && isSignedIn() && existing().userId == request.auth.uid;
+      allow list: if false;
+      allow create: if isValidId(sessionId) && isSignedIn() && incoming().userId == request.auth.uid && isValidQuizSession(incoming());
+      allow update: if isValidId(sessionId) && isSignedIn() && existing().userId == request.auth.uid && incoming().userId == request.auth.uid && isValidQuizSession(incoming());
+      allow delete: if isValidId(sessionId) && isSignedIn() && existing().userId == request.auth.uid;
+    }
+
+    // Public Leaderboard: public read-only for real-time live ranking broadcasts, write protected by owner or valid format
+    match /leaderboard/{userId} {
+      allow get, list: if true;
+      allow create, update: if isValidId(userId) && (isSignedIn() ? isOwner(userId) : true) && isValidLeaderboardEntry(incoming());
+      allow delete: if false;
+    }
+  }
+}

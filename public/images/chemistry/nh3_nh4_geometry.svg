@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#f1f5f9"/>
+    </linearGradient>
+    <radialGradient id="nGrad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </radialGradient>
+    <radialGradient id="hGrad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#cbd5e1"/>
+    </radialGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="760" height="380" rx="16" fill="url(#bgGrad)" stroke="#cbd5e1" stroke-width="1.5"/>
+
+  <!-- Main Title -->
+  <text x="380" y="36" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#0f172a">
+    CẤU TRÚC HÌNH HỌC PHÂN TỬ AMMONIA (NH₃) VÀ ION AMMONIUM (NH₄⁺)
+  </text>
+  <text x="380" y="58" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#475569">
+    (Chương 2: Nitrogen và Sulfur - Hóa học 11 Kết Nối Tri Thức / Cánh Diều)
+  </text>
+
+  <!-- LEFT PANEL: AMMONIA (NH3) -->
+  <g transform="translate(40, 75)">
+    <rect width="320" height="280" rx="14" fill="#ffffff" stroke="#93c5fd" stroke-width="2" filter="url(#cardShadow)"/>
+    
+    <!-- Title -->
+    <text x="160" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#1e40af">
+      PHÂN TỬ AMMONIA (NH₃)
+    </text>
+    <text x="160" y="48" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11.5" font-weight="600" fill="#0369a1">
+      Dạng chóp tam giác (Trigonal Pyramidal)
+    </text>
+
+    <!-- Bonds -->
+    <!-- Lone Pair of electrons on top of N -->
+    <ellipse cx="160" cy="88" rx="10" ry="15" fill="#fef08a" stroke="#eab308" stroke-width="1.5" opacity="0.85"/>
+    <circle cx="157" cy="85" r="2.5" fill="#ca8a04"/>
+    <circle cx="163" cy="85" r="2.5" fill="#ca8a04"/>
+    <text x="160" y="68" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#a16207">
+      Cặp e tự do
+    </text>
+
+    <!-- N - H bonds -->
+    <line x1="160" y1="125" x2="105" y2="185" stroke="#64748b" stroke-width="3" stroke-linecap="round"/>
+    <line x1="160" y1="125" x2="160" y2="200" stroke="#64748b" stroke-width="3" stroke-linecap="round"/>
+    <line x1="160" y1="125" x2="215" y2="185" stroke="#64748b" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- Central N Atom -->
+    <circle cx="160" cy="125" r="22" fill="url(#nGrad)" stroke="#1e3a8a" stroke-width="2"/>
+    <text x="160" y="132" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#ffffff">N</text>
+
+    <!-- H Atoms -->
+    <circle cx="105" cy="185" r="14" fill="url(#hGrad)" stroke="#64748b" stroke-width="1.5"/>
+    <text x="105" y="190" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">H</text>
+
+    <circle cx="160" cy="200" r="14" fill="url(#hGrad)" stroke="#64748b" stroke-width="1.5"/>
+    <text x="160" y="205" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">H</text>
+
+    <circle cx="215" cy="185" r="14" fill="url(#hGrad)" stroke="#64748b" stroke-width="1.5"/>
+    <text x="215" y="190" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">H</text>
+
+    <!-- Bond Angle Arc -->
+    <path d="M 140 145 A 25 25 0 0 1 180 145" fill="none" stroke="#dc2626" stroke-width="1.8"/>
+    <text x="160" y="162" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#dc2626">
+      107°
+    </text>
+
+    <!-- Summary Box -->
+    <rect x="20" y="230" width="280" height="38" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
+    <text x="160" y="246" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600" fill="#1e40af">
+      Số OXH của N: -3 | Cộng hóa trị: 3
+    </text>
+    <text x="160" y="260" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="#3b82f6">
+      Góc liên kết thu hẹp còn 107° do lực đẩy cặp e tự do
+    </text>
+  </g>
+
+  <!-- RIGHT PANEL: AMMONIUM (NH4+) -->
+  <g transform="translate(400, 75)">
+    <rect width="320" height="280" rx="14" fill="#ffffff" stroke="#a7f3d0" stroke-width="2" filter="url(#cardShadow)"/>
+    
+    <!-- Title -->
+    <text x="160" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#065f46">
+      ION AMMONIUM (NH₄⁺)
+    </text>
+    <text x="160" y="48" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11.5" font-weight="600" fill="#047857">
+      Dạng tứ diện đều (Regular Tetrahedron)
+    </text>
+
+    <!-- Coordinate Bond to H+ (Top) -->
+    <line x1="160" y1="125" x2="160" y2="65" stroke="#059669" stroke-width="3" stroke-dasharray="4,2"/>
+    <polygon points="160,80 156,90 164,90" fill="#059669"/>
+    <text x="195" y="78" text-anchor="start" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#059669">
+      Liên kết cho-nhận
+    </text>
+
+    <!-- Other 3 bonds -->
+    <line x1="160" y1="125" x2="105" y2="185" stroke="#64748b" stroke-width="3" stroke-linecap="round"/>
+    <line x1="160" y1="125" x2="160" y2="200" stroke="#64748b" stroke-width="3" stroke-linecap="round"/>
+    <line x1="160" y1="125" x2="215" y2="185" stroke="#64748b" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- Central N Atom -->
+    <circle cx="160" cy="125" r="22" fill="url(#nGrad)" stroke="#1e3a8a" stroke-width="2"/>
+    <text x="160" y="132" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#ffffff">N</text>
+
+    <!-- 4 H Atoms -->
+    <circle cx="160" cy="65" r="14" fill="url(#hGrad)" stroke="#059669" stroke-width="1.8"/>
+    <text x="160" y="70" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">H</text>
+
+    <circle cx="105" cy="185" r="14" fill="url(#hGrad)" stroke="#64748b" stroke-width="1.5"/>
+    <text x="105" y="190" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">H</text>
+
+    <circle cx="160" cy="200" r="14" fill="url(#hGrad)" stroke="#64748b" stroke-width="1.5"/>
+    <text x="160" y="205" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">H</text>
+
+    <circle cx="215" cy="185" r="14" fill="url(#hGrad)" stroke="#64748b" stroke-width="1.5"/>
+    <text x="215" y="190" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#0f172a">H</text>
+
+    <!-- Bond Angle Arc -->
+    <path d="M 135 140 A 28 28 0 0 1 185 140" fill="none" stroke="#2563eb" stroke-width="1.8"/>
+    <text x="160" y="157" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#2563eb">
+      109,5°
+    </text>
+
+    <!-- Charge Bracket -->
+    <text x="250" y="70" font-family="system-ui, sans-serif" font-size="22" font-weight="800" fill="#059669">+</text>
+
+    <!-- Summary Box -->
+    <rect x="20" y="230" width="280" height="38" rx="8" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1"/>
+    <text x="160" y="246" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600" fill="#065f46">
+      Số OXH của N: -3 | Cộng hóa trị: 4
+    </text>
+    <text x="160" y="260" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" fill="#059669">
+      4 liên kết N-H hoàn toàn tương đương, góc chuẩn 109,5°
+    </text>
+  </g>
+</svg>

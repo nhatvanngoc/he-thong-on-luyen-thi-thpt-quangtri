@@ -1,0 +1,8 @@
+{
+  "name": "BioQuest 11 - Hệ Sinh Thái Ôn Thi Sinh Học 11 Giữa Kì 1",
+  "description": "Nền tảng luyện tập trắc nghiệm và flashcards tự luận Sinh học 11 bám sát 100% ma trận và bản đặc tả đề thi Giữa Kì 1 THPT Quảng Trị.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

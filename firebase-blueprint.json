@@ -1,0 +1,184 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile, learning statistics, XP, and badges",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique Firebase Auth user UID"
+        },
+        "userName": {
+          "type": "string",
+          "description": "Student display name"
+        },
+        "userClass": {
+          "type": "string",
+          "description": "Student school class or grade"
+        },
+        "xp": {
+          "type": "number",
+          "description": "Experience points gained"
+        },
+        "level": {
+          "type": "number",
+          "description": "Current level calculated from XP"
+        },
+        "streak": {
+          "type": "number",
+          "description": "Current correct answer streak"
+        },
+        "bestStreak": {
+          "type": "number",
+          "description": "Best streak achieved"
+        },
+        "totalAnswered": {
+          "type": "number",
+          "description": "Total questions attempted"
+        },
+        "totalCorrect": {
+          "type": "number",
+          "description": "Total correct answers"
+        },
+        "topicProgress": {
+          "type": "object",
+          "description": "Accuracy progress by topic"
+        },
+        "unlockedBadgeIds": {
+          "type": "array",
+          "description": "List of unlocked badge identifiers"
+        },
+        "masteredFlashcardIds": {
+          "type": "array",
+          "description": "List of flashcard IDs marked as mastered"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp string of last sync"
+        }
+      },
+      "required": ["id", "userName", "xp", "level", "totalAnswered", "totalCorrect", "updatedAt"]
+    },
+    "QuizSession": {
+      "title": "QuizSession",
+      "description": "Real-time arena in-progress session for a given subject",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Session document id formatted as userId_subject"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Firebase Auth user UID"
+        },
+        "subject": {
+          "type": "string",
+          "description": "Subject identifier (biology, chemistry, history)"
+        },
+        "currentIndex": {
+          "type": "number",
+          "description": "Active question index currently in progress"
+        },
+        "streak": {
+          "type": "number",
+          "description": "Session streak"
+        },
+        "score": {
+          "type": "number",
+          "description": "Session score"
+        },
+        "isFinished": {
+          "type": "boolean",
+          "description": "Whether the full set has finished"
+        },
+        "mcqSelected": {
+          "type": "string",
+          "description": "Option chosen A, B, C, D or empty string"
+        },
+        "shortInput": {
+          "type": "string",
+          "description": "Input text for short answer"
+        },
+        "isSubmitted": {
+          "type": "boolean",
+          "description": "Whether question is currently submitted"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp string of last update"
+        }
+      },
+      "required": ["id", "userId", "subject", "currentIndex", "streak", "score", "isFinished", "updatedAt"]
+    },
+    "LeaderboardEntry": {
+      "title": "LeaderboardEntry",
+      "description": "Public ranking entry for competitive leaderboard display",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Document ID equal to user UID"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Firebase Auth user UID"
+        },
+        "userName": {
+          "type": "string",
+          "description": "Student display name"
+        },
+        "userClass": {
+          "type": "string",
+          "description": "Student class name"
+        },
+        "xp": {
+          "type": "number",
+          "description": "Experience points"
+        },
+        "level": {
+          "type": "number",
+          "description": "Player level"
+        },
+        "totalAnswered": {
+          "type": "number",
+          "description": "Total questions answered"
+        },
+        "totalCorrect": {
+          "type": "number",
+          "description": "Total correct answers"
+        },
+        "bestStreak": {
+          "type": "number",
+          "description": "Best streak"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp string of last sync"
+        }
+      },
+      "required": ["id", "userId", "userName", "xp", "level", "totalAnswered", "totalCorrect", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": {
+        "$ref": "#/entities/UserProfile"
+      },
+      "description": "Stores user learning profile, XP, streaks, and progress records"
+    },
+    "/sessions/{sessionId}": {
+      "schema": {
+        "$ref": "#/entities/QuizSession"
+      },
+      "description": "Stores real-time quiz progression and question position per user and subject"
+    },
+    "/leaderboard/{userId}": {
+      "schema": {
+        "$ref": "#/entities/LeaderboardEntry"
+      },
+      "description": "Stores public leaderboard entries for real-time ranking display"
+    }
+  }
+}
