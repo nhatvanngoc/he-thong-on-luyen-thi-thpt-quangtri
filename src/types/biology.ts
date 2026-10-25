@@ -179,6 +179,8 @@ export interface UserStats {
   highestExamScore: number;
   unlockedBadgeIds: string[];
   masteredFlashcardIds: number[];
+  masteredFormulaIds?: string[];
+  formulaReflexScore?: number;
   treeStage: number; // 0 to 5
   attemptHistory?: QuestionAttemptRecord[];
 }

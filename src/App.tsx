@@ -29,9 +29,10 @@ import { ReactionHub } from './components/Chemistry/ReactionHub';
 import { LeaderboardAndBadges } from './components/Ecosystem/LeaderboardAndBadges';
 import { NameEntryModal } from './components/Onboarding/NameEntryModal';
 import { ExamDocumentsView } from './components/Documents/ExamDocumentsView';
+import { FormulaHandbookView } from './components/Formulas/FormulaHandbookView';
 import { soundEffects } from './services/soundEffects';
 import { syncUserProfileToCloud } from './services/firebase';
-import { Sun, Moon, Volume2, VolumeX, Swords, Layers, Trophy, Puzzle, FileText, Cloud } from 'lucide-react';
+import { Sun, Moon, Volume2, VolumeX, Swords, Layers, Trophy, Puzzle, FileText, Cloud, Sparkles, Atom } from 'lucide-react';
 
 const STORAGE_KEY = 'bioquest_11_user_stats_v3';
 const THEME_STORAGE_KEY = 'eduquest_theme_mode';
@@ -95,7 +96,7 @@ export default function App() {
   });
 
   // Core tabs: arena, reactions (chemistry), flashcards, ecosystem, documents
-  const [activeTab, setActiveTab] = useState<'arena' | 'reactions' | 'flashcards' | 'ecosystem' | 'documents'>('arena');
+  const [activeTab, setActiveTab] = useState<'arena' | 'reactions' | 'flashcards' | 'ecosystem' | 'documents' | 'formulas'>('arena');
 
   const [nameModalOpen, setNameModalOpen] = useState(() => !stats.userName);
   const [isMuted, setIsMuted] = useState(false);
@@ -320,6 +321,12 @@ export default function App() {
       icon: <Trophy className="w-4 h-4" />,
     },
     {
+      id: 'formulas',
+      shortLabel: 'Công Thức',
+      fullLabel: 'Sổ Tay & Phản Xạ Công Thức',
+      icon: <Sparkles className="w-4 h-4 text-amber-500" />,
+    },
+    {
       id: 'documents',
       shortLabel: 'Tài Liệu Gốc',
       fullLabel: 'Tài Liệu & Đề Cương (6)',
@@ -511,6 +518,14 @@ export default function App() {
             stats={stats}
             onOpenNameModal={() => setNameModalOpen(true)}
             onClearHistory={() => setStats((prev) => ({ ...prev, attemptHistory: [] }))}
+          />
+        )}
+
+        {activeTab === 'formulas' && (
+          <FormulaHandbookView
+            initialSubject={subject}
+            userStats={stats}
+            setUserStats={setStats}
           />
         )}
 

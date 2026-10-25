@@ -1997,8 +1997,8 @@ export const CHEMISTRY_TRUE_FALSE_QUESTIONS: TrueFalseQuestion[] = [
       {
         subId: 'a',
         text: 'Đường (1) biểu diễn nồng độ $\\text{SO}_2$, đường (2) biểu diễn nồng độ $\\text{O}_2$ và đường (3) biểu diễn nồng độ $\\text{SO}_3$.',
-        isCorrect: true,
-        explanation: 'Đúng. Ban đầu chỉ có SO2 và O2 nên nồng độ giảm dần (đường 1 và 2). Đường (3) xuất phát từ 0 tăng lên 1,5 M là sản phẩm SO3.',
+        isCorrect: false,
+        explanation: 'Sai. Do tỉ lệ phản ứng là 2 SO2 : 1 O2 nên tốc độ giảm nồng độ của SO2 lớn hơn O2. Do đó đường (1) biểu diễn nồng độ O2, đường (2) biểu diễn nồng độ SO2 và đường (3) biểu diễn nồng độ SO3.',
       },
       {
         subId: 'b',

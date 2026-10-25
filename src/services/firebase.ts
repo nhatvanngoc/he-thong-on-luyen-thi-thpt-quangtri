@@ -117,6 +117,8 @@ export async function syncUserProfileToCloud(stats: UserStats): Promise<void> {
       topicProgress: stats.topicProgress || {},
       unlockedBadgeIds: (stats.unlockedBadgeIds || []).slice(0, 50),
       masteredFlashcardIds: (stats.masteredFlashcardIds || []).slice(0, 500),
+      masteredFormulaIds: (stats.masteredFormulaIds || []).slice(0, 500),
+      formulaReflexScore: Number(stats.formulaReflexScore || 0),
       updatedAt: nowIso,
     };
 
