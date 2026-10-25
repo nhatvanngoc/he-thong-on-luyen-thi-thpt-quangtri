@@ -7,8 +7,6 @@ import {
   Sparkles,
   Flame,
   Cloud,
-  Check,
-  AlertCircle,
   Trophy,
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
@@ -23,24 +21,23 @@ import { soundEffects } from '../../services/soundEffects';
 import { syncUserProfileToCloud } from '../../services/firebase';
 
 interface FormulaQuizViewProps {
-  initialSubject?: SubjectId;
+  currentSubject: SubjectId;
   userStats: UserStats;
   setUserStats: React.Dispatch<React.SetStateAction<UserStats>>;
 }
 
 export const FormulaQuizView: React.FC<FormulaQuizViewProps> = ({
-  initialSubject = 'physics',
+  currentSubject,
   userStats,
   setUserStats,
 }) => {
-  // Current active subject: physics or chemistry
-  const [subject, setSubject] = useState<'physics' | 'chemistry'>(
-    initialSubject === 'chemistry' ? 'chemistry' : 'physics'
-  );
+  // Purely lock to the active subject (Tách biệt hoàn toàn Lý và Hóa)
+  const isChemistry = currentSubject === 'chemistry';
+  const subjectName = isChemistry ? 'Hóa Học 11' : 'Vật Lí 11';
 
-  const questionList = useMemo(() => {
-    return subject === 'chemistry' ? CHEMISTRY_FORMULA_QUESTIONS : PHYSICS_FORMULA_QUESTIONS;
-  }, [subject]);
+  const fullQuestionList = useMemo(() => {
+    return isChemistry ? CHEMISTRY_FORMULA_QUESTIONS : PHYSICS_FORMULA_QUESTIONS;
+  }, [isChemistry]);
 
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [selectedOption, setSelectedOption] = useState<'A' | 'B' | 'C' | 'D' | null>(null);
@@ -51,22 +48,8 @@ export const FormulaQuizView: React.FC<FormulaQuizViewProps> = ({
   const [isTestFinished, setIsTestFinished] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
 
-  // Filtered active list (either full list or only mistakes)
-  const activeQuestions = useMemo(() => {
-    if (isReviewingMistakes) {
-      const wrongSet = new Set(wrongQuestionIds);
-      const filtered = questionList.filter((q) => wrongSet.has(q.id));
-      return filtered.length > 0 ? filtered : questionList;
-    }
-    return questionList;
-  }, [questionList, isReviewingMistakes, wrongQuestionIds]);
-
-  const currentQ: FormulaQuizQuestion | undefined = activeQuestions[currentIndex];
-
-  // Reset state when changing subject
-  const handleSwitchSubject = (sub: 'physics' | 'chemistry') => {
-    soundEffects.playClick();
-    setSubject(sub);
+  // Reset when currentSubject changes
+  useEffect(() => {
     setCurrentIndex(0);
     setSelectedOption(null);
     setIsSubmitted(false);
@@ -74,7 +57,20 @@ export const FormulaQuizView: React.FC<FormulaQuizViewProps> = ({
     setIsReviewingMistakes(false);
     setWrongQuestionIds([]);
     setScore(0);
-  };
+    setStreak(0);
+  }, [currentSubject]);
+
+  // Active question list (all or only mistakes)
+  const activeQuestions = useMemo(() => {
+    if (isReviewingMistakes) {
+      const wrongSet = new Set(wrongQuestionIds);
+      const filtered = fullQuestionList.filter((q) => wrongSet.has(q.id));
+      return filtered.length > 0 ? filtered : fullQuestionList;
+    }
+    return fullQuestionList;
+  }, [fullQuestionList, isReviewingMistakes, wrongQuestionIds]);
+
+  const currentQ: FormulaQuizQuestion | undefined = activeQuestions[currentIndex];
 
   const handleSelectOption = (opt: 'A' | 'B' | 'C' | 'D') => {
     if (isSubmitted) return;
@@ -95,15 +91,15 @@ export const FormulaQuizView: React.FC<FormulaQuizViewProps> = ({
       setStreak(newStreak);
 
       if (newStreak % 5 === 0) {
-        confetti({ particleCount: 40, spread: 60, origin: { y: 0.7 } });
+        confetti({ particleCount: 35, spread: 60, origin: { y: 0.7 } });
       }
 
-      // If in mistake review mode and answered correctly, remove from wrong list
+      // If currently reviewing mistakes and answered correctly, remove from wrong list
       if (isReviewingMistakes) {
         setWrongQuestionIds((prev) => prev.filter((id) => id !== currentQ.id));
       }
 
-      // Sync stats & XP to Firebase
+      // Sync to Firebase
       setUserStats((prev) => {
         const next: UserStats = {
           ...prev,
@@ -163,89 +159,68 @@ export const FormulaQuizView: React.FC<FormulaQuizViewProps> = ({
   };
 
   return (
-    <div className="max-w-3xl mx-auto space-y-4 animate-fadeIn pb-12">
-      {/* 1. Header Đơn Giản & Chuyển Môn */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+    <div className="max-w-2xl mx-auto space-y-4 animate-fadeIn pb-12">
+      {/* 1. Header Đơn Giản - Tách Biệt Theo Môn */}
+      <div className="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-center justify-between gap-3">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <h1 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
               <Sparkles className="w-4 h-4 text-amber-500" />
-              Kiểm Tra Công Thức Trắc Nghiệm
+              Kiểm Tra Công Thức {subjectName}
             </h1>
             <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-400 flex items-center gap-1">
-              <Cloud className="w-3 h-3" /> Đã sync Firebase
+              <Cloud className="w-3 h-3" /> Sync Firebase
             </span>
           </div>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-            Làm bài trắc nghiệm phản xạ công thức – Làm sai sửa ngay để nhớ lâu.
+            Luyện trắc nghiệm phản xạ công thức – Làm sai sửa ngay để nhớ lâu.
           </p>
         </div>
 
-        {/* Nút chuyển nhanh Lý - Hóa */}
-        <div className="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-xl self-start sm:self-auto">
-          <button
-            onClick={() => handleSwitchSubject('physics')}
-            className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-              subject === 'physics'
-                ? 'bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-sm'
-                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
-            }`}
-          >
-            Vật Lí 11 ({PHYSICS_FORMULA_QUESTIONS.length} câu)
-          </button>
-          <button
-            onClick={() => handleSwitchSubject('chemistry')}
-            className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-              subject === 'chemistry'
-                ? 'bg-white dark:bg-slate-700 text-amber-600 dark:text-amber-400 shadow-sm'
-                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
-            }`}
-          >
-            Hóa Học 11 ({CHEMISTRY_FORMULA_QUESTIONS.length} câu)
-          </button>
+        <div className="text-right shrink-0">
+          <span className="text-xs font-bold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-lg">
+            {fullQuestionList.length} câu hỏi
+          </span>
         </div>
       </div>
 
       {/* 2. Màn Hình Kết Thúc / Tổng Kết Điểm */}
       {isTestFinished ? (
         <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 text-center space-y-5 shadow-sm">
-          <div className="w-16 h-16 bg-amber-100 dark:bg-amber-950/60 rounded-full flex items-center justify-center mx-auto text-amber-600 dark:text-amber-400">
-            <Trophy className="w-8 h-8" />
+          <div className="w-14 h-14 bg-amber-100 dark:bg-amber-950/60 rounded-full flex items-center justify-center mx-auto text-amber-600 dark:text-amber-400">
+            <Trophy className="w-7 h-7" />
           </div>
 
           <div>
-            <h2 className="text-xl font-bold text-slate-900 dark:text-white">
-              Hoàn Thành Bài Kiểm Tra Công Thức!
+            <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
+              Hoàn Thành Bài Kiểm Tra Công Thức {subjectName}!
             </h2>
-            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
-              {subject === 'physics' ? 'Môn Vật Lí 11' : 'Môn Hóa Học 11'}
-            </p>
           </div>
 
           {/* Bảng điểm đơn giản */}
-          <div className="grid grid-cols-3 gap-3 max-w-md mx-auto">
+          <div className="grid grid-cols-3 gap-2.5 max-w-sm mx-auto">
             <div className="p-3 bg-emerald-50 dark:bg-emerald-950/40 rounded-xl border border-emerald-200 dark:border-emerald-800">
               <div className="text-[11px] text-emerald-700 dark:text-emerald-400 font-medium">Đúng</div>
-              <div className="text-xl font-black text-emerald-800 dark:text-emerald-300">
+              <div className="text-lg font-black text-emerald-800 dark:text-emerald-300">
                 {score}
               </div>
             </div>
             <div className="p-3 bg-rose-50 dark:bg-rose-950/40 rounded-xl border border-rose-200 dark:border-rose-800">
               <div className="text-[11px] text-rose-700 dark:text-rose-400 font-medium">Sai</div>
-              <div className="text-xl font-black text-rose-800 dark:text-rose-300">
+              <div className="text-lg font-black text-rose-800 dark:text-rose-300">
                 {wrongQuestionIds.length}
               </div>
             </div>
             <div className="p-3 bg-blue-50 dark:bg-blue-950/40 rounded-xl border border-blue-200 dark:border-blue-800">
               <div className="text-[11px] text-blue-700 dark:text-blue-400 font-medium">Tỉ lệ đúng</div>
-              <div className="text-xl font-black text-blue-800 dark:text-blue-300">
+              <div className="text-lg font-black text-blue-800 dark:text-blue-300">
                 {activeQuestions.length > 0 ? Math.round((score / activeQuestions.length) * 100) : 0}%
               </div>
             </div>
           </div>
 
           {/* Các nút hành động */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5 pt-2">
             {wrongQuestionIds.length > 0 && (
               <button
                 onClick={() => handleRestart(true)}
@@ -259,14 +234,14 @@ export const FormulaQuizView: React.FC<FormulaQuizViewProps> = ({
               onClick={() => handleRestart(false)}
               className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center justify-center gap-2 cursor-pointer"
             >
-              Làm Lại Từ Đầu Tất Cả Câu
+              Làm Lại Tất Cả Câu
             </button>
           </div>
         </div>
       ) : currentQ ? (
         /* 3. Khung Câu Hỏi Trắc Nghiệm Đơn Giản */
         <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 sm:p-6 space-y-4 shadow-sm">
-          {/* Progress Bar & Status */}
+          {/* Status Bar */}
           <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 border-b border-slate-100 dark:border-slate-800 pb-3">
             <div className="flex items-center gap-2">
               <span className="font-bold text-slate-900 dark:text-white">
@@ -277,7 +252,7 @@ export const FormulaQuizView: React.FC<FormulaQuizViewProps> = ({
               </span>
               {isReviewingMistakes && (
                 <span className="text-[10px] px-2 py-0.5 rounded-md bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300 font-bold">
-                  Đang sửa câu sai
+                  Sửa câu sai
                 </span>
               )}
             </div>
@@ -374,10 +349,10 @@ export const FormulaQuizView: React.FC<FormulaQuizViewProps> = ({
             </div>
           )}
 
-          {/* 4. Khối SỬA SAI & KHẮC SÂU CÔNG THỨC (Chỉ hiện khi đã nộp đáp án) */}
+          {/* 4. Khối SỬA SAI & KHẮC SÂU CÔNG THỨC (Không có cảnh báo rườm rà) */}
           {isSubmitted && (
             <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 space-y-3 animate-fadeIn">
-              {/* Thông báo Đúng / Sai rõ ràng */}
+              {/* Thông báo Đúng / Sai */}
               <div
                 className={`p-3 rounded-xl flex items-center gap-2 text-xs sm:text-sm font-bold ${
                   selectedOption === currentQ.correctAnswer
@@ -401,11 +376,11 @@ export const FormulaQuizView: React.FC<FormulaQuizViewProps> = ({
                 )}
               </div>
 
-              {/* Hộp Công Thức Cần Nhớ & Phản Xạ */}
+              {/* Hộp Công Thức & Hướng Dẫn Giải Gọn Gàng */}
               <div className="p-3.5 bg-slate-50 dark:bg-slate-800/80 rounded-xl border border-slate-200 dark:border-slate-700 space-y-2 text-xs">
                 <div className="flex items-center gap-1.5 font-bold text-emerald-700 dark:text-emerald-400">
                   <Sparkles className="w-3.5 h-3.5" />
-                  <span>Công thức cần nhớ để phản xạ:</span>
+                  <span>Công thức cốt lõi:</span>
                 </div>
                 <div className="p-2 bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 text-center text-sm font-bold text-slate-900 dark:text-white">
                   <LatexText text={`$$${currentQ.formulaUsed}$$`} />
@@ -420,24 +395,13 @@ export const FormulaQuizView: React.FC<FormulaQuizViewProps> = ({
                   </div>
                 )}
 
-                {/* Hướng dẫn giải & Sửa sai */}
+                {/* Hướng dẫn giải */}
                 <div className="text-slate-700 dark:text-slate-300 leading-relaxed pt-1 border-t border-slate-200/60 dark:border-slate-700/60">
                   <span className="font-bold text-slate-800 dark:text-slate-200">
                     💡 Hướng dẫn giải:{' '}
                   </span>
                   <LatexText text={currentQ.explanation} as="span" />
                 </div>
-
-                {/* Cảnh báo lỗi sai thường gặp */}
-                {currentQ.commonMistake && (
-                  <div className="p-2 rounded-lg bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900 text-amber-900 dark:text-amber-200 flex items-start gap-1.5">
-                    <AlertCircle className="w-3.5 h-3.5 text-amber-600 shrink-0 mt-0.5" />
-                    <div>
-                      <strong className="font-bold">Lỗi học sinh hay mắc phải: </strong>
-                      <LatexText text={currentQ.commonMistake} as="span" />
-                    </div>
-                  </div>
-                )}
               </div>
             </div>
           )}
