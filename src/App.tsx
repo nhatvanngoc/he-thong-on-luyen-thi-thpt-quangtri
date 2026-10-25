@@ -29,7 +29,7 @@ import { ReactionHub } from './components/Chemistry/ReactionHub';
 import { LeaderboardAndBadges } from './components/Ecosystem/LeaderboardAndBadges';
 import { NameEntryModal } from './components/Onboarding/NameEntryModal';
 import { ExamDocumentsView } from './components/Documents/ExamDocumentsView';
-import { FormulaHandbookView } from './components/Formulas/FormulaHandbookView';
+import { FormulaQuizView } from './components/Formulas/FormulaQuizView';
 import { soundEffects } from './services/soundEffects';
 import { syncUserProfileToCloud } from './services/firebase';
 import { Sun, Moon, Volume2, VolumeX, Swords, Layers, Trophy, Puzzle, FileText, Cloud, Sparkles, Atom } from 'lucide-react';
@@ -322,8 +322,8 @@ export default function App() {
     },
     {
       id: 'formulas',
-      shortLabel: 'Công Thức',
-      fullLabel: 'Sổ Tay & Phản Xạ Công Thức',
+      shortLabel: 'KT Công Thức',
+      fullLabel: 'Kiểm Tra Công Thức (Lí - Hóa)',
       icon: <Sparkles className="w-4 h-4 text-amber-500" />,
     },
     {
@@ -522,7 +522,7 @@ export default function App() {
         )}
 
         {activeTab === 'formulas' && (
-          <FormulaHandbookView
+          <FormulaQuizView
             initialSubject={subject}
             userStats={stats}
             setUserStats={setStats}
