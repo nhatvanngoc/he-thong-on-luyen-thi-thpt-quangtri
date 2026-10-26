@@ -3,36 +3,35 @@ import {
   MULTIPLE_CHOICE_QUESTIONS,
   TRUE_FALSE_QUESTIONS,
   SHORT_ANSWER_QUESTIONS,
-  ESSAY_FLASHCARDS,
 } from './data/questionBank';
 import {
   HISTORY_MCQ_QUESTIONS,
   HISTORY_TRUE_FALSE_QUESTIONS,
-  HISTORY_ESSAY_FLASHCARDS,
 } from './data/historyQuestionBank';
 import {
   CHEMISTRY_MCQ_QUESTIONS,
   CHEMISTRY_TRUE_FALSE_QUESTIONS,
   CHEMISTRY_SHORT_ANSWER_QUESTIONS,
-  CHEMISTRY_FLASHCARDS,
 } from './data/chemistryQuestionBank';
 import {
   PHYSICS_MCQ_QUESTIONS,
   PHYSICS_TRUE_FALSE_QUESTIONS,
   PHYSICS_SHORT_ANSWER_QUESTIONS,
-  PHYSICS_FLASHCARDS,
 } from './data/physicsQuestionBank';
 import { UserStats, QuestionTopic, SubjectId, QuestionAttemptRecord } from './types/biology';
 import { ArenaQuiz } from './components/Arena/ArenaQuiz';
-import { FlashcardDeck } from './components/Flashcards/FlashcardDeck';
 import { ReactionHub } from './components/Chemistry/ReactionHub';
 import { LeaderboardAndBadges } from './components/Ecosystem/LeaderboardAndBadges';
 import { NameEntryModal } from './components/Onboarding/NameEntryModal';
 import { ExamDocumentsView } from './components/Documents/ExamDocumentsView';
 import { FormulaQuizView } from './components/Formulas/FormulaQuizView';
 import { soundEffects } from './services/soundEffects';
-import { syncUserProfileToCloud } from './services/firebase';
-import { Sun, Moon, Volume2, VolumeX, Swords, Layers, Trophy, Puzzle, FileText, Cloud, Sparkles, Atom } from 'lucide-react';
+import { CloudSyncResult, syncUserProfileToCloud } from './services/firebase';
+import { Sun, Moon, Volume2, VolumeX, Swords, Trophy, Puzzle, FileText, Cloud, Sparkles, Atom, BookOpen, PenLine } from 'lucide-react';
+import { HISTORY_ESSAY_QUESTIONS } from './data/historyEssayBank';
+import { HistoryEssayView } from './components/History/HistoryEssayView';
+import { CHEMISTRY_EXTRA_MCQ_QUESTIONS } from './data/chemistryAdditionalQuestions';
+import { ChemistryEssayView } from './components/Chemistry/ChemistryEssayView';
 
 const STORAGE_KEY = 'bioquest_11_user_stats_v3';
 const THEME_STORAGE_KEY = 'eduquest_theme_mode';
@@ -95,11 +94,12 @@ export default function App() {
     return INITIAL_STATS;
   });
 
-  // Core tabs: arena, reactions (chemistry), flashcards, ecosystem, documents
-  const [activeTab, setActiveTab] = useState<'arena' | 'reactions' | 'flashcards' | 'ecosystem' | 'documents' | 'formulas'>('arena');
+  // Core tabs: arena, reactions (chemistry), essays, ecosystem, documents
+  const [activeTab, setActiveTab] = useState<'arena' | 'reactions' | 'ecosystem' | 'documents' | 'formulas' | 'history-essays' | 'history-essay-exam' | 'chemistry-essays'>('arena');
 
   const [nameModalOpen, setNameModalOpen] = useState(() => !stats.userName);
   const [isMuted, setIsMuted] = useState(false);
+  const [cloudSyncResult, setCloudSyncResult] = useState<CloudSyncResult>({ status: 'partial', message: 'Đang kết nối Firebase…' });
 
   // Sync theme to document element
   useEffect(() => {
@@ -118,7 +118,7 @@ export default function App() {
     try {
       localStorage.setItem('eduquest_selected_subject', subject);
     } catch {}
-    if (activeTab === 'reactions' && subject !== 'chemistry') {
+    if ((activeTab === 'reactions' && subject !== 'chemistry') || (activeTab === 'chemistry-essays' && subject !== 'chemistry') || (activeTab.startsWith('history-') && subject !== 'history')) {
       setActiveTab('arena');
     }
   }, [subject, activeTab]);
@@ -130,7 +130,10 @@ export default function App() {
       // ignore
     }
     // Real-time Cloud Synchronization (Firebase)
-    syncUserProfileToCloud(stats);
+    let isCurrentSync = true;
+    syncUserProfileToCloud(stats).then((result) => {
+      if (isCurrentSync) setCloudSyncResult(result);
+    });
 
     // Real-time Server SSE Synchronization across all students
     const cleanName = (stats.userName || '').trim();
@@ -158,6 +161,10 @@ export default function App() {
         bc.close();
       } catch {}
     }
+
+    return () => {
+      isCurrentSync = false;
+    };
   }, [stats]);
 
   const toggleTheme = () => {
@@ -231,20 +238,6 @@ export default function App() {
     });
   };
 
-  const handleToggleMasteredFlashcard = (id: number) => {
-    setStats((prev) => {
-      const exists = prev.masteredFlashcardIds.includes(id);
-      const updated = exists
-        ? prev.masteredFlashcardIds.filter((item) => item !== id)
-        : [...prev.masteredFlashcardIds, id];
-
-      return {
-        ...prev,
-        masteredFlashcardIds: updated,
-      };
-    });
-  };
-
   const handleExamComplete = (score: number) => {
     setStats((prev) => ({
       ...prev,
@@ -257,7 +250,7 @@ export default function App() {
     subject === 'physics'
       ? PHYSICS_MCQ_QUESTIONS
       : subject === 'chemistry'
-      ? CHEMISTRY_MCQ_QUESTIONS
+      ? [...CHEMISTRY_MCQ_QUESTIONS, ...CHEMISTRY_EXTRA_MCQ_QUESTIONS]
       : subject === 'history'
       ? HISTORY_MCQ_QUESTIONS
       : MULTIPLE_CHOICE_QUESTIONS;
@@ -280,15 +273,6 @@ export default function App() {
       ? []
       : SHORT_ANSWER_QUESTIONS;
 
-  const activeCards =
-    subject === 'physics'
-      ? PHYSICS_FLASHCARDS
-      : subject === 'chemistry'
-      ? CHEMISTRY_FLASHCARDS
-      : subject === 'history'
-      ? HISTORY_ESSAY_FLASHCARDS
-      : ESSAY_FLASHCARDS;
-
   const totalQuestionsCount = activeMcqList.length + activeTfList.length + activeShortList.length;
 
   const tabsConfig = [
@@ -306,14 +290,30 @@ export default function App() {
             fullLabel: 'Luyện Phản Ứng (Ghép & Cân Bằng)',
             icon: <Puzzle className="w-4 h-4" />,
           },
+          {
+            id: 'chemistry-essays',
+            shortLabel: 'Tự luận Hóa',
+            fullLabel: 'Tự luận Hóa (có lời giải)',
+            icon: <BookOpen className="w-4 h-4" />,
+          },
         ]
       : []),
-    {
-      id: 'flashcards',
-      shortLabel: 'Flashcards',
-      fullLabel: `Flashcards (${activeCards.length})`,
-      icon: <Layers className="w-4 h-4" />,
-    },
+    ...(subject === 'history'
+      ? [
+          {
+            id: 'history-essays',
+            shortLabel: 'Ôn tự luận',
+            fullLabel: `Ôn tự luận (${HISTORY_ESSAY_QUESTIONS.length})`,
+            icon: <BookOpen className="w-4 h-4" />,
+          },
+          {
+            id: 'history-essay-exam',
+            shortLabel: 'Trắc nghiệm',
+            fullLabel: 'Trắc nghiệm nhiều đáp án',
+            icon: <PenLine className="w-4 h-4" />,
+          },
+        ]
+      : []),
     {
       id: 'ecosystem',
       shortLabel: 'Xếp Hạng',
@@ -333,7 +333,7 @@ export default function App() {
     {
       id: 'documents',
       shortLabel: 'Tài Liệu Gốc',
-      fullLabel: 'Tài Liệu & Đề Cương (6)',
+      fullLabel: 'Tài Liệu & Đề Cương',
       icon: <FileText className="w-4 h-4" />,
     },
   ];
@@ -417,11 +417,11 @@ export default function App() {
             {/* Real-time Cloud Sync Badge */}
             <div
               className="hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 font-medium text-xs"
-              title="Đồng bộ đám mây thời gian thực với Firebase Firestore"
+              title={cloudSyncResult.message || 'Đồng bộ đám mây thời gian thực với Firebase Firestore'}
             >
               <Cloud className="w-3.5 h-3.5 text-emerald-500" />
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-[11px]">Cloud Sync</span>
+              <span className={`w-1.5 h-1.5 rounded-full ${cloudSyncResult.status === 'synced' ? 'bg-emerald-500 animate-pulse' : cloudSyncResult.status === 'partial' ? 'bg-amber-500' : 'bg-rose-500'}`} />
+              <span className="text-[11px]">{cloudSyncResult.status === 'synced' ? 'Cloud Sync' : cloudSyncResult.status === 'partial' ? 'Cloud đang kiểm tra' : 'Cloud lỗi'}</span>
             </div>
 
             {/* Theme Toggle Button */}
@@ -508,18 +508,14 @@ export default function App() {
           <ReactionHub onAddXp={handleAddXp} />
         )}
 
-        {activeTab === 'flashcards' && (
-          <FlashcardDeck
-            cards={activeCards}
-            masteredIds={stats.masteredFlashcardIds}
-            onToggleMastered={handleToggleMasteredFlashcard}
-            onAddXp={handleAddXp}
-          />
-        )}
+        {activeTab === 'history-essays' && subject === 'history' && <HistoryEssayView key="history-essays-study" mode="study" />}
+        {activeTab === 'history-essay-exam' && subject === 'history' && <HistoryEssayView key="history-essays-exam" mode="exam" />}
+        {activeTab === 'chemistry-essays' && subject === 'chemistry' && <ChemistryEssayView />}
 
         {activeTab === 'ecosystem' && (
           <LeaderboardAndBadges
             stats={stats}
+            cloudSyncResult={cloudSyncResult}
             onOpenNameModal={() => setNameModalOpen(true)}
             onClearHistory={() => setStats((prev) => ({ ...prev, attemptHistory: [] }))}
           />

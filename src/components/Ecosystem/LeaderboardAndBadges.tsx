@@ -2,12 +2,13 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { UserStats } from '../../types/biology';
 import { Trophy, Award, User, RefreshCw, ListFilter, Activity, Cloud, Wifi, CheckCircle2 } from 'lucide-react';
 import { QuestionReviewView } from '../Review/QuestionReviewView';
-import { subscribeToRealtimeLeaderboard } from '../../services/firebase';
+import { CloudSyncResult, subscribeToRealtimeLeaderboard } from '../../services/firebase';
 
 interface LeaderboardAndBadgesProps {
   stats: UserStats;
   onOpenNameModal?: () => void;
   onClearHistory?: () => void;
+  cloudSyncResult: CloudSyncResult;
 }
 
 export interface LeaderboardEntry {
@@ -23,10 +24,13 @@ export const LeaderboardAndBadges: React.FC<LeaderboardAndBadgesProps> = ({
   stats,
   onOpenNameModal,
   onClearHistory,
+  cloudSyncResult,
 }) => {
   const [subTab, setSubTab] = useState<'leaderboard' | 'review'>('leaderboard');
   const [lastSyncTime, setLastSyncTime] = useState<Date>(new Date());
-  const [isLiveConnected, setIsLiveConnected] = useState<boolean>(true);
+  const [isLiveConnected, setIsLiveConnected] = useState<boolean>(false);
+  const [cloudReadStatus, setCloudReadStatus] = useState<'connecting' | 'connected' | 'error'>('connecting');
+  const [cloudReadError, setCloudReadError] = useState('');
   const [isManualRefreshing, setIsManualRefreshing] = useState<boolean>(false);
   const [livePulse, setLivePulse] = useState<boolean>(false);
 
@@ -187,6 +191,9 @@ export const LeaderboardAndBadges: React.FC<LeaderboardAndBadgesProps> = ({
         }));
         mergeRecords(mapped);
       }
+    }, (connected, error) => {
+      setCloudReadStatus(connected ? 'connected' : 'error');
+      setCloudReadError(error?.message || '');
     });
 
     return () => {
@@ -274,7 +281,14 @@ export const LeaderboardAndBadges: React.FC<LeaderboardAndBadgesProps> = ({
               <span>•</span>
               <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">
                 <span className={`w-2 h-2 rounded-full ${isLiveConnected ? 'bg-emerald-500 animate-ping' : 'bg-amber-500'}`}></span>
-                <span>{isLiveConnected ? 'Live SSE Đang kết nối' : 'Đang đồng bộ...'}</span>
+                <span>{isLiveConnected ? 'Máy chủ hiện tại đang kết nối' : 'Máy chủ hiện tại mất kết nối'}</span>
+              </span>
+              <span
+                title={cloudReadError || cloudSyncResult.message || 'Trạng thái đọc và ghi Firestore'}
+                className={`inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[11px] font-semibold ${cloudReadStatus === 'error' || cloudSyncResult.status === 'error' ? 'border-rose-500/30 bg-rose-500/10 text-rose-700 dark:text-rose-300' : cloudReadStatus === 'connected' && cloudSyncResult.status === 'synced' ? 'border-emerald-500/30 bg-emerald-500/15 text-emerald-700 dark:text-emerald-300' : 'border-amber-500/30 bg-amber-500/10 text-amber-700 dark:text-amber-300'}`}
+              >
+                <span className={`h-2 w-2 rounded-full ${cloudReadStatus === 'error' || cloudSyncResult.status === 'error' ? 'bg-rose-500' : cloudReadStatus === 'connected' && cloudSyncResult.status === 'synced' ? 'bg-emerald-500' : 'bg-amber-500'}`} />
+                <span>Firestore: {cloudReadStatus === 'error' || cloudSyncResult.status === 'error' ? 'lỗi' : cloudReadStatus === 'connected' && cloudSyncResult.status === 'synced' ? 'đã kết nối' : 'đang kết nối'}</span>
               </span>
             </div>
           </div>
@@ -349,7 +363,7 @@ export const LeaderboardAndBadges: React.FC<LeaderboardAndBadgesProps> = ({
                   )}
                 </h3>
                 <p className="text-[11px] text-slate-500 dark:text-slate-400">
-                  Đồng bộ tức thời qua Server-Sent Events (SSE) &amp; Google Cloud Firestore
+                  Bảng dùng chung giữa các thiết bị được đọc và ghi qua Google Cloud Firestore.
                 </p>
               </div>
             </div>
@@ -448,7 +462,7 @@ export const LeaderboardAndBadges: React.FC<LeaderboardAndBadgesProps> = ({
           <div className="p-3 bg-slate-50 dark:bg-slate-800/40 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 px-4 flex-wrap gap-2">
             <div className="flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-              <span>Cơ chế bảo vệ: 3 tầng thời gian thực (SSE Broadcast + BroadcastChannel + Firestore)</span>
+              <span>Firestore đồng bộ giữa thiết bị; SSE chỉ dùng chung khi truy cập cùng một máy chủ.</span>
             </div>
             <div className="italic text-slate-400 text-[10px]">
               flop quá thì ghi Nhật Anh vào

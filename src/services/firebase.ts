@@ -97,16 +97,22 @@ export interface CloudLeaderboardItem {
   updatedAt: string;
 }
 
+export interface CloudSyncResult {
+  status: 'synced' | 'partial' | 'error';
+  message?: string;
+}
+
 // Real-time Cloud Sync for User Profile & Statistics
-export async function syncUserProfileToCloud(stats: UserStats): Promise<void> {
+export async function syncUserProfileToCloud(stats: UserStats): Promise<CloudSyncResult> {
   try {
     const user = await ensureAuth();
     const userRef = doc(db, 'users', user.uid);
     const nowIso = new Date().toISOString();
+    const cleanName = (stats.userName || '').trim();
 
     const payload = {
       id: user.uid,
-      userName: (stats.userName || 'Học sinh').slice(0, 80),
+      userName: (cleanName || 'Học sinh').slice(0, 80),
       userClass: (stats.userClass || 'Lớp 11').slice(0, 80),
       xp: Number(stats.xp || 0),
       level: Number(stats.level || 1),
@@ -122,15 +128,13 @@ export async function syncUserProfileToCloud(stats: UserStats): Promise<void> {
       updatedAt: nowIso,
     };
 
-    // Save private profile
-    await setDoc(userRef, payload, { merge: true });
-
-    // Also update public leaderboard entry atomically
+    // Write profile and public ranking independently so a profile-rule failure
+    // cannot prevent an otherwise permitted leaderboard write.
     const leaderboardRef = doc(db, 'leaderboard', user.uid);
     const leaderboardPayload: CloudLeaderboardItem = {
       id: user.uid,
       userId: user.uid,
-      userName: (stats.userName || 'Học sinh').slice(0, 80),
+      userName: cleanName.slice(0, 80),
       userClass: (stats.userClass || 'Lớp 11').slice(0, 80),
       xp: Number(stats.xp || 0),
       level: Number(stats.level || 1),
@@ -139,15 +143,35 @@ export async function syncUserProfileToCloud(stats: UserStats): Promise<void> {
       bestStreak: Number(stats.bestStreak || 0),
       updatedAt: nowIso,
     };
-    await setDoc(leaderboardRef, leaderboardPayload, { merge: true });
+    const [profileResult, leaderboardResult] = await Promise.allSettled([
+      setDoc(userRef, payload, { merge: true }),
+      cleanName ? setDoc(leaderboardRef, leaderboardPayload, { merge: true }) : Promise.resolve(),
+    ]);
+
+    const profileError = profileResult.status === 'rejected' ? profileResult.reason : null;
+    const leaderboardError = leaderboardResult.status === 'rejected' ? leaderboardResult.reason : null;
+    if (profileError || leaderboardError) {
+      const errors = [profileError, leaderboardError].filter(Boolean);
+      const message = errors.map((error) => error instanceof Error ? error.message : String(error)).join(' | ');
+      console.warn('Firebase sync incomplete:', message);
+      return { status: profileError && leaderboardError ? 'error' : 'partial', message };
+    }
+
+    return {
+      status: 'synced',
+      message: cleanName ? undefined : 'Đã kết nối Firebase; nhập tên để ghi danh lên bảng xếp hạng.',
+    };
   } catch (error) {
-    console.warn('Real-time sync to cloud encountered notice (cached offline):', error);
+    const message = error instanceof Error ? error.message : String(error);
+    console.warn('Firebase sync failed:', message);
+    return { status: 'error', message };
   }
 }
 
 // Subscribe to real-time public leaderboard across all students
 export function subscribeToRealtimeLeaderboard(
-  callback: (entries: CloudLeaderboardItem[]) => void
+  callback: (entries: CloudLeaderboardItem[]) => void,
+  onStatus?: (connected: boolean, error?: Error) => void
 ): () => void {
   try {
     const q = query(collection(db, 'leaderboard'), orderBy('xp', 'desc'), limit(30));
@@ -158,14 +182,17 @@ export function subscribeToRealtimeLeaderboard(
         snapshot.forEach((d) => {
           list.push(d.data() as CloudLeaderboardItem);
         });
+        onStatus?.(true);
         callback(list);
       },
       (err) => {
         console.warn('Leaderboard snapshot listener warning:', err);
+        onStatus?.(false, err);
       }
     );
     return unsubscribe;
   } catch {
+    onStatus?.(false, new Error('Không thể khởi tạo kết nối Firestore.'));
     return () => {};
   }
 }

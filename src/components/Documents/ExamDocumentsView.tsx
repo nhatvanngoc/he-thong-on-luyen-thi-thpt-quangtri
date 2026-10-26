@@ -71,17 +71,6 @@ export const EXAM_DOCUMENTS: ExamDocument[] = [
     fileSize: '262 KB',
     type: 'pdf',
   },
-  {
-    id: 'doc-flashcards-csv',
-    title: 'Ngân Hàng Dữ Liệu Flashcards & Tự Luận Tổng Hợp (CSV)',
-    subject: 'biology',
-    description:
-      'File dữ liệu bảng tính chứa toàn bộ nội dung flashcards, câu hỏi tình huống thực nghiệm, cơ chế phân tử sâu và các lỗi sai kinh điển. Dễ dàng nhập vào Anki, Quizlet, Excel hoặc Google Sheets để học ngoại tuyến.',
-    fileName: 'Bo_Flashcards_On_Thi.csv',
-    fileUrl: '/documents/Bo_Flashcards_On_Thi.csv',
-    fileSize: '17.5 KB',
-    type: 'csv',
-  },
 ];
 
 interface ExamDocumentsViewProps {
@@ -154,7 +143,7 @@ export const ExamDocumentsView: React.FC<ExamDocumentsViewProps> = ({ currentSub
               Tài Liệu Ôn Tập & Đề Thi Chính Thức
             </h1>
             <p className="text-sm md:text-base text-blue-100 mt-2 max-w-2xl">
-              Toàn bộ các tệp PDF đề cương, đề minh họa chuẩn GDPT 2018 và bộ dữ liệu flashcards CSV được trích xuất và lưu trữ nguyên vẹn để học sinh tra cứu, xem trước trực tiếp hoặc tải về máy.
+              Các tệp đề cương và đề minh họa theo chương trình GDPT 2018 để học sinh tra cứu, xem trước hoặc tải về máy.
             </p>
           </div>
           <div className="flex items-center gap-3">
@@ -367,7 +356,7 @@ export const ExamDocumentsView: React.FC<ExamDocumentsViewProps> = ({ currentSub
                     Tệp Dữ Liệu Bảng Tính CSV
                   </h4>
                   <p className="text-sm text-slate-600 dark:text-slate-400 max-w-md mb-6 leading-relaxed">
-                    Tệp CSV chứa toàn bộ ngân hàng câu hỏi và flashcards để bạn có thể import trực tiếp vào Anki, Quizlet, Notion hoặc Excel.
+                    Tệp dữ liệu có thể tải về để sử dụng ngoại tuyến.
                   </p>
                   <div className="flex items-center gap-3">
                     <a
