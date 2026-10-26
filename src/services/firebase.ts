@@ -9,8 +9,9 @@ import {
   collection,
   query,
   orderBy,
-  limit,
   getDocFromServer,
+  getDocs,
+  writeBatch,
   Firestore,
 } from 'firebase/firestore';
 import { UserStats, SubjectId } from '../types/biology';
@@ -102,6 +103,36 @@ export interface CloudSyncResult {
   message?: string;
 }
 
+const LEADERBOARD_ADMIN_NAME = 'Văn Ngọc Nhật Anh';
+
+/** Delete selected public ranking rows after checking the current Firebase profile name. */
+export async function deleteLeaderboardEntries(names: string[]): Promise<number> {
+  const user = await ensureAuth();
+  const profile = await getDoc(doc(db, 'users', user.uid));
+  const profileName = String(profile.data()?.userName || '').trim().normalize('NFC').toLocaleLowerCase('vi');
+  if (profileName !== LEADERBOARD_ADMIN_NAME.normalize('NFC').toLocaleLowerCase('vi')) {
+    throw new Error('Hồ sơ Firebase đang đăng nhập chưa có tên quản trị được phép xóa.');
+  }
+
+  const selected = new Set(names.map((name) => name.trim().normalize('NFC').toLocaleLowerCase('vi')));
+  selected.delete(LEADERBOARD_ADMIN_NAME.normalize('NFC').toLocaleLowerCase('vi'));
+  if (!selected.size) return 0;
+
+  const snapshot = await getDocs(collection(db, 'leaderboard'));
+  const targets = snapshot.docs.filter((entry) => {
+    const entryName = String(entry.data().userName || '').trim().normalize('NFC').toLocaleLowerCase('vi');
+    return selected.has(entryName);
+  });
+
+  // Firestore limits each batch to 500 writes.
+  for (let start = 0; start < targets.length; start += 450) {
+    const batch = writeBatch(db);
+    targets.slice(start, start + 450).forEach((entry) => batch.delete(entry.ref));
+    await batch.commit();
+  }
+  return targets.length;
+}
+
 // Real-time Cloud Sync for User Profile & Statistics
 export async function syncUserProfileToCloud(stats: UserStats): Promise<CloudSyncResult> {
   try {
@@ -174,7 +205,7 @@ export function subscribeToRealtimeLeaderboard(
   onStatus?: (connected: boolean, error?: Error) => void
 ): () => void {
   try {
-    const q = query(collection(db, 'leaderboard'), orderBy('xp', 'desc'), limit(30));
+    const q = query(collection(db, 'leaderboard'), orderBy('xp', 'desc'));
     const unsubscribe = onSnapshot(
       q,
       (snapshot) => {

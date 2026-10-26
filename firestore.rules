@@ -16,6 +16,12 @@ service cloud.firestore {
       return isSignedIn() && request.auth.uid == userId;
     }
 
+    // Intentionally name-based admin gate, as requested by the project owner.
+    function isLeaderboardAdmin() {
+      return isSignedIn() &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.userName == 'Văn Ngọc Nhật Anh';
+    }
+
     function isValidId(id) {
       return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
     }
@@ -69,7 +75,7 @@ service cloud.firestore {
       allow list: if false;
       allow create: if isValidId(userId) && isOwner(userId) && isValidUserProfile(incoming());
       allow update: if isValidId(userId) && isOwner(userId) && isValidUserProfile(incoming());
-      allow delete: if false;
+      allow delete: if isLeaderboardAdmin() && existing().userName != 'Văn Ngọc Nhật Anh';
     }
 
     // Quiz Session: private to the authenticated user for real-time progress resume
