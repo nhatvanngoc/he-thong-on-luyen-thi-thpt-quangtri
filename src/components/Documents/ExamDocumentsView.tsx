@@ -120,6 +120,12 @@ export const ExamDocumentsView: React.FC<ExamDocumentsViewProps> = ({ currentSub
             Lịch Sử 11
           </span>
         );
+      case 'informatics':
+        return (
+          <span className="px-2.5 py-1 text-xs font-semibold rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20">
+            Tin Học 11
+          </span>
+        );
     }
   };
 
@@ -165,6 +171,7 @@ export const ExamDocumentsView: React.FC<ExamDocumentsViewProps> = ({ currentSub
             { id: 'chemistry', label: 'Hóa học' },
             { id: 'biology', label: 'Sinh học' },
             { id: 'history', label: 'Lịch sử' },
+            { id: 'informatics', label: 'Tin học' },
           ].map((tab) => (
             <button
               key={tab.id}

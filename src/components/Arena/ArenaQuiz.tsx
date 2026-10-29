@@ -362,7 +362,7 @@ export const ArenaQuiz: React.FC<ArenaQuizProps> = ({
 
         <div>
           <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
-            Hoàn Thành Đấu Trường {subject === 'chemistry' ? 'Hóa Học 11' : subject === 'history' ? 'Lịch Sử 11' : 'Sinh Học 11'}!
+            Hoàn Thành Đấu Trường {subject === 'chemistry' ? 'Hóa Học 11' : subject === 'history' ? 'Lịch Sử 11' : subject === 'informatics' ? 'Tin Học 11' : 'Sinh Học 11'}!
           </h2>
           <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
             Bạn đã xuất sắc chinh phục toàn bộ {allQuestions.length} câu hỏi kiến thức trọng tâm.
@@ -404,6 +404,14 @@ export const ArenaQuiz: React.FC<ArenaQuizProps> = ({
         return 'Lí: Năng lượng dao động';
       case 'phys3':
         return 'Lí: Tắt dần & cộng hưởng';
+      case 'info1':
+        return 'Tin: Hệ điều hành & phần cứng';
+      case 'info2':
+        return 'Tin: Phần mềm & dịch vụ số';
+      case 'info3':
+        return 'Tin: Thiết bị & dữ liệu số';
+      case 'info4':
+        return 'Tin: Internet & an toàn số';
       case 'history1':
         return 'CĐ 1: CM Tư Sản & CNTB';
       case 'history2':
@@ -449,7 +457,7 @@ export const ArenaQuiz: React.FC<ArenaQuizProps> = ({
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-slate-100 text-sm sm:text-base flex items-center gap-2">
-              <span>{subject === 'physics' ? 'Đấu Trường Vật Lí 11' : subject === 'chemistry' ? 'Đấu Trường Hóa Học 11' : subject === 'history' ? 'Đấu Trường Lịch Sử 11' : 'Đấu Trường Sinh Học 11'}</span>
+              <span>{subject === 'physics' ? 'Đấu Trường Vật Lí 11' : subject === 'chemistry' ? 'Đấu Trường Hóa Học 11' : subject === 'history' ? 'Đấu Trường Lịch Sử 11' : subject === 'informatics' ? 'Đấu Trường Tin Học 11' : 'Đấu Trường Sinh Học 11'}</span>
             </h3>
             <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mt-0.5">
               <span className="font-medium text-emerald-600 dark:text-emerald-400">

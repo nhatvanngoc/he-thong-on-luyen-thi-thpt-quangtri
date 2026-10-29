@@ -2,11 +2,11 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { UserStats } from '../../types/biology';
 import { Trophy, Award, User, RefreshCw, ListFilter, Trash2, ShieldCheck } from 'lucide-react';
 import { QuestionReviewView } from '../Review/QuestionReviewView';
-import { CloudSyncResult, deleteLeaderboardEntries, subscribeToRealtimeLeaderboard } from '../../services/firebase';
+import { CloudSyncResult, deleteLeaderboardEntries, fetchLeaderboardOnce, subscribeToRealtimeLeaderboard } from '../../services/firebase';
 
 interface LeaderboardAndBadgesProps {
   stats: UserStats;
-  onOpenNameModal?: () => void;
+  isAdmin: boolean;
   onClearHistory?: () => void;
   cloudSyncResult: CloudSyncResult;
 }
@@ -28,7 +28,7 @@ function normalizeLeaderboardName(name: string) {
 
 export const LeaderboardAndBadges: React.FC<LeaderboardAndBadgesProps> = ({
   stats,
-  onOpenNameModal,
+  isAdmin: isAdminUnlocked,
   onClearHistory,
   cloudSyncResult,
 }) => {
@@ -39,8 +39,6 @@ export const LeaderboardAndBadges: React.FC<LeaderboardAndBadgesProps> = ({
   const [cloudReadError, setCloudReadError] = useState('');
   const [isManualRefreshing, setIsManualRefreshing] = useState<boolean>(false);
   const [livePulse, setLivePulse] = useState<boolean>(false);
-  const [adminNameInput, setAdminNameInput] = useState('');
-  const [isAdminUnlocked, setIsAdminUnlocked] = useState(false);
   const [selectedNames, setSelectedNames] = useState<string[]>([]);
   const [isDeletingEntries, setIsDeletingEntries] = useState(false);
   const [adminMessage, setAdminMessage] = useState('');
@@ -55,11 +53,7 @@ export const LeaderboardAndBadges: React.FC<LeaderboardAndBadgesProps> = ({
   // Load initial records from storage
   const [records, setRecords] = useState<LeaderboardEntry[]>(() => {
     try {
-      const saved = localStorage.getItem(LEADERBOARD_STORAGE_KEY);
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
-      }
+      localStorage.removeItem(LEADERBOARD_STORAGE_KEY);
     } catch {
       // fallback
     }
@@ -70,26 +64,10 @@ export const LeaderboardAndBadges: React.FC<LeaderboardAndBadgesProps> = ({
   const mergeRecords = useCallback((incoming: LeaderboardEntry[]) => {
     setRecords((prev) => {
       const map = new Map<string, LeaderboardEntry>();
-      // Keep existing
-      prev.forEach((r) => {
-        const key = normalizeLeaderboardName(r.name);
-        if (!deletedNamesRef.current.has(key)) map.set(key, r);
-      });
-      // Apply incoming with max score rule
       incoming.forEach((r) => {
         const key = normalizeLeaderboardName(r.name);
         if (deletedNamesRef.current.has(key)) return;
-        const cur = map.get(key);
-        if (!cur) {
-          map.set(key, r);
-        } else {
-          map.set(key, {
-            name: r.name,
-            score: Math.max(cur.score, r.score),
-            level: Math.max(cur.level, r.level),
-            updatedAt: r.updatedAt || cur.updatedAt,
-          });
-        }
+        map.set(key, r);
       });
 
       // Always ensure current user's latest local score is present
@@ -97,11 +75,11 @@ export const LeaderboardAndBadges: React.FC<LeaderboardAndBadgesProps> = ({
       if (currentName && !deletedNamesRef.current.has(normalizeLeaderboardName(currentName))) {
         const key = normalizeLeaderboardName(currentName);
         const cur = map.get(key);
-        if (!cur || stats.xp > cur.score) {
+        if (!cur) {
           map.set(key, {
             name: currentName,
-            score: Math.max(cur ? cur.score : 0, stats.xp),
-            level: Math.max(cur ? cur.level : 1, stats.level),
+            score: stats.xp,
+            level: stats.level,
             updatedAt: new Date().toISOString(),
           });
         }
@@ -119,116 +97,19 @@ export const LeaderboardAndBadges: React.FC<LeaderboardAndBadgesProps> = ({
     setTimeout(() => setLivePulse(false), 800);
   }, [stats.userName, stats.xp, stats.level]);
 
-  // 1. Live SSE (Server-Sent Events) Stream Subscription
-  useEffect(() => {
-    let es: EventSource | null = null;
-    let reconnectTimeout: ReturnType<typeof setTimeout> | null = null;
-
-    const connectSSE = () => {
-      try {
-        es = new EventSource('/api/leaderboard/stream');
-        
-        es.onopen = () => {
-          setIsLiveConnected(true);
-        };
-
-        es.onmessage = (event) => {
-          try {
-            const data = JSON.parse(event.data);
-            if (Array.isArray(data)) {
-              mergeRecords(data);
-            }
-          } catch (err) {
-            console.warn('Error parsing SSE leaderboard payload:', err);
-          }
-        };
-
-        es.onerror = () => {
-          setIsLiveConnected(false);
-          if (es) {
-            es.close();
-            es = null;
-          }
-          // Retry connection after 3 seconds
-          reconnectTimeout = setTimeout(connectSSE, 3000);
-        };
-        es.addEventListener('leaderboard-deleted', (event) => {
-          try {
-            const names = JSON.parse((event as MessageEvent).data);
-            if (!Array.isArray(names)) return;
-            const deleted = new Set(names.filter((name): name is string => typeof name === 'string').map(normalizeLeaderboardName));
-            deletedNamesRef.current = deleted;
-            localStorage.setItem(DELETED_NAMES_STORAGE_KEY, JSON.stringify([...deleted]));
-            setRecords((current) => {
-              const next = current.filter((record) => !deleted.has(normalizeLeaderboardName(record.name)));
-              localStorage.setItem(LEADERBOARD_STORAGE_KEY, JSON.stringify(next));
-              return next;
-            });
-          } catch {}
-        });
-      } catch {
-        setIsLiveConnected(false);
-      }
-    };
-
-    connectSSE();
-
-    return () => {
-      if (es) es.close();
-      if (reconnectTimeout) clearTimeout(reconnectTimeout);
-    };
-  }, [mergeRecords]);
-
-  // 2. Cross-tab BroadcastChannel listener
-  useEffect(() => {
-    let bc: BroadcastChannel | null = null;
-    try {
-      bc = new BroadcastChannel('bioquest_leaderboard_live');
-      bc.onmessage = (event) => {
-        if (event.data?.type === 'LEADERBOARD_UPDATED') {
-          const entry: LeaderboardEntry = {
-            name: event.data.name,
-            score: event.data.score,
-            level: event.data.level,
-            updatedAt: event.data.updatedAt || new Date().toISOString(),
-          };
-          mergeRecords([entry]);
-        }
-      };
-    } catch {}
-
-    const handleStorage = (e: StorageEvent) => {
-      if (e.key === LEADERBOARD_STORAGE_KEY && e.newValue) {
-        try {
-          const parsed = JSON.parse(e.newValue);
-          if (Array.isArray(parsed)) {
-            mergeRecords(parsed);
-          }
-        } catch {}
-      }
-    };
-    window.addEventListener('storage', handleStorage);
-
-    return () => {
-      if (bc) bc.close();
-      window.removeEventListener('storage', handleStorage);
-    };
-  }, [mergeRecords]);
-
   // 3. Real-time Firestore Cloud onSnapshot listener
   useEffect(() => {
     const unsubscribeCloud = subscribeToRealtimeLeaderboard((cloudItems) => {
-      if (cloudItems && cloudItems.length > 0) {
-        const mapped: LeaderboardEntry[] = cloudItems.map((item) => ({
-          name: item.userName,
-          score: item.xp,
-          level: item.level,
-          updatedAt: item.updatedAt,
-        }));
-        mergeRecords(mapped);
-      }
+      const mapped: LeaderboardEntry[] = cloudItems.map((item) => ({
+        name: item.userName,
+        score: item.xp,
+        level: item.level,
+        updatedAt: item.updatedAt,
+      }));
+      mergeRecords(mapped);
     }, (connected, error) => {
       setCloudReadStatus(connected ? 'connected' : 'error');
+      setIsLiveConnected(connected);
       setCloudReadError(error?.message || '');
     });
 
@@ -237,81 +118,30 @@ export const LeaderboardAndBadges: React.FC<LeaderboardAndBadgesProps> = ({
     };
   }, [mergeRecords]);
 
-  // 4. Initial & Heartbeat REST Polling (Fall-safe every 6 seconds)
-  const refreshFromRest = useCallback(async () => {
-    try {
-      const deletedResponse = await fetch('/api/leaderboard/deleted');
-      if (deletedResponse.ok) {
-        const names = await deletedResponse.json();
-        if (Array.isArray(names)) {
-          const deleted = new Set(names.filter((name): name is string => typeof name === 'string').map(normalizeLeaderboardName));
-          deletedNamesRef.current = deleted;
-          localStorage.setItem(DELETED_NAMES_STORAGE_KEY, JSON.stringify([...deleted]));
-          setRecords((current) => {
-            const next = current.filter((record) => !deleted.has(normalizeLeaderboardName(record.name)));
-            localStorage.setItem(LEADERBOARD_STORAGE_KEY, JSON.stringify(next));
-            return next;
-          });
-        }
-      }
-      const res = await fetch('/api/leaderboard');
-      if (res.ok) {
-        const data = await res.json();
-        if (Array.isArray(data)) {
-          mergeRecords(data);
-        }
-      }
-    } catch {}
-  }, [mergeRecords]);
-
-  useEffect(() => {
-    refreshFromRest();
-    const interval = setInterval(refreshFromRest, 6000);
-    return () => clearInterval(interval);
-  }, [refreshFromRest]);
-
   // Manual Refresh Handler
   const handleManualRefresh = async () => {
     setIsManualRefreshing(true);
-    await refreshFromRest();
-    setTimeout(() => {
+    try {
+      const items = await fetchLeaderboardOnce();
+      mergeRecords(items.map((item) => ({ name: item.userName, score: item.xp, level: item.level, updatedAt: item.updatedAt })));
+    } catch (error) {
+      setCloudReadStatus('error');
+      setCloudReadError(error instanceof Error ? error.message : 'Không thể tải bảng xếp hạng.');
+    } finally {
       setIsManualRefreshing(false);
-    }, 600);
-  };
-
-  const unlockAdminTools = (event: React.FormEvent) => {
-    event.preventDefault();
-    const entered = adminNameInput.trim().normalize('NFC').toLocaleLowerCase('vi');
-    const expected = LEADERBOARD_ADMIN_NAME.normalize('NFC').toLocaleLowerCase('vi');
-    if (entered !== expected) {
-      setAdminMessage('Tên quản trị chưa chính xác.');
-      setIsAdminUnlocked(false);
-      return;
     }
-    setAdminMessage('Đã mở quyền chọn nick. Tài khoản quản trị được giữ lại.');
-    setIsAdminUnlocked(true);
-    setSelectedNames([]);
   };
 
   const handleDeleteSelected = async () => {
     if (!isAdminUnlocked || selectedNames.length === 0 || isDeletingEntries) return;
     const names = [...selectedNames];
-    const confirmed = window.confirm(`Xóa ${names.length} nick đã chọn khỏi bảng xếp hạng trên Firebase và máy chủ? Tài khoản và tiến độ học vẫn được giữ nguyên.`);
+    const confirmed = window.confirm(`Xóa ${names.length} tài khoản đã chọn khỏi ứng dụng và bảng xếp hạng? Tên đăng nhập sẽ vẫn được giữ để không thể đăng ký trùng.`);
     if (!confirmed) return;
 
     setIsDeletingEntries(true);
     setAdminMessage('Đang xóa các mục đã chọn…');
     try {
       const firebaseCount = await deleteLeaderboardEntries(names);
-      const response = await fetch('/api/leaderboard', {
-        method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ adminName: adminNameInput.trim(), names }),
-      });
-      if (!response.ok) {
-        const error = await response.json().catch(() => ({}));
-        throw new Error(error.error || 'Không thể xóa dữ liệu trên máy chủ.');
-      }
 
       const normalizedNames = new Set(names.map(normalizeLeaderboardName));
       normalizedNames.forEach((name) => deletedNamesRef.current.add(name));
@@ -320,7 +150,7 @@ export const LeaderboardAndBadges: React.FC<LeaderboardAndBadgesProps> = ({
       setRecords(remaining);
       localStorage.setItem(LEADERBOARD_STORAGE_KEY, JSON.stringify(remaining));
       setSelectedNames([]);
-      setAdminMessage(`Đã xóa ${names.length} nick khỏi bảng xếp hạng (Firebase: ${firebaseCount} mục). Hồ sơ và tiến độ không bị xóa.`);
+      setAdminMessage(`Đã xóa ${firebaseCount} tài khoản khỏi hồ sơ và bảng xếp hạng Firebase.`);
     } catch (error) {
       setAdminMessage(error instanceof Error ? error.message : 'Xóa chưa thành công. Hãy thử lại.');
     } finally {
@@ -366,21 +196,14 @@ export const LeaderboardAndBadges: React.FC<LeaderboardAndBadgesProps> = ({
               <span className="text-sm sm:text-base font-bold text-slate-900 dark:text-slate-100">
                 {stats.userName || 'Học sinh chưa đặt tên'}
               </span>
-              {onOpenNameModal && (
-                <button
-                  onClick={onOpenNameModal}
-                  className="text-xs text-emerald-600 dark:text-emerald-400 hover:underline cursor-pointer font-medium"
-                >
-                  Đổi tên
-                </button>
-              )}
+              {isAdminUnlocked && <span className="rounded-full bg-amber-500/15 px-2 py-0.5 text-[10px] font-bold text-amber-600">QUẢN TRỊ</span>}
             </div>
             <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 flex items-center gap-2 flex-wrap">
               <span>Hạng thành tích: <span className="font-bold text-emerald-600 dark:text-emerald-400">#{stats.userName ? userRank : '-'}</span></span>
               <span>•</span>
               <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">
                 <span className={`w-2 h-2 rounded-full ${isLiveConnected ? 'bg-emerald-500 animate-ping' : 'bg-amber-500'}`}></span>
-                <span>{isLiveConnected ? 'Máy chủ hiện tại đang kết nối' : 'Máy chủ hiện tại mất kết nối'}</span>
+                <span>{isLiveConnected ? 'Đồng bộ trực tiếp' : 'Mất kết nối Firestore'}</span>
               </span>
               <span
                 title={cloudReadError || cloudSyncResult.message || 'Trạng thái đọc và ghi Firestore'}
@@ -484,28 +307,12 @@ export const LeaderboardAndBadges: React.FC<LeaderboardAndBadgesProps> = ({
           </div>
 
           <div className="border-b border-slate-100 bg-amber-50/60 p-4 dark:border-slate-800 dark:bg-amber-950/10">
-            {!isAdminUnlocked ? (
-              <form onSubmit={unlockAdminTools} className="flex flex-col gap-2 sm:flex-row sm:items-center">
-                <label htmlFor="leaderboard-admin-name" className="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-300">
-                  <ShieldCheck className="h-4 w-4 text-amber-600" /> Quản trị bảng xếp hạng
-                </label>
-                <input
-                  id="leaderboard-admin-name"
-                  value={adminNameInput}
-                  onChange={(event) => setAdminNameInput(event.target.value)}
-                  autoComplete="off"
-                  placeholder="Nhập tên quản trị"
-                  className="min-w-0 flex-1 rounded-lg border border-slate-300 bg-white px-3 py-2 text-xs text-slate-900 outline-none focus:border-amber-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
-                />
-                <button type="submit" className="rounded-lg bg-amber-600 px-3 py-2 text-xs font-bold text-white hover:bg-amber-700">Mở quyền xóa</button>
-              </form>
-            ) : (
+            {isAdminUnlocked && (
               <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                <p className="text-xs text-slate-600 dark:text-slate-300">Chọn các nick cần gỡ. Tài khoản và tiến độ học vẫn được giữ lại.</p>
+                <p className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-300"><ShieldCheck className="h-4 w-4 text-amber-600" /> Chọn tài khoản cần gỡ khỏi ứng dụng.</p>
                 <div className="flex flex-wrap items-center gap-2">
                   <button type="button" onClick={() => setSelectedNames(records.filter((r) => r.name.trim().toLocaleLowerCase('vi') !== LEADERBOARD_ADMIN_NAME.toLocaleLowerCase('vi')).map((r) => r.name))} className="rounded-lg border border-slate-300 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-white dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-900">Chọn tất cả đang hiển thị</button>
                   <button type="button" disabled={!selectedNames.length || isDeletingEntries} onClick={handleDeleteSelected} className="inline-flex items-center gap-1.5 rounded-lg bg-rose-600 px-3 py-2 text-xs font-bold text-white hover:bg-rose-700 disabled:cursor-not-allowed disabled:opacity-50"><Trash2 className="h-3.5 w-3.5" />{isDeletingEntries ? 'Đang xóa…' : `Xóa đã chọn (${selectedNames.length})`}</button>
-                  <button type="button" onClick={() => { setIsAdminUnlocked(false); setSelectedNames([]); setAdminMessage(''); }} className="rounded-lg px-2 py-2 text-xs font-semibold text-slate-500 hover:text-slate-800 dark:hover:text-slate-200">Khóa</button>
                 </div>
               </div>
             )}
@@ -517,7 +324,7 @@ export const LeaderboardAndBadges: React.FC<LeaderboardAndBadgesProps> = ({
               <Award className="w-8 h-8 text-slate-400 mx-auto opacity-50 mb-1" />
               <p className="font-semibold text-slate-700 dark:text-slate-300">Chưa có dữ liệu xếp hạng</p>
               <p className="text-slate-500">
-                Hãy nhập họ tên và hoàn thành các câu hỏi trong Đấu Trường để ghi danh tức thì!
+                Tài khoản đã đăng nhập sẽ xuất hiện tại đây sau khi đồng bộ.
               </p>
             </div>
           ) : (
@@ -592,7 +399,7 @@ export const LeaderboardAndBadges: React.FC<LeaderboardAndBadgesProps> = ({
           <div className="p-3 bg-slate-50 dark:bg-slate-800/40 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 px-4 flex-wrap gap-2">
             <div className="flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-              <span>Firestore đồng bộ giữa thiết bị; SSE chỉ dùng chung khi truy cập cùng một máy chủ.</span>
+              <span>Tài khoản và bảng xếp hạng đồng bộ giữa các thiết bị qua Firestore.</span>
             </div>
             <div className="italic text-slate-400 text-[10px]">
               flop quá thì ghi Nhật Anh vào

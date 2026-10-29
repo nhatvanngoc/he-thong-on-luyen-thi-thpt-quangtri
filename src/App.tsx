@@ -22,16 +22,19 @@ import { UserStats, QuestionTopic, SubjectId, QuestionAttemptRecord } from './ty
 import { ArenaQuiz } from './components/Arena/ArenaQuiz';
 import { ReactionHub } from './components/Chemistry/ReactionHub';
 import { LeaderboardAndBadges } from './components/Ecosystem/LeaderboardAndBadges';
-import { NameEntryModal } from './components/Onboarding/NameEntryModal';
 import { ExamDocumentsView } from './components/Documents/ExamDocumentsView';
 import { FormulaQuizView } from './components/Formulas/FormulaQuizView';
 import { soundEffects } from './services/soundEffects';
-import { CloudSyncResult, syncUserProfileToCloud } from './services/firebase';
+import { CloudSyncResult, isAdminUser, loadUserProfile, logoutAccount, resetAllScoresOnce, subscribeToAuth, syncUserProfileToCloud } from './services/firebase';
 import { Sun, Moon, Volume2, VolumeX, Swords, Trophy, Puzzle, FileText, Cloud, Sparkles, Atom, BookOpen, PenLine } from 'lucide-react';
 import { HISTORY_ESSAY_QUESTIONS } from './data/historyEssayBank';
 import { HistoryEssayView } from './components/History/HistoryEssayView';
 import { CHEMISTRY_EXTRA_MCQ_QUESTIONS } from './data/chemistryAdditionalQuestions';
 import { ChemistryEssayView } from './components/Chemistry/ChemistryEssayView';
+import { INFORMATICS_MCQ_QUESTIONS, INFORMATICS_TRUE_FALSE_QUESTIONS } from './data/informaticsQuestionBank';
+import { InformaticsEssayView } from './components/Informatics/InformaticsEssayView';
+import { AccountGate } from './components/Onboarding/AccountGate';
+import { User as FirebaseUser } from 'firebase/auth';
 
 const STORAGE_KEY = 'bioquest_11_user_stats_v3';
 const THEME_STORAGE_KEY = 'eduquest_theme_mode';
@@ -40,7 +43,7 @@ const INITIAL_STATS: UserStats = {
   userName: '',
   userClass: 'Lớp 11 - THPT Quảng Trị',
   userAvatar: '',
-  xp: 120,
+  xp: 0,
   level: 1,
   streak: 0,
   bestStreak: 0,
@@ -58,6 +61,10 @@ const INITIAL_STATS: UserStats = {
     phys1: { answered: 0, correct: 0 },
     phys2: { answered: 0, correct: 0 },
     phys3: { answered: 0, correct: 0 },
+    info1: { answered: 0, correct: 0 },
+    info2: { answered: 0, correct: 0 },
+    info3: { answered: 0, correct: 0 },
+    info4: { answered: 0, correct: 0 },
   },
   completedExams: 0,
   highestExamScore: 0,
@@ -71,7 +78,7 @@ export default function App() {
   const [subject, setSubject] = useState<SubjectId>(() => {
     try {
       const saved = localStorage.getItem('eduquest_selected_subject');
-      if (saved === 'history' || saved === 'biology' || saved === 'chemistry' || saved === 'physics') return saved;
+      if (saved === 'history' || saved === 'biology' || saved === 'chemistry' || saved === 'physics' || saved === 'informatics') return saved;
     } catch {}
     return 'physics';
   });
@@ -84,20 +91,15 @@ export default function App() {
     return 'dark';
   });
 
-  const [stats, setStats] = useState<UserStats>(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) return JSON.parse(saved);
-    } catch {
-      // fallback
-    }
-    return INITIAL_STATS;
-  });
+  const [stats, setStats] = useState<UserStats>(INITIAL_STATS);
+  const [authUser, setAuthUser] = useState<FirebaseUser | null>(null);
+  const [authReady, setAuthReady] = useState(false);
+  const [statsReady, setStatsReady] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   // Core tabs: arena, reactions (chemistry), essays, ecosystem, documents
-  const [activeTab, setActiveTab] = useState<'arena' | 'reactions' | 'ecosystem' | 'documents' | 'formulas' | 'history-essays' | 'history-essay-exam' | 'chemistry-essays'>('arena');
+  const [activeTab, setActiveTab] = useState<'arena' | 'reactions' | 'ecosystem' | 'documents' | 'formulas' | 'history-essays' | 'history-essay-exam' | 'chemistry-essays' | 'informatics-essays'>('arena');
 
-  const [nameModalOpen, setNameModalOpen] = useState(() => !stats.userName);
   const [isMuted, setIsMuted] = useState(false);
   const [cloudSyncResult, setCloudSyncResult] = useState<CloudSyncResult>({ status: 'partial', message: 'Đang kết nối Firebase…' });
 
@@ -115,17 +117,70 @@ export default function App() {
   }, [theme]);
 
   useEffect(() => {
+    let active = true;
+    const unsubscribe = subscribeToAuth((user) => {
+      setAuthUser(user);
+      setAuthReady(true);
+      setStatsReady(false);
+      if (!user || user.isAnonymous) return;
+      Promise.all([loadUserProfile(user), isAdminUser(user)]).then(([profile, admin]) => {
+        if (!active) return;
+        if (!profile) {
+          const retryProfile = async () => {
+            for (let attempt = 0; attempt < 8 && active; attempt += 1) {
+              await new Promise((resolve) => setTimeout(resolve, 250));
+              const retry = await loadUserProfile(user);
+              if (retry) return retry;
+            }
+            return null;
+          };
+          retryProfile().then((retry) => {
+            if (!active) return;
+            if (!retry) { void logoutAccount(); return; }
+            hydrateAccount(user, retry, admin);
+          }).catch(() => { if (active) void logoutAccount(); });
+          return;
+        }
+        if (profile.disabled) { void logoutAccount(); return; }
+        hydrateAccount(user, profile, admin);
+      }).catch((error) => {
+        console.warn('Không thể tải hồ sơ tài khoản:', error);
+        if (active) setStatsReady(true);
+      });
+
+      const hydrateAccount = (signedInUser: FirebaseUser, profileData: Record<string, any>, admin: boolean) => {
+        if (!active) return;
+        const restored = { ...INITIAL_STATS, ...profileData, userName: String(profileData.userName || signedInUser.displayName || '') } as UserStats;
+        setStats(restored);
+        setIsAdmin(admin);
+        if (admin) {
+          resetAllScoresOnce().then((didReset) => {
+            if (!active) return;
+            if (didReset) setStats({ ...INITIAL_STATS, userName: restored.userName, userClass: restored.userClass });
+            setStatsReady(true);
+          }).catch((error) => {
+            console.warn('Không thể tự đặt lại bảng điểm:', error);
+            if (active) setStatsReady(true);
+          });
+        } else setStatsReady(true);
+      };
+    });
+    return () => { active = false; unsubscribe(); };
+  }, []);
+
+  useEffect(() => {
     try {
       localStorage.setItem('eduquest_selected_subject', subject);
     } catch {}
-    if ((activeTab === 'reactions' && subject !== 'chemistry') || (activeTab === 'chemistry-essays' && subject !== 'chemistry') || (activeTab.startsWith('history-') && subject !== 'history')) {
+    if ((activeTab === 'reactions' && subject !== 'chemistry') || (activeTab === 'chemistry-essays' && subject !== 'chemistry') || (activeTab === 'formulas' && subject !== 'physics' && subject !== 'chemistry') || (activeTab.startsWith('history-') && subject !== 'history') || (activeTab === 'informatics-essays' && subject !== 'informatics')) {
       setActiveTab('arena');
     }
   }, [subject, activeTab]);
 
   useEffect(() => {
+    if (!authUser || authUser.isAnonymous || !statsReady) return;
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(stats));
+      localStorage.setItem(`${STORAGE_KEY}_${authUser.uid}`, JSON.stringify(stats));
     } catch {
       // ignore
     }
@@ -135,49 +190,14 @@ export default function App() {
       if (isCurrentSync) setCloudSyncResult(result);
     });
 
-    // Real-time Server SSE Synchronization across all students
-    const cleanName = (stats.userName || '').trim();
-    if (cleanName) {
-      fetch('/api/leaderboard', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: cleanName,
-          score: stats.xp,
-          level: stats.level,
-        }),
-      }).catch(() => {});
-
-      // Cross-tab live broadcast
-      try {
-        const bc = new BroadcastChannel('bioquest_leaderboard_live');
-        bc.postMessage({
-          type: 'LEADERBOARD_UPDATED',
-          name: cleanName,
-          score: stats.xp,
-          level: stats.level,
-          updatedAt: new Date().toISOString(),
-        });
-        bc.close();
-      } catch {}
-    }
-
     return () => {
       isCurrentSync = false;
     };
-  }, [stats]);
+  }, [stats, authUser, statsReady]);
 
   const toggleTheme = () => {
     soundEffects.playClick();
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
-  };
-
-  const handleSaveName = (name: string) => {
-    setStats((prev) => ({
-      ...prev,
-      userName: name,
-    }));
-    setNameModalOpen(false);
   };
 
   const toggleSound = () => {
@@ -253,6 +273,8 @@ export default function App() {
       ? [...CHEMISTRY_MCQ_QUESTIONS, ...CHEMISTRY_EXTRA_MCQ_QUESTIONS]
       : subject === 'history'
       ? HISTORY_MCQ_QUESTIONS
+      : subject === 'informatics'
+      ? INFORMATICS_MCQ_QUESTIONS
       : MULTIPLE_CHOICE_QUESTIONS;
 
   const activeTfList =
@@ -262,6 +284,8 @@ export default function App() {
       ? CHEMISTRY_TRUE_FALSE_QUESTIONS
       : subject === 'history'
       ? HISTORY_TRUE_FALSE_QUESTIONS
+      : subject === 'informatics'
+      ? INFORMATICS_TRUE_FALSE_QUESTIONS
       : TRUE_FALSE_QUESTIONS;
 
   const activeShortList =
@@ -271,9 +295,14 @@ export default function App() {
       ? CHEMISTRY_SHORT_ANSWER_QUESTIONS
       : subject === 'history'
       ? []
+      : subject === 'informatics'
+      ? []
       : SHORT_ANSWER_QUESTIONS;
 
   const totalQuestionsCount = activeMcqList.length + activeTfList.length + activeShortList.length;
+
+  if (!authReady) return <div className="min-h-screen bg-slate-950" />;
+  if (!authUser || authUser.isAnonymous || !statsReady) return <AccountGate />;
 
   const tabsConfig = [
     {
@@ -314,6 +343,9 @@ export default function App() {
           },
         ]
       : []),
+    ...(subject === 'informatics'
+      ? [{ id: 'informatics-essays', shortLabel: 'Tự luận Tin', fullLabel: 'Tự luận Tin học (10 câu)', icon: <BookOpen className="w-4 h-4" /> }]
+      : []),
     {
       id: 'ecosystem',
       shortLabel: 'Xếp Hạng',
@@ -350,7 +382,7 @@ export default function App() {
               onClick={() => setActiveTab('arena')}
             >
               <span className="font-extrabold text-sm sm:text-base text-slate-900 dark:text-white tracking-tight">
-                {subject === 'physics' ? 'PhysQuest' : subject === 'chemistry' ? 'ChemQuest' : subject === 'history' ? 'HistQuest' : 'BioQuest'}
+                {subject === 'physics' ? 'PhysQuest' : subject === 'chemistry' ? 'ChemQuest' : subject === 'history' ? 'HistQuest' : subject === 'informatics' ? 'InfoQuest' : 'BioQuest'}
               </span>
               <span className="text-xs text-slate-400 dark:text-slate-500 ml-1 hidden md:inline font-medium">THPT Quảng Trị</span>
             </div>
@@ -409,6 +441,15 @@ export default function App() {
               >
                 Sử
               </button>
+              <button
+                onClick={() => {
+                  soundEffects.playClick();
+                  setSubject('informatics');
+                }}
+                className={`px-2 py-1 rounded-md transition-all font-semibold cursor-pointer text-xs ${subject === 'informatics' ? 'bg-cyan-600 text-white shadow-sm' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'}`}
+              >
+                Tin
+              </button>
             </div>
           </div>
 
@@ -445,10 +486,10 @@ export default function App() {
 
             {/* User Name Badge (Auto-truncated for mobile) */}
             <button
-              onClick={() => setNameModalOpen(true)}
+              onClick={() => { void logoutAccount(); }}
               className="max-w-[70px] sm:max-w-[110px] md:max-w-none truncate text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-slate-800 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 font-medium cursor-pointer"
             >
-              {stats.userName || 'Tên'}
+              {stats.userName || 'Tài khoản'}
             </button>
 
             {/* XP Badge */}
@@ -511,12 +552,13 @@ export default function App() {
         {activeTab === 'history-essays' && subject === 'history' && <HistoryEssayView key="history-essays-study" mode="study" />}
         {activeTab === 'history-essay-exam' && subject === 'history' && <HistoryEssayView key="history-essays-exam" mode="exam" />}
         {activeTab === 'chemistry-essays' && subject === 'chemistry' && <ChemistryEssayView />}
+        {activeTab === 'informatics-essays' && subject === 'informatics' && <InformaticsEssayView />}
 
         {activeTab === 'ecosystem' && (
           <LeaderboardAndBadges
             stats={stats}
             cloudSyncResult={cloudSyncResult}
-            onOpenNameModal={() => setNameModalOpen(true)}
+            isAdmin={isAdmin}
             onClearHistory={() => setStats((prev) => ({ ...prev, attemptHistory: [] }))}
           />
         )}
@@ -567,14 +609,6 @@ export default function App() {
         })}
       </nav>
 
-      {/* Name Entry Modal */}
-      <NameEntryModal
-        isOpen={nameModalOpen}
-        initialName={stats.userName}
-        onSave={handleSaveName}
-        canDismiss={!!stats.userName}
-        onClose={() => setNameModalOpen(false)}
-      />
     </div>
   );
 }

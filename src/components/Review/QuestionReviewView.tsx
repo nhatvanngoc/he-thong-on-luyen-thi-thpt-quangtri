@@ -82,6 +82,12 @@ export const QuestionReviewView: React.FC<QuestionReviewViewProps> = ({
             Vật Lí 11
           </span>
         );
+      case 'informatics':
+        return (
+          <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-cyan-500/15 text-cyan-600 dark:text-cyan-400 border border-cyan-500/30">
+            Tin Học 11
+          </span>
+        );
     }
   };
 
@@ -189,6 +195,7 @@ export const QuestionReviewView: React.FC<QuestionReviewViewProps> = ({
               <option value="chemistry">Hóa học 11</option>
               <option value="history">Lịch sử 11</option>
               <option value="biology">Sinh học 11</option>
+              <option value="informatics">Tin học 11</option>
             </select>
 
             {onClearHistory && total > 0 && (

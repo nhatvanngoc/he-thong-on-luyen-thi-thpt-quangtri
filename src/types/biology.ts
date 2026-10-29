@@ -1,6 +1,6 @@
 export type QuestionDifficulty = 'NhanBiet' | 'ThongHieu' | 'VanDung';
 
-export type SubjectId = 'biology' | 'history' | 'chemistry' | 'physics';
+export type SubjectId = 'biology' | 'history' | 'chemistry' | 'physics' | 'informatics';
 
 export type QuestionTopic =
   | 'topic1' // Sinh: 1.1 Khái quát về trao đổi chất và chuyển hóa năng lượng
@@ -13,7 +13,11 @@ export type QuestionTopic =
   | 'chem3' // Hóa: Nitrogen, Ammonia, muối ammonium, Oxides & HNO3
   | 'phys1' // Lý: Dao động điều hòa (Mô tả, phương trình x, v, a, đồ thị)
   | 'phys2' // Lý: Năng lượng trong dao động điều hòa (Động năng, thế năng, cơ năng)
-  | 'phys3'; // Lý: Dao động tắt dần, dao động cưỡng bức, hiện tượng cộng hưởng
+  | 'phys3' // Lý: Dao động tắt dần, dao động cưỡng bức, hiện tượng cộng hưởng
+  | 'info1' // Tin: Hệ điều hành, phần cứng và tệp
+  | 'info2' // Tin: Phần mềm, giấy phép và dịch vụ trực tuyến
+  | 'info3' // Tin: Thiết bị số, dữ liệu và logic
+  | 'info4'; // Tin: Internet, tìm kiếm, thư điện tử và an toàn số
 
 export interface MultipleChoiceQuestion {
   id: number;

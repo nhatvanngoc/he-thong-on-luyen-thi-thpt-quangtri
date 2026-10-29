@@ -1,5 +1,15 @@
 import { initializeApp, getApps, getApp } from 'firebase/app';
-import { getAuth, signInAnonymously, onAuthStateChanged, User } from 'firebase/auth';
+import {
+  createUserWithEmailAndPassword,
+  EmailAuthProvider,
+  getAuth,
+  linkWithCredential,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+  updateProfile,
+  User,
+} from 'firebase/auth';
 import {
   getFirestore,
   doc,
@@ -26,44 +36,84 @@ export const db: Firestore = firebaseConfigData.firestoreDatabaseId
   ? getFirestore(app, firebaseConfigData.firestoreDatabaseId)
   : getFirestore(app);
 
-let currentAuthUser: User | null = null;
-let authInitPromise: Promise<User> | null = null;
+const ADMIN_USERNAME = 'Văn Ngọc Nhật Anh';
+const USERNAME_EMAIL_DOMAIN = 'accounts.bioquest.app';
 
-// Ensure authenticated session
-export const ensureAuth = (): Promise<User> => {
-  if (currentAuthUser) {
-    return Promise.resolve(currentAuthUser);
-  }
-  if (authInitPromise) {
-    return authInitPromise;
-  }
+function normalizeUsername(username: string) {
+  return username.trim().normalize('NFC').toLocaleLowerCase('vi');
+}
 
-  authInitPromise = new Promise((resolve, reject) => {
-    const unsubscribe = onAuthStateChanged(
-      auth,
-      async (user) => {
-        if (user) {
-          currentAuthUser = user;
-          unsubscribe();
-          resolve(user);
-        } else {
-          try {
-            const credential = await signInAnonymously(auth);
-            currentAuthUser = credential.user;
-            unsubscribe();
-            resolve(credential.user);
-          } catch (err) {
-            reject(err);
-          }
-        }
-      },
-      (error) => {
-        reject(error);
-      }
-    );
+async function emailForUsername(username: string) {
+  const bytes = new TextEncoder().encode(normalizeUsername(username));
+  const digest = await crypto.subtle.digest('SHA-256', bytes);
+  const hash = Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('');
+  return `u-${hash}@${USERNAME_EMAIL_DOMAIN}`;
+}
+
+export async function isAdminUser(user: User | null = auth.currentUser) {
+  return !!user?.email && user.email === await emailForUsername(ADMIN_USERNAME);
+}
+
+/** Register a name/password identity. Firebase Auth's unique email field is derived from the normalized name. */
+export async function registerAccount(username: string, password: string): Promise<User> {
+  const cleanName = username.trim().normalize('NFC');
+  const email = await emailForUsername(cleanName);
+  const existing = auth.currentUser;
+  let user: User;
+  if (existing?.isAnonymous) {
+    const credential = EmailAuthProvider.credential(email, password);
+    user = (await linkWithCredential(existing, credential)).user;
+  } else {
+    user = (await createUserWithEmailAndPassword(auth, email, password)).user;
+  }
+  await updateProfile(user, { displayName: cleanName });
+  await setDoc(doc(db, 'users', user.uid), {
+    id: user.uid,
+    userName: cleanName,
+    userClass: 'Lớp 11 - THPT Quảng Trị',
+    xp: 0,
+    level: 1,
+    streak: 0,
+    bestStreak: 0,
+    totalAnswered: 0,
+    totalCorrect: 0,
+    topicProgress: {},
+    unlockedBadgeIds: [],
+    masteredFlashcardIds: [],
+    masteredFormulaIds: [],
+    formulaReflexScore: 0,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
   });
+  return user;
+}
 
-  return authInitPromise;
+export async function loginAccount(username: string, password: string): Promise<User> {
+  const email = await emailForUsername(username);
+  if (auth.currentUser?.isAnonymous) await signOut(auth);
+  const user = (await signInWithEmailAndPassword(auth, email, password)).user;
+  const profile = await getDoc(doc(db, 'users', user.uid));
+  if (!profile.exists() || profile.data().disabled === true) {
+    await signOut(auth);
+    throw new Error('Tài khoản này đã bị quản trị viên xóa hoặc vô hiệu hóa.');
+  }
+  return user;
+}
+
+export const logoutAccount = () => signOut(auth);
+
+export const subscribeToAuth = (callback: (user: User | null) => void) => onAuthStateChanged(auth, callback);
+
+export async function loadUserProfile(user: User) {
+  const snapshot = await getDoc(doc(db, 'users', user.uid));
+  return snapshot.exists() ? snapshot.data() : null;
+}
+
+// The application is gated by account sign-in; never silently create anonymous identities.
+export const ensureAuth = async (): Promise<User> => {
+  const user = auth.currentUser;
+  if (!user || user.isAnonymous) throw new Error('Vui lòng đăng nhập tài khoản trước.');
+  return user;
 };
 
 // Test initial connection as required by Firestore integration standards
@@ -103,34 +153,63 @@ export interface CloudSyncResult {
   message?: string;
 }
 
-const LEADERBOARD_ADMIN_NAME = 'Văn Ngọc Nhật Anh';
-
-/** Delete selected public ranking rows after checking the current Firebase profile name. */
+/** Delete selected accounts' Firestore records. Their Firebase Auth identities remain reserved. */
 export async function deleteLeaderboardEntries(names: string[]): Promise<number> {
   const user = await ensureAuth();
-  const profile = await getDoc(doc(db, 'users', user.uid));
-  const profileName = String(profile.data()?.userName || '').trim().normalize('NFC').toLocaleLowerCase('vi');
-  if (profileName !== LEADERBOARD_ADMIN_NAME.normalize('NFC').toLocaleLowerCase('vi')) {
-    throw new Error('Hồ sơ Firebase đang đăng nhập chưa có tên quản trị được phép xóa.');
-  }
+  if (!await isAdminUser(user)) throw new Error('Tài khoản hiện tại không có quyền quản trị.');
 
-  const selected = new Set(names.map((name) => name.trim().normalize('NFC').toLocaleLowerCase('vi')));
-  selected.delete(LEADERBOARD_ADMIN_NAME.normalize('NFC').toLocaleLowerCase('vi'));
+  const selected = new Set(names.map(normalizeUsername));
+  selected.delete(normalizeUsername(ADMIN_USERNAME));
   if (!selected.size) return 0;
 
   const snapshot = await getDocs(collection(db, 'leaderboard'));
   const targets = snapshot.docs.filter((entry) => {
-    const entryName = String(entry.data().userName || '').trim().normalize('NFC').toLocaleLowerCase('vi');
+    const entryName = normalizeUsername(String(entry.data().userName || ''));
     return selected.has(entryName);
   });
 
   // Firestore limits each batch to 500 writes.
   for (let start = 0; start < targets.length; start += 450) {
     const batch = writeBatch(db);
-    targets.slice(start, start + 450).forEach((entry) => batch.delete(entry.ref));
+    targets.slice(start, start + 200).forEach((entry) => {
+      batch.delete(entry.ref);
+      batch.delete(doc(db, 'users', entry.id));
+    });
     await batch.commit();
   }
   return targets.length;
+}
+
+/** One-time score reset, retried on later admin sessions until Firestore rules allow it. */
+export async function resetAllScoresOnce(): Promise<boolean> {
+  const user = await ensureAuth();
+  if (!await isAdminUser(user)) return false;
+  const migrationRef = doc(db, 'system', 'score-reset-2026-10-29');
+  const migration = await getDoc(migrationRef);
+  if (migration.exists()) return false;
+
+  const [users, leaderboard] = await Promise.all([
+    getDocs(collection(db, 'users')),
+    getDocs(collection(db, 'leaderboard')),
+  ]);
+  const refs = new Map<string, ReturnType<typeof doc>>();
+  users.docs.forEach((snapshot) => refs.set(snapshot.ref.path, snapshot.ref));
+  leaderboard.docs.forEach((snapshot) => refs.set(snapshot.ref.path, snapshot.ref));
+  const allRefs = [...refs.values()];
+  for (let start = 0; start < allRefs.length; start += 450) {
+    const batch = writeBatch(db);
+    allRefs.slice(start, start + 450).forEach((ref) => batch.update(ref, {
+      xp: 0,
+      level: 1,
+      totalAnswered: 0,
+      totalCorrect: 0,
+      bestStreak: 0,
+      updatedAt: new Date().toISOString(),
+    }));
+    await batch.commit();
+  }
+  await setDoc(migrationRef, { completedAt: new Date().toISOString(), completedBy: user.uid });
+  return true;
 }
 
 // Real-time Cloud Sync for User Profile & Statistics
@@ -226,6 +305,11 @@ export function subscribeToRealtimeLeaderboard(
     onStatus?.(false, new Error('Không thể khởi tạo kết nối Firestore.'));
     return () => {};
   }
+}
+
+export async function fetchLeaderboardOnce(): Promise<CloudLeaderboardItem[]> {
+  const snapshot = await getDocs(query(collection(db, 'leaderboard'), orderBy('xp', 'desc')));
+  return snapshot.docs.map((entry) => entry.data() as CloudLeaderboardItem);
 }
 
 // Real-time Cloud Sync for in-progress Arena Session

@@ -3,6 +3,7 @@ import { CHEMISTRY_MCQ_QUESTIONS, CHEMISTRY_TRUE_FALSE_QUESTIONS, CHEMISTRY_SHOR
 import { CHEMISTRY_EXTRA_MCQ_QUESTIONS } from '../src/data/chemistryAdditionalQuestions';
 import { HISTORY_MCQ_QUESTIONS, HISTORY_TRUE_FALSE_QUESTIONS } from '../src/data/historyQuestionBank';
 import { PHYSICS_MCQ_QUESTIONS, PHYSICS_TRUE_FALSE_QUESTIONS, PHYSICS_SHORT_ANSWER_QUESTIONS } from '../src/data/physicsQuestionBank';
+import { INFORMATICS_MCQ_QUESTIONS, INFORMATICS_TRUE_FALSE_QUESTIONS } from '../src/data/informaticsQuestionBank';
 
 interface Finding {
   subject: string;
@@ -148,6 +149,7 @@ auditSubject('Sinh học', MULTIPLE_CHOICE_QUESTIONS, TRUE_FALSE_QUESTIONS, SHOR
 auditSubject('Hóa học', [...CHEMISTRY_MCQ_QUESTIONS, ...CHEMISTRY_EXTRA_MCQ_QUESTIONS], CHEMISTRY_TRUE_FALSE_QUESTIONS, CHEMISTRY_SHORT_ANSWER_QUESTIONS);
 auditSubject('Lịch sử', HISTORY_MCQ_QUESTIONS, HISTORY_TRUE_FALSE_QUESTIONS, []);
 auditSubject('Vật lí', PHYSICS_MCQ_QUESTIONS, PHYSICS_TRUE_FALSE_QUESTIONS, PHYSICS_SHORT_ANSWER_QUESTIONS);
+auditSubject('Tin học', INFORMATICS_MCQ_QUESTIONS, INFORMATICS_TRUE_FALSE_QUESTIONS, []);
 
 console.log(`\n=================== TOTAL FINDINGS: ${findings.length} ===================`);
 findings.forEach((f, idx) => {

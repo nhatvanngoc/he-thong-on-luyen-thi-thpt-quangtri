@@ -16,10 +16,9 @@ service cloud.firestore {
       return isSignedIn() && request.auth.uid == userId;
     }
 
-    // Intentionally name-based admin gate, as requested by the project owner.
+    // Admin identity is the Firebase email derived from the reserved, normalized username.
     function isLeaderboardAdmin() {
-      return isSignedIn() &&
-        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.userName == 'Văn Ngọc Nhật Anh';
+      return isSignedIn() && request.auth.token.email == 'u-6e3fdbc5847400da0b4d9bba458d031737d08afe1da30af3fd439e614a058752@accounts.bioquest.app';
     }
 
     function isValidId(id) {
@@ -32,6 +31,12 @@ service cloud.firestore {
 
     function existing() {
       return resource.data;
+    }
+
+    function onlyScoreFieldsChanged() {
+      return incoming().diff(existing()).affectedKeys().hasOnly([
+        'xp', 'level', 'totalAnswered', 'totalCorrect', 'bestStreak', 'updatedAt'
+      ]);
     }
 
     // Validation for UserProfile
@@ -71,11 +76,14 @@ service cloud.firestore {
 
     // User Profile: private to the authenticated owner
     match /users/{userId} {
-      allow get: if isValidId(userId) && isOwner(userId);
-      allow list: if false;
+      allow get: if isValidId(userId) && (isOwner(userId) || isLeaderboardAdmin());
+      allow list: if isLeaderboardAdmin();
       allow create: if isValidId(userId) && isOwner(userId) && isValidUserProfile(incoming());
-      allow update: if isValidId(userId) && isOwner(userId) && isValidUserProfile(incoming());
-      allow delete: if isLeaderboardAdmin() && existing().userName != 'Văn Ngọc Nhật Anh';
+      allow update: if isValidId(userId) && (
+        (isOwner(userId) && isValidUserProfile(incoming())) ||
+        (isLeaderboardAdmin() && onlyScoreFieldsChanged())
+      );
+      allow delete: if isLeaderboardAdmin() && userId != request.auth.uid;
     }
 
     // Quiz Session: private to the authenticated user for real-time progress resume
@@ -90,8 +98,20 @@ service cloud.firestore {
     // Public Leaderboard: public read-only for real-time live ranking broadcasts, write protected by owner or valid format
     match /leaderboard/{userId} {
       allow get, list: if true;
-      allow create, update: if isValidId(userId) && (isSignedIn() ? isOwner(userId) : true) && isValidLeaderboardEntry(incoming());
-      allow delete: if false;
+      allow create: if isValidId(userId) && isOwner(userId) && isValidLeaderboardEntry(incoming());
+      allow update: if isValidId(userId) && (
+        (isOwner(userId) && isValidLeaderboardEntry(incoming())) ||
+        (isLeaderboardAdmin() && onlyScoreFieldsChanged())
+      );
+      allow delete: if isLeaderboardAdmin() && existing().userId != request.auth.uid;
+    }
+
+    // One-time marker for the initial score reset. Only admin may read or create it.
+    match /system/{documentId} {
+      allow get: if isLeaderboardAdmin() && documentId == 'score-reset-2026-10-29';
+      allow list: if false;
+      allow create: if isLeaderboardAdmin() && documentId == 'score-reset-2026-10-29' && incoming().completedBy == request.auth.uid;
+      allow update, delete: if false;
     }
   }
 }
